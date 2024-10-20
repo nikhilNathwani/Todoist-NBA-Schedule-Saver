@@ -5,7 +5,8 @@ const app = express();
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri =
-	process.env.REDIRECT_URI || "https://triple-threat.vercel.app";
+	process.env.REDIRECT_URI ||
+	"https://nba-todoist-import.vercel.app/api/callback";
 const state_secret = process.env.STATE_SECRET;
 
 app.get("/", (req, res) => {
