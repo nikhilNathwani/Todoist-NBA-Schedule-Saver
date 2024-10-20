@@ -20,7 +20,7 @@ router.get("/confirmation", (req, res) => {
 });
 
 router.get("*", (req, res) => {
-	res.sendFile(path.join(staticPathRoot, "index.html"));
+	res.sendFile(path.join(staticPathRoot, "landing.html"));
 });
 
 module.exports = router;
