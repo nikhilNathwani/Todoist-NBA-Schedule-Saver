@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const path = require("path");
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -12,7 +12,7 @@ const redirect_uri =
 const state_secret = process.env.STATE_SECRET;
 
 // Serve static files from the public directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -95,9 +95,14 @@ app.get("/api/select-team", (req, res) => {
             </form>`);
 });
 
+// Fallback to serve index.html for any other route
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 // Start the server
-app.listen(port, () => {
-	console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+	console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 module.exports = app;
