@@ -20,6 +20,8 @@ app.get("/api/login", (req, res) => {
 
 // Step 2: Handle the redirection from Todoist
 app.get("/api/callback", async (req, res) => {
+	console.log("Callback received with:", req.query); // Log query parameters
+
 	const { code, state } = req.query;
 
 	// Check if the state matches to prevent CSRF attacks
