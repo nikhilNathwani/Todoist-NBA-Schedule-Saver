@@ -10,7 +10,7 @@ const redirect_uri =
 const state_secret = process.env.STATE_SECRET;
 
 app.get("/", (req, res) => {
-	res.send(`<a href="/api/login">Log in with Todoist</a>`);
+	res.sendFile(__dirname + "/public/index.html");
 });
 
 // Step 1: Redirect to Todoist for OAuth authorization
