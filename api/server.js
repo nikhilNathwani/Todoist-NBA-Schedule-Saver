@@ -9,11 +9,15 @@ const redirect_uri =
 	"https://nba-todoist-import.vercel.app/api/callback";
 const state_secret = process.env.STATE_SECRET;
 
+// Serve static files from the public directory
+app.use(express.static("public"));
+
+// Set up the root route to serve the landing page
 app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Step 1: Redirect to Todoist for OAuth authorization
+// Redirect to Todoist for OAuth authorization
 app.get("/api/login", (req, res) => {
 	const auth_url = `https://todoist.com/oauth/authorize?client_id=${client_id}&scope=data:read,data:delete&state=${state_secret}&redirect_uri=${redirect_uri}`;
 	res.redirect(auth_url);
