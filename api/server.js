@@ -13,6 +13,12 @@ const state_secret = process.env.STATE_SECRET;
 // Serve static files from the public directory
 app.use(express.static("public"));
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+	console.error(err.stack); // Log the error stack to console
+	res.status(500).send("Something broke!"); // Send a response to the client
+});
+
 // Set up the root route to serve the landing page
 app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "public", "index.html"));
