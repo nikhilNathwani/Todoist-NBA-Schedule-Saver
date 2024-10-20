@@ -1,14 +1,12 @@
 const express = require("express");
 const axios = require("axios");
 const path = require("path");
-const app = express();
 const PORT = process.env.PORT || 3000;
+const app = express();
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
-const redirect_uri =
-	process.env.REDIRECT_URI ||
-	"https://nba-todoist-import.vercel.app/api/callback";
+const redirect_uri = process.env.REDIRECT_URI;
 const state_secret = process.env.STATE_SECRET;
 
 // Serve static files from the public directory
