@@ -21,6 +21,10 @@ app.use((err, req, res, next) => {
 
 // Set up the root route to serve the landing page
 app.get("/", (req, res) => {
+	console.log(
+		"Received request for",
+		path.join(__dirname, "public", "index.html")
+	);
 	res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
