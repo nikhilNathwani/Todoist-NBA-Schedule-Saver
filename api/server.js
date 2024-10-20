@@ -12,7 +12,7 @@ const redirect_uri =
 const state_secret = process.env.STATE_SECRET;
 
 // Serve static files from the public directory
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -24,9 +24,9 @@ app.use((err, req, res, next) => {
 app.get("/", (req, res) => {
 	console.log(
 		"Received request for",
-		path.join(__dirname, "public", "index.html")
+		path.join(__dirname, "../public", "index.html")
 	);
-	res.sendFile(path.join(__dirname, "public", "index.html"));
+	res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
 // Redirect to Todoist for OAuth authorization
@@ -97,7 +97,7 @@ app.get("/api/select-team", (req, res) => {
 
 // Fallback to serve index.html for any other route
 app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "public", "index.html"));
+	res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
 // Start the server
