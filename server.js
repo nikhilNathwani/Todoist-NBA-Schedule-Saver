@@ -1,3 +1,5 @@
+//Server.js only needed for local development & testing
+
 const app = require("./app");
 const PORT = process.env.PORT || 3000;
 
