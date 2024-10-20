@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const app = express();
+const port = process.env.PORT || 3000;
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
@@ -81,6 +82,11 @@ app.get("/api/select-team", (req, res) => {
               </select>
               <button type="submit">Save</button>
             </form>`);
+});
+
+// Start the server
+app.listen(port, () => {
+	console.log(`Server is running on http://localhost:${port}`);
 });
 
 module.exports = app;
