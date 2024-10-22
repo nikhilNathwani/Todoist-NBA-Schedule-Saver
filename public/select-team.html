@@ -9,12 +9,11 @@
 	<body>
 		<h1>Select Your Favorite NBA Team</h1>
 		<form action="/confirmation" method="GET">
-			<select name="team">
-				<option value="celtics">Celtics</option>
-				<option value="lakers">Lakers</option>
-				<!-- Add more teams as needed -->
+			<select name="team" id="team-select">
+				<!-- Options will be populated here -->
 			</select>
 			<button type="submit">Save</button>
 		</form>
+		<script src="team-picker.js"></script>
 	</body>
 </html>

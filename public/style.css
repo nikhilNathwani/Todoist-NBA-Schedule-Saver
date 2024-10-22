@@ -6,6 +6,7 @@ body {
 	justify-content: center;
 	height: 100vh;
 	margin: 0;
+	background: radial-gradient(circle, #efefef 0%, #b9deed 100%);
 	background-color: #f4f4f4;
 }
 

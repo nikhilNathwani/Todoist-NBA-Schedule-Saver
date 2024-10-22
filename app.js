@@ -11,8 +11,8 @@ const app = express();
 app.use(express.static(staticPathRoot));
 
 // Middleware to parse request bodies (for POST requests)
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 // Use the oauth and pages routes
 app.use("/api", oauthRoutes);
