@@ -3,6 +3,7 @@ async function populateTeamDropdown() {
     try {
         // Fetch the nba-schedule.json file
         const response = await fetch('../data/nba-schedule.json');
+        console.log("Response", response);
         const scheduleData = await response.json();
 
         // Get the team select dropdown element
