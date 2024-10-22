@@ -23,6 +23,10 @@
 					// Fetch the nba-schedule.json file
 					const response = await fetch('data/nba-schedule.json');
 					console.log("Response", response);
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					}
+
 					const scheduleData = await response.json();
 
 					// Get the team select dropdown element
