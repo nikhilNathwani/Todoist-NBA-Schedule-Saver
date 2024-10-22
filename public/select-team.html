@@ -12,8 +12,18 @@
 			<select name="team" id="team-select">
 				<!-- Options will be populated here -->
 			</select>
+			 <h3>Choose where to add tasks:</h3>
+			<div>
+				<input type="radio" id="inbox" name="destination" value="inbox" checked />
+				<label for="inbox">Inbox</label>
+			</div>
+			<div>
+				<input type="radio" id="new_project" name="destination" value="new_project" />
+				<label for="new_project">New Project</label>
+			</div>
 			<button type="submit">Save</button>
 		</form>
 		<script src="team-picker.js"></script>
+		<script src="todoist.js"></script>
 	</body>
 </html>
