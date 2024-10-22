@@ -1,6 +1,8 @@
 // Function to fetch the NBA schedule and populate the dropdown
 async function populateTeamDropdown() {
+    console.log("In populateTeamDropdown()");
     try {
+        console.log("In try statement");
         // Fetch the nba-schedule.json file
         const response = await fetch('../data/nba-schedule.json');
         console.log("Response", response);
