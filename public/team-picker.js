@@ -4,7 +4,7 @@ async function populateTeamDropdown() {
     try {
         console.log("In try statement");
         // Fetch the nba-schedule.json file
-        const response = await fetch('../data/nba-schedule.json');
+        const response = await fetch('data/nba-schedule.json');
         console.log("Response", response);
         const scheduleData = await response.json();
 
