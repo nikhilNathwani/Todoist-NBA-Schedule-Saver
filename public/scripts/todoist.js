@@ -6,8 +6,8 @@ const PREMIUM_PROJECT_LIMIT = 300;
 let api; // Declare a variable to hold the API instance
 
 // Initialize API with the user's token
-async function initializeAPI(req, token) {
-    api = new TodoistApi(token); //Todosit REST API
+async function initializeAPI(req, accessToken) {
+    api = new TodoistApi(accessToken); //Todosit REST API
     await saveUserMetadata(req, accessToken)
 }
 
