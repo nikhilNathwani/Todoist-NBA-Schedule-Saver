@@ -28,6 +28,12 @@ async function saveUserMetadata(req, accessToken) {
         const isPremium = user.is_premium; // Check if the user is premium
         const projectCount = projects.length; 
 
+        // Log the values to the console
+        console.log('User:', user);
+        console.log('Is Premium:', isPremium);
+        console.log('Project Count:', projectCount);
+
+
         // Store these values in the session
         req.session.isPremium = isPremium;
         req.session.projectCount = projectCount;
