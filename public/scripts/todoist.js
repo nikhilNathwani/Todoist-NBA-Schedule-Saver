@@ -37,7 +37,7 @@ async function saveUserMetadata(req, accessToken) {
         console.log('User:', user);
         console.log('Is Premium:', req.session.isPremium);
         console.log('Project Count:', req.session.projectCount);
-        console.log('Can Create Projects:', canCreateProjects);
+        console.log('Can Create Projects:', req.session.canCreateProjects);
     } catch (error) {
         console.error('Error fetching user data:', error);
         throw new Error('Failed to fetch user metadata');
