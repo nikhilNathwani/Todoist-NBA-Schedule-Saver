@@ -35,7 +35,7 @@ router.get("/callback", async (req, res) => {
 		const { access_token } = response.data;
 
 		// Initialize the API with the user's token
-		await todoist.initializeAPI(req, token);
+		await todoist.initializeAPI(req, access_token);
 
 		// Redirect to the team selection page with the access token
 		res.redirect(`/select-team`);
