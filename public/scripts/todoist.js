@@ -1,5 +1,5 @@
 // todoist.js
-const { TodoistAPI } = require('@doist/todoist-api-typescript');
+const { TodoistApi } = require('@doist/todoist-api-typescript');
 const FREE_PROJECT_LIMIT = 5;
 const PREMIUM_PROJECT_LIMIT = 300;
 
@@ -7,7 +7,7 @@ let api; // Declare a variable to hold the API instance
 
 // Initialize API with the user's token
 async function initializeAPI(req, token) {
-    api = new TodoistAPI(token); //Todosit REST API
+    api = new TodoistApi(token); //Todosit REST API
     await saveUserMetadata(req, accessToken)
 }
 
