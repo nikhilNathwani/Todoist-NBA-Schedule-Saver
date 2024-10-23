@@ -28,16 +28,16 @@ async function saveUserMetadata(req, accessToken) {
         const isPremium = user.is_premium; // Check if the user is premium
         const projectCount = projects.length; 
 
-        // Log the values to the console
-        console.log('User:', user);
-        console.log('Is Premium:', isPremium);
-        console.log('Project Count:', projectCount);
-
-
         // Store these values in the session
         req.session.isPremium = isPremium;
         req.session.projectCount = projectCount;
         req.session.canCreateProjects = isPremium ? projectCount < PREMIUM_PROJECT_LIMIT : projectCount < FREE_PROJECT_LIMIT;
+
+        // Log the values to the console
+        console.log('User:', user);
+        console.log('Is Premium:', req.session.isPremium);
+        console.log('Project Count:', req.session.projectCount);
+        console.log('Can Create Projects:', canCreateProjects);
     } catch (error) {
         console.error('Error fetching user data:', error);
         throw new Error('Failed to fetch user metadata');
