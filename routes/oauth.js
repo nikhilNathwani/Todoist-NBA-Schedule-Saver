@@ -40,6 +40,7 @@ router.get("/callback", async (req, res) => {
 		// Redirect to the team selection page with the access token
 		res.redirect(`/select-team`);
 	} catch (error) {
+		console.error('OAuth error:', error.response ? error.response.data : error);
 		handleOAuthError(error, res);
 	}
 });
