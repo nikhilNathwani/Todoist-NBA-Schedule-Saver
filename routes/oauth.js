@@ -38,7 +38,7 @@ router.get("/callback", async (req, res) => {
 		await todoist.initializeAPI(req, token);
 
 		// Redirect to the team selection page with the access token
-		res.redirect(`/select-team?canCreateProjects=${canCreateProjects}&isPremium=${isPremium}&projectCount=${projectCount}`);
+		res.redirect(`/select-team`);
 	} catch (error) {
 		handleOAuthError(error, res);
 	}
