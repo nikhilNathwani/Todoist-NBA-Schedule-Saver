@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 router.get("/select-team", async (req, res) => {
 	try {
 		// Read the NBA schedule JSON file
-		const data = await fs.readFile(path.join(__dirname, '../public/data/nba-schedule.json'));
+		const data = await fs.readFile(path.join(__dirname, '../public/data/nba_schedule.json'));
 		const teams = JSON.parse(data);
 
 		// Prepare options for the team picker
