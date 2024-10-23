@@ -5,7 +5,7 @@ const todoist = require('../public/scripts/todoist');
 
 
 // Handle team selection
-app.get('/add-tasks', async (req, res) => {
+router.get('/add-tasks', async (req, res) => {
 	
     // const selectedTeam = req.query.team; // Get the selected team from the request
     // const projectID = await todoist.createTodoistProject(selectedTeam); // Create project
