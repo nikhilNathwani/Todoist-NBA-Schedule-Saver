@@ -25,6 +25,10 @@ router.get("/select-team", async (req, res) => {
 		const isPremium = req.session.isPremium || false;
 		const projectCount = req.session.projectCount || 0;
 		const canCreateProjects = req.session.canCreateProjects || false;
+    	// Log the values to the console
+        console.log('pages.js Is Premium:', req.session.isPremium, isPremium);
+        console.log('pages.js Project Count:', req.session.projectCount, projectCount);
+        console.log('pages.js Can Create Projects:', req.session.canCreateProjects, canCreateProjects);
 
 		const projectPickerHTML = `
 			<div>

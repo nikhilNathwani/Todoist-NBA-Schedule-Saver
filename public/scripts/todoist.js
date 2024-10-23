@@ -34,10 +34,10 @@ async function saveUserMetadata(req, accessToken) {
         req.session.canCreateProjects = isPremium ? projectCount < PREMIUM_PROJECT_LIMIT : projectCount < FREE_PROJECT_LIMIT;
 
         // Log the values to the console
-        console.log('User:', user);
-        console.log('Is Premium:', req.session.isPremium);
-        console.log('Project Count:', req.session.projectCount);
-        console.log('Can Create Projects:', req.session.canCreateProjects);
+        console.log('TD.js User:', user);
+        console.log('TD.js Is Premium:', req.session.isPremium);
+        console.log('TD.js Project Count:', req.session.projectCount);
+        console.log('TD.js Can Create Projects:', req.session.canCreateProjects);
     } catch (error) {
         console.error('Error fetching user data:', error);
         throw new Error('Failed to fetch user metadata');
