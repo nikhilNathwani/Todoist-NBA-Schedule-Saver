@@ -22,8 +22,8 @@ app.use(session({
 }));
 
 // Middleware to parse request bodies (for POST requests)
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Use the oauth and pages routes
 app.use("/auth", oauthRoutes);
