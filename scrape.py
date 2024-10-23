@@ -68,9 +68,9 @@ def scrapeAllTeamSchedules(links):
     for link in links:
         teamID= link.split(url)[-1].split("/")[0]
         schedules[teamID]= {
-            "teamName": teamNames[teamID], 
-            "teamNameCasual": teamNamesCasual[teamID], 
-            "teamCity": teamCities[teamID], 
+            "name": teamNames[teamID], 
+            "nameCasual": teamNamesCasual[teamID], 
+            "city": teamCities[teamID], 
             "schedule": scrapeTeamSchedule(link)}
     return schedules
 
@@ -78,12 +78,13 @@ def scrapeTeamSchedule(link):
     games=[]
     response = requests.get(link)
     soup= BeautifulSoup(response.content, "html.parser")
-    schedule = soup.find("tbody")
+    upcomingGames= soup.findAll(class_ = "TableBaseWrapper")[-1] #first table is completed games, second (last) is upcoming games
+    schedule = upcomingGames.find("tbody")
     if not schedule:
         print("No schedule found")
     else:
         rows= schedule.findAll("tr")
-        for row in rows:
+        for row in rows:    
            opponent= scrapeOpponent(row)
            isHomeGame= scrapeIsHomeGame(row)
            date= scrapeDate(row)
@@ -151,4 +152,4 @@ if __name__ == "__main__":
     links= getScheduleLinks()
     schedules= scrapeAllTeamSchedules(links)
     print(schedules)
-    saveSchedulesToJSON(schedules, "/public/data/nba_schedule.json")
+    saveSchedulesToJSON(schedules, "public/data/nba_schedule.json")

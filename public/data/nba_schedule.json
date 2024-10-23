@@ -1,14 +1,9 @@
 {
     "BOS": {
-        "teamName": "Celtics",
-        "teamNameCasual": "celtics",
-        "teamCity": "Boston",
+        "name": "Celtics",
+        "nameCasual": "celtics",
+        "city": "Boston",
         "schedule": [
-            {
-                "opponent": "knicks",
-                "isHomeGame": true,
-                "dateTime": "2024-10-22T23:30:00+00:00"
-            },
             {
                 "opponent": "wizards",
                 "isHomeGame": false,
@@ -407,9 +402,9 @@
         ]
     },
     "BKN": {
-        "teamName": "Nets",
-        "teamNameCasual": "nets",
-        "teamCity": "Brooklyn",
+        "name": "Nets",
+        "nameCasual": "nets",
+        "city": "Brooklyn",
         "schedule": [
             {
                 "opponent": "hawks",
@@ -814,15 +809,10 @@
         ]
     },
     "NY": {
-        "teamName": "Knicks",
-        "teamNameCasual": "knicks",
-        "teamCity": "New York",
+        "name": "Knicks",
+        "nameCasual": "knicks",
+        "city": "New York",
         "schedule": [
-            {
-                "opponent": "celtics",
-                "isHomeGame": false,
-                "dateTime": "2024-10-22T23:30:00+00:00"
-            },
             {
                 "opponent": "pacers",
                 "isHomeGame": true,
@@ -1221,9 +1211,9 @@
         ]
     },
     "PHI": {
-        "teamName": "76ers",
-        "teamNameCasual": "76ers",
-        "teamCity": "Philadelphia",
+        "name": "76ers",
+        "nameCasual": "76ers",
+        "city": "Philadelphia",
         "schedule": [
             {
                 "opponent": "bucks",
@@ -1628,9 +1618,9 @@
         ]
     },
     "TOR": {
-        "teamName": "Raptors",
-        "teamNameCasual": "raptors",
-        "teamCity": "Toronto",
+        "name": "Raptors",
+        "nameCasual": "raptors",
+        "city": "Toronto",
         "schedule": [
             {
                 "opponent": "cavs",
@@ -2035,9 +2025,9 @@
         ]
     },
     "CHI": {
-        "teamName": "Bulls",
-        "teamNameCasual": "bulls",
-        "teamCity": "Chicago",
+        "name": "Bulls",
+        "nameCasual": "bulls",
+        "city": "Chicago",
         "schedule": [
             {
                 "opponent": "pelicans",
@@ -2442,9 +2432,9 @@
         ]
     },
     "CLE": {
-        "teamName": "Cavaliers",
-        "teamNameCasual": "cavs",
-        "teamCity": "Cleveland",
+        "name": "Cavaliers",
+        "nameCasual": "cavs",
+        "city": "Cleveland",
         "schedule": [
             {
                 "opponent": "raptors",
@@ -2849,9 +2839,9 @@
         ]
     },
     "DET": {
-        "teamName": "Pistons",
-        "teamNameCasual": "pistons",
-        "teamCity": "Detroit",
+        "name": "Pistons",
+        "nameCasual": "pistons",
+        "city": "Detroit",
         "schedule": [
             {
                 "opponent": "pacers",
@@ -3256,9 +3246,9 @@
         ]
     },
     "IND": {
-        "teamName": "Pacers",
-        "teamNameCasual": "pacers",
-        "teamCity": "Indiana",
+        "name": "Pacers",
+        "nameCasual": "pacers",
+        "city": "Indiana",
         "schedule": [
             {
                 "opponent": "pistons",
@@ -3663,9 +3653,9 @@
         ]
     },
     "MIL": {
-        "teamName": "Bucks",
-        "teamNameCasual": "bucks",
-        "teamCity": "Milwaukee",
+        "name": "Bucks",
+        "nameCasual": "bucks",
+        "city": "Milwaukee",
         "schedule": [
             {
                 "opponent": "76ers",
@@ -4070,9 +4060,9 @@
         ]
     },
     "ATL": {
-        "teamName": "Hawks",
-        "teamNameCasual": "hawks",
-        "teamCity": "Atlanta",
+        "name": "Hawks",
+        "nameCasual": "hawks",
+        "city": "Atlanta",
         "schedule": [
             {
                 "opponent": "nets",
@@ -4477,9 +4467,9 @@
         ]
     },
     "CHA": {
-        "teamName": "Hornets",
-        "teamNameCasual": "hornets",
-        "teamCity": "Charlotte",
+        "name": "Hornets",
+        "nameCasual": "hornets",
+        "city": "Charlotte",
         "schedule": [
             {
                 "opponent": "rockets",
@@ -4884,9 +4874,9 @@
         ]
     },
     "MIA": {
-        "teamName": "Heat",
-        "teamNameCasual": "heat",
-        "teamCity": "Miami",
+        "name": "Heat",
+        "nameCasual": "heat",
+        "city": "Miami",
         "schedule": [
             {
                 "opponent": "magic",
@@ -5291,9 +5281,9 @@
         ]
     },
     "ORL": {
-        "teamName": "Magic",
-        "teamNameCasual": "magic",
-        "teamCity": "Orlando",
+        "name": "Magic",
+        "nameCasual": "magic",
+        "city": "Orlando",
         "schedule": [
             {
                 "opponent": "heat",
@@ -5698,9 +5688,9 @@
         ]
     },
     "WAS": {
-        "teamName": "Wizards",
-        "teamNameCasual": "wizards",
-        "teamCity": "Washington",
+        "name": "Wizards",
+        "nameCasual": "wizards",
+        "city": "Washington",
         "schedule": [
             {
                 "opponent": "celtics",
@@ -6105,9 +6095,9 @@
         ]
     },
     "DEN": {
-        "teamName": "Nuggets",
-        "teamNameCasual": "nuggets",
-        "teamCity": "Denver",
+        "name": "Nuggets",
+        "nameCasual": "nuggets",
+        "city": "Denver",
         "schedule": [
             {
                 "opponent": "thunder",
@@ -6512,15 +6502,10 @@
         ]
     },
     "MIN": {
-        "teamName": "Timberwolves",
-        "teamNameCasual": "t-wolves",
-        "teamCity": "Minnesota",
+        "name": "Timberwolves",
+        "nameCasual": "t-wolves",
+        "city": "Minnesota",
         "schedule": [
-            {
-                "opponent": "lakers",
-                "isHomeGame": false,
-                "dateTime": "2024-10-23T02:00:00+00:00"
-            },
             {
                 "opponent": "kings",
                 "isHomeGame": false,
@@ -6919,9 +6904,9 @@
         ]
     },
     "OKC": {
-        "teamName": "Thunder",
-        "teamNameCasual": "thunder",
-        "teamCity": "Oklahoma City",
+        "name": "Thunder",
+        "nameCasual": "thunder",
+        "city": "Oklahoma City",
         "schedule": [
             {
                 "opponent": "nuggets",
@@ -7326,9 +7311,9 @@
         ]
     },
     "POR": {
-        "teamName": "Blazers",
-        "teamNameCasual": "blazers",
-        "teamCity": "Portland",
+        "name": "Blazers",
+        "nameCasual": "blazers",
+        "city": "Portland",
         "schedule": [
             {
                 "opponent": "warriors",
@@ -7733,9 +7718,9 @@
         ]
     },
     "UTA": {
-        "teamName": "Jazz",
-        "teamNameCasual": "jazz",
-        "teamCity": "Utah",
+        "name": "Jazz",
+        "nameCasual": "jazz",
+        "city": "Utah",
         "schedule": [
             {
                 "opponent": "grizzlies",
@@ -8140,9 +8125,9 @@
         ]
     },
     "GS": {
-        "teamName": "Warriors",
-        "teamNameCasual": "warriors",
-        "teamCity": "Golden State",
+        "name": "Warriors",
+        "nameCasual": "warriors",
+        "city": "Golden State",
         "schedule": [
             {
                 "opponent": "blazers",
@@ -8547,9 +8532,9 @@
         ]
     },
     "LAC": {
-        "teamName": "Clippers",
-        "teamNameCasual": "clippers",
-        "teamCity": "Los Angeles",
+        "name": "Clippers",
+        "nameCasual": "clippers",
+        "city": "Los Angeles",
         "schedule": [
             {
                 "opponent": "suns",
@@ -8954,15 +8939,10 @@
         ]
     },
     "LAL": {
-        "teamName": "Lakers",
-        "teamNameCasual": "lakers",
-        "teamCity": "Los Angeles",
+        "name": "Lakers",
+        "nameCasual": "lakers",
+        "city": "Los Angeles",
         "schedule": [
-            {
-                "opponent": "t-wolves",
-                "isHomeGame": true,
-                "dateTime": "2024-10-23T02:00:00+00:00"
-            },
             {
                 "opponent": "suns",
                 "isHomeGame": true,
@@ -9361,9 +9341,9 @@
         ]
     },
     "PHO": {
-        "teamName": "Suns",
-        "teamNameCasual": "suns",
-        "teamCity": "Phoenix",
+        "name": "Suns",
+        "nameCasual": "suns",
+        "city": "Phoenix",
         "schedule": [
             {
                 "opponent": "clippers",
@@ -9768,9 +9748,9 @@
         ]
     },
     "SAC": {
-        "teamName": "Kings",
-        "teamNameCasual": "kings",
-        "teamCity": "Sacramento",
+        "name": "Kings",
+        "nameCasual": "kings",
+        "city": "Sacramento",
         "schedule": [
             {
                 "opponent": "t-wolves",
@@ -10175,9 +10155,9 @@
         ]
     },
     "DAL": {
-        "teamName": "Mavericks",
-        "teamNameCasual": "mavs",
-        "teamCity": "Dallas",
+        "name": "Mavericks",
+        "nameCasual": "mavs",
+        "city": "Dallas",
         "schedule": [
             {
                 "opponent": "spurs",
@@ -10582,9 +10562,9 @@
         ]
     },
     "HOU": {
-        "teamName": "Rockets",
-        "teamNameCasual": "rockets",
-        "teamCity": "Houston",
+        "name": "Rockets",
+        "nameCasual": "rockets",
+        "city": "Houston",
         "schedule": [
             {
                 "opponent": "hornets",
@@ -10989,9 +10969,9 @@
         ]
     },
     "MEM": {
-        "teamName": "Grizzlies",
-        "teamNameCasual": "grizzlies",
-        "teamCity": "Memphis",
+        "name": "Grizzlies",
+        "nameCasual": "grizzlies",
+        "city": "Memphis",
         "schedule": [
             {
                 "opponent": "jazz",
@@ -11396,9 +11376,9 @@
         ]
     },
     "NO": {
-        "teamName": "Pelicans",
-        "teamNameCasual": "pelicans",
-        "teamCity": "New Orleans",
+        "name": "Pelicans",
+        "nameCasual": "pelicans",
+        "city": "New Orleans",
         "schedule": [
             {
                 "opponent": "bulls",
@@ -11803,9 +11783,9 @@
         ]
     },
     "SA": {
-        "teamName": "Spurs",
-        "teamNameCasual": "spurs",
-        "teamCity": "San Antonio",
+        "name": "Spurs",
+        "nameCasual": "spurs",
+        "city": "San Antonio",
         "schedule": [
             {
                 "opponent": "mavs",
