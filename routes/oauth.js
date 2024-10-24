@@ -35,9 +35,10 @@ router.get("/callback", async (req, res) => {
 
 		// Initialize the API with the user's token
 		await todoist.initializeAPI(access_token);
+		const redirectUrlParam = await todoist.saveUserMetadata(access_token);
 
 		// Redirect to the team selection page with the access token
-		res.redirect(`/select-team`);
+		res.redirect(`/select-team?isInboxDefault=${redirectUrlParam}`);
 	} catch (error) {
 		console.error(
 			"OAuth error:",

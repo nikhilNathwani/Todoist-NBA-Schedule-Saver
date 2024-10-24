@@ -33,8 +33,7 @@ async function saveUserMetadata(accessToken) {
 		const isPremium = user.is_premium; // Check if the user is premium
 		const projectCount = projects.length;
 
-		// Store these values in the session
-		isInboxDefault = isPremium
+		return isPremium
 			? projectCount < PREMIUM_PROJECT_LIMIT
 			: projectCount < FREE_PROJECT_LIMIT;
 	} catch (error) {
