@@ -38,20 +38,22 @@ router.get("/configure-import", async (req, res) => {
 
 		// Prepare project picker based on isInboxDefault
 		const projectPickerHTML = `
-			<div>
-				<h2>Project Picker</h2>
-				<label>
-					<input type="radio" name="project-option" value="inbox" ${
-						isInboxDefault ? "checked" : ""
-					}>
-					Use Inbox as default project
-				</label>
-				<label>
-					<input type="radio" name="project-option" value="newProject" ${
-						isInboxDefault ? "disabled" : "checked"
-					}>
-					Create New Project
-				</label>
+			<div id="projectPicker>
+				<div class="radio-button">
+					<input type="radio" name="projectOption" value="inbox" id="inbox">
+					<label for="inbox">
+						<strong>Inbox</strong><br>
+						<small>Use the default Inbox for your tasks</small>
+					</label>
+				</div>
+				
+				<div class="radio-button">
+					<input type="radio" name="projectOption" value="newProject" id="newProject">
+					<label for="newProject">
+						<strong>Create New Project</strong><br>
+						<small>Start a fresh project for your NBA schedule tasks</small>
+					</label>
+				</div>
 			</div>
 		`;
 
@@ -67,14 +69,14 @@ router.get("/configure-import", async (req, res) => {
 				<link rel="stylesheet" href="style.css" />
 			</head>
 			<body>
-				<form action="/confirmation" method="GET">
+				<form action="/api/add-task" method="POST">
 					<h3>Choose an NBA team to follow:</h3>
 					<select id="team-selector">
 						${teamOptions}
 					</select>
-					<h3>Choose where to add tasks:</h3>
+					<h3>Choose where to track games:</h3>
 					${projectPickerHTML}
-					<a href="/auth/login" class="button">Save</a>
+					<button type="submit">Submit</button>
 				</form>
 			</body>
 			</html>
