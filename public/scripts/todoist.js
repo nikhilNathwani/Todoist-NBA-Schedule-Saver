@@ -36,13 +36,13 @@ async function saveUserMetadata(accessToken) {
 		console.log(
 			"TODOIST.JS returning",
 			isPremium
-				? projectCount < PREMIUM_PROJECT_LIMIT
-				: projectCount < FREE_PROJECT_LIMIT,
+				? projectCount >= PREMIUM_PROJECT_LIMIT
+				: projectCount >= FREE_PROJECT_LIMIT,
 			"for isInboxDefault"
 		);
 		return isPremium
-			? projectCount < PREMIUM_PROJECT_LIMIT
-			: projectCount < FREE_PROJECT_LIMIT;
+			? projectCount >= PREMIUM_PROJECT_LIMIT
+			: projectCount >= FREE_PROJECT_LIMIT;
 	} catch (error) {
 		console.error("Error fetching user data:", error);
 		throw new Error("Failed to fetch user metadata");
