@@ -33,6 +33,13 @@ async function saveUserMetadata(accessToken) {
 		const isPremium = user.is_premium; // Check if the user is premium
 		const projectCount = projects.length;
 
+		console.log(
+			"TODOIST.JS returning",
+			isPremium
+				? projectCount < PREMIUM_PROJECT_LIMIT
+				: projectCount < FREE_PROJECT_LIMIT,
+			"for isInboxDefault"
+		);
 		return isPremium
 			? projectCount < PREMIUM_PROJECT_LIMIT
 			: projectCount < FREE_PROJECT_LIMIT;

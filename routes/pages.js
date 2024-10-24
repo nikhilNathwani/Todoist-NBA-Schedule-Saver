@@ -15,6 +15,13 @@ router.get("/select-team", async (req, res) => {
 	try {
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault === "true";
+		console.log(
+			"PAGES.JS got",
+			req.query.isInboxDefault,
+			"and interpreted it as",
+			req.query.isInboxDefault === "true",
+			"for isInboxDefault"
+		);
 
 		// Read the NBA schedule JSON file
 		const data = await fs.readFile(
