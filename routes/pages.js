@@ -40,7 +40,9 @@ router.get("/configure-import", async (req, res) => {
 		const projectPickerHTML = `
 			<div id="projectPicker>
 				<div class="radio-button">
-					<input type="radio" name="projectOption" value="inbox" id="inbox">
+					<input type="radio" name="projectOption" value="inbox" id="inbox" ${
+						isInboxDefault ? "checked" : ""
+					}>
 					<label for="inbox">
 						<strong>Inbox</strong><br>
 						<small>Use the default Inbox for your tasks</small>
@@ -48,7 +50,9 @@ router.get("/configure-import", async (req, res) => {
 				</div>
 				
 				<div class="radio-button">
-					<input type="radio" name="projectOption" value="newProject" id="newProject">
+					<input type="radio" name="projectOption" value="newProject" id="newProject" ${
+						isInboxDefault ? "disabled" : "checked"
+					}>
 					<label for="newProject">
 						<strong>Create New Project</strong><br>
 						<small>Start a fresh project for your NBA schedule tasks</small>
