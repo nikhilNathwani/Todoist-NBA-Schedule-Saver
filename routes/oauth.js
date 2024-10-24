@@ -50,6 +50,8 @@ router.get("/callback", async (req, res) => {
 	}
 });
 
+module.exports = router;
+
 // Helper function to handle OAuth token exchange errors
 const handleOAuthError = (error, res) => {
 	if (error.response) {
@@ -62,5 +64,3 @@ const handleOAuthError = (error, res) => {
 	}
 	return res.status(500).send("Internal server error during OAuth flow.");
 };
-
-module.exports = router;

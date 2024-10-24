@@ -64,11 +64,14 @@ router.get("/select-team", async (req, res) => {
 				<title>Select Team</title>
 			</head>
 			<body>
-				<h1>Select Your NBA Team</h1>
-				<select id="team-selector">
-					${teamOptions}
-				</select>
-				${projectPickerHTML}
+				<form action="/confirmation" method="GET">
+					<h1>Select Your NBA Team</h1>
+					<select id="team-selector">
+						${teamOptions}
+					</select>
+					${projectPickerHTML}
+					<a href="/auth/login" class="button">Save</a>
+				</form>
 			</body>
 			</html>
 		`;
