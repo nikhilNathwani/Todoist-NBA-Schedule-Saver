@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 // Serve the team selection page
-router.get("/import-setup", async (req, res) => {
+router.get("/configure-import", async (req, res) => {
 	try {
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault === "true";
@@ -60,15 +60,19 @@ router.get("/import-setup", async (req, res) => {
 			<!DOCTYPE html>
 			<html lang="en">
 			<head>
-				<meta charset="UTF-8">
-				<title>Select Team</title>
+				<meta charset="UTF-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<title>Select Team and Project Settings</title>
+				<link rel="stylesheet" href="style.css" />
 			</head>
 			<body>
 				<form action="/confirmation" method="GET">
-					<h1>Select Your NBA Team</h1>
+					<h3>Choose an NBA team to follow:</h3>
 					<select id="team-selector">
 						${teamOptions}
 					</select>
+					<h3>Choose where to add tasks:</h3>
 					${projectPickerHTML}
 					<a href="/auth/login" class="button">Save</a>
 				</form>
