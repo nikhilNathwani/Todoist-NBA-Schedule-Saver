@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 // Serve the team selection page
-router.get("/select-team", async (req, res) => {
+router.get("/import-setup", async (req, res) => {
 	try {
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault === "true";
