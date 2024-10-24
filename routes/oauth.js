@@ -1,9 +1,8 @@
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
-const todoist = require('../public/scripts/todoist');
+const todoist = require("../public/scripts/todoist");
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, STATE_SECRET } = process.env;
-
 
 // Redirect to Todoist for OAuth authorization
 router.get("/login", (req, res) => {
@@ -35,13 +34,15 @@ router.get("/callback", async (req, res) => {
 		const { access_token } = response.data;
 
 		// Initialize the API with the user's token
-		await todoist.initializeAPI(req, access_token);
-		console.log('oauth.js - Session after initialization:', req.session); // Log the session here
+		await todoist.initializeAPI(access_token);
 
 		// Redirect to the team selection page with the access token
 		res.redirect(`/select-team`);
 	} catch (error) {
-		console.error('OAuth error:', error.response ? error.response.data : error);
+		console.error(
+			"OAuth error:",
+			error.response ? error.response.data : error
+		);
 		handleOAuthError(error, res);
 	}
 });
