@@ -80,6 +80,7 @@ async function createTodoistProject(teamCity) {
 
 module.exports = {
 	initializeAPI,
+	saveUserMetadata,
 	uploadScheduleToTodoist,
 	createTodoistProject,
 	isInboxDefault,
