@@ -40,7 +40,11 @@ router.get("/callback", async (req, res) => {
 		console.log("OAUTH.JS sending", redirectUrlParam, "for isInboxDefault");
 
 		// Redirect to the team selection page with the access token
-		res.redirect(`/select-team?isInboxDefault=${redirectUrlParam}`);
+		res.redirect(
+			`/select-team?isInboxDefault=${encodeURIComponent(
+				redirectUrlParam
+			)}`
+		);
 	} catch (error) {
 		console.error(
 			"OAuth error:",
