@@ -72,13 +72,13 @@ router.get("/configure-import", async (req, res) => {
 			<body>
 				<form action="/api/add-task" method="POST">
 					<fieldset>
-						<legend><span class="step">Step 1:</span> Select your NBA team</legend>
+						<legend><span class="step">1</span> Select your NBA team</legend>
 						<select id="team-selector" name="team" aria-label="NBA Team">
 							${teamOptions}
 						</select>
 					</fieldset>
 					<fieldset>
-						<legend><span class="step">Step 2:</span> Choose where to track games</legend>
+						<legend><span class="step">2</span> Select Todoist project</legend>
 						${projectPickerHTML}
 					</fieldset>
 					<button type="submit">Submit</button>
