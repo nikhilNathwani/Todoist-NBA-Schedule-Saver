@@ -70,6 +70,12 @@ select {
 	display: flex;
 	flex-flow: row nowrap;
 	gap: 1rem;
+	/* cursor: pointer; */
+}
+
+.radio-button,
+.radio-button input,
+.radio-button span {
 	cursor: pointer;
 }
 
