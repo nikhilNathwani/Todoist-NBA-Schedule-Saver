@@ -36,6 +36,17 @@ form {
 	gap: 2rem;
 }
 
+fieldset {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 1rem;
+	padding-block: 1rem;
+}
+
+legend {
+	font-weight: bold;
+}
+
 .radio-button {
 	display: flex;
 	flex-flow: row nowrap;

@@ -38,26 +38,23 @@ router.get("/configure-import", async (req, res) => {
 
 		// Prepare project picker based on isInboxDefault
 		const projectPickerHTML = `
-			<div id="projectPicker">
-				<div class="radio-button">
-					<input type="radio" name="projectOption" value="inbox" id="inbox" ${
-						isInboxDefault ? "checked" : ""
-					}>
-					<label for="inbox">
-						<strong>Inbox</strong><br>
-						<small>Use the default Inbox for your tasks</small>
-					</label>
-				</div>
-				
-				<div class="radio-button">
-					<input type="radio" name="projectOption" value="newProject" id="newProject" ${
-						isInboxDefault ? "disabled" : "checked"
-					}>
-					<label for="newProject">
-						<strong>Create New Project</strong><br>
-						<small>Start a fresh project for your NBA schedule tasks</small>
-					</label>
-				</div>
+			<div class="radio-button">
+				<input type="radio" name="projectOption" value="newProject" id="newProject" ${
+					isInboxDefault ? "disabled" : "checked"
+				}>
+				<label for="newProject">
+					<strong>Create New Project</strong><br>
+					<small>Start a fresh project for your NBA schedule tasks</small>
+				</label>
+			</div>
+			<div class="radio-button">
+				<input type="radio" name="projectOption" value="inbox" id="inbox" ${
+					isInboxDefault ? "checked" : ""
+				}>
+				<label for="inbox">
+					<strong>Inbox</strong><br>
+					<small>Use the default Inbox for your tasks</small>
+				</label>
 			</div>
 		`;
 
@@ -76,8 +73,7 @@ router.get("/configure-import", async (req, res) => {
 				<form action="/api/add-task" method="POST">
 					<fieldset>
 						<legend>Select your NBA team</legend>
-						<label for="team-selector">Team:</label>
-						<select id="team-selector" name="team">
+						<select id="team-selector" name="team" aria-label="NBA Team">
 							${teamOptions}
 						</select>
 					</fieldset>
