@@ -4,6 +4,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	gap: 1.5rem;
 	height: 100vh;
 	margin: 0;
 	background: radial-gradient(circle, #efefef 0%, #b9deed 100%);
@@ -81,10 +82,14 @@ input[type="radio"] {
 #image-container {
 	display: flex;
 	flex-flow: row nowrap;
-	gap: 1.5rem;
+	gap: 1rem;
 }
 
 img {
 	height: 32px;
 	width: auto;
+}
+
+#arrow {
+	font-size: 1.5rem;
 }

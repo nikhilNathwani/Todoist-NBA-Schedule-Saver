@@ -73,6 +73,7 @@ router.get("/configure-import", async (req, res) => {
 			<body>
 				<div id="image-container">
 					<img src="images/nba-logo.png" alt="Todoist Brand Logo" />
+					<div id="arrow">→</div>
 					<img src="images/todoist-color-logo.png" alt="Todoist Brand Logo" />
 				</div>
 				<form action="/api/add-task" method="POST">
