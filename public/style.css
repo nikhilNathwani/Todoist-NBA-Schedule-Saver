@@ -64,18 +64,17 @@ select {
 	width: 100%;
 	padding-block: 0.25rem;
 	padding-inline: 0.5ch;
-	cursor: pointer;
 }
 
 .radio-button {
 	display: flex;
 	flex-flow: row nowrap;
 	gap: 1rem;
+	cursor: pointer;
 }
 
 input[type="radio"] {
 	width: 1.5em; /* Increase width */
 	height: 1.5em; /* Increase height */
 	accent-color: #0066cc; /* Optional: Change color if supported */
-	cursor: pointer; /* Optional: Add a pointer cursor */
 }
