@@ -28,3 +28,17 @@ h1 {
 .button:hover {
 	background-color: #005bb5;
 }
+
+/* CONFIGURATION PAGE */
+form {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 2rem;
+}
+
+.radio-button {
+	display: flex;
+	flex-flow: row nowrap;
+	border: 1px solid grey;
+	border-radius: 8px;
+}
