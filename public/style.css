@@ -41,7 +41,7 @@ fieldset {
 	flex-flow: column nowrap;
 	gap: 1rem;
 	padding-block: 2rem;
-	padding-inline: 1rem;
+	padding-inline: 1rem 2rem;
 }
 
 legend {
@@ -57,6 +57,13 @@ legend {
 	padding: 0.5ch 1.125ch;
 	border-radius: 50%;
 	background-color: lightgray;
+}
+
+select {
+	font-size: 1rem;
+	width: 100%;
+	padding-block: 0.25rem;
+	padding-inline: 0.5ch;
 }
 
 .radio-button {
