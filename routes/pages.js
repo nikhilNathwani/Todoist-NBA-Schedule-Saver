@@ -31,6 +31,7 @@ router.get("/configure-import", async (req, res) => {
 
 		// Prepare options for the team picker
 		const teamOptions = Object.entries(teams)
+			.sort((a, b) => (a[1].city > b[1].city ? 1 : -1))
 			.map(([teamID, team]) => {
 				return `<option value="${teamID}">${team.city} ${team.name}</option>`;
 			})
