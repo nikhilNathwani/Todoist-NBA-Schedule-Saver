@@ -82,11 +82,12 @@ input[type="radio"] {
 #image-container {
 	display: flex;
 	flex-flow: row nowrap;
+	align-items: center;
 	gap: 1rem;
 }
 
 img {
-	height: 32px;
+	height: 40px;
 	width: auto;
 }
 
