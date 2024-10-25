@@ -70,17 +70,21 @@ select {
 	display: flex;
 	flex-flow: row nowrap;
 	gap: 1rem;
-	/* cursor: pointer; */
-}
-
-.radio-button,
-.radio-button input,
-.radio-button span {
-	cursor: pointer;
 }
 
 input[type="radio"] {
 	width: 1.5em; /* Increase width */
 	height: 1.5em; /* Increase height */
 	accent-color: #0066cc; /* Optional: Change color if supported */
+}
+
+#image-container {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1.5rem;
+}
+
+image {
+	height: 32px;
+	width: auto;
 }
