@@ -40,7 +40,7 @@ form {
 	display: flex;
 	flex-flow: row nowrap;
 	gap: 1rem;
-	padding: 1rem;
+	padding: 0.5rem;
 	border: 1px solid grey;
 	border-radius: 8px;
 }

@@ -74,12 +74,17 @@ router.get("/configure-import", async (req, res) => {
 			</head>
 			<body>
 				<form action="/api/add-task" method="POST">
-					<h3>Choose an NBA team to follow:</h3>
-					<select id="team-selector">
-						${teamOptions}
-					</select>
-					<h3>Choose where to track games:</h3>
-					${projectPickerHTML}
+					<fieldset>
+						<legend>Select your NBA team</legend>
+						<label for="team-selector">Team:</label>
+						<select id="team-selector" name="team">
+							${teamOptions}
+						</select>
+					</fieldset>
+					<fieldset>
+						<legend>Choose where to track games</legend>
+						${projectPickerHTML}
+					</fieldset>
 					<button type="submit">Submit</button>
 				</form>
 			</body>
