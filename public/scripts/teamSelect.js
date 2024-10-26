@@ -12,7 +12,7 @@ teamSelect.addEventListener("change", function () {
 	// if (teamLogo.id == "nba-logo-container") {
 	// 	teamLogo.id = "team-logo-container";
 	// }
-	// const selectedTeam = teamSelect.value;
+	const selectedTeam = teamSelect.value;
 	const teamLogoImg = teamLogo.querySelector("img");
 	teamLogoImg.classList.add("fade-out");
 
