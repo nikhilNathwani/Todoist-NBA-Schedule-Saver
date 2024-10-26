@@ -8,22 +8,17 @@ const teamLogo = document.getElementById("nba-logo-container");
 // 	// Add more teams and their logo URLs here
 // };
 
-const teamLogos = {
-	ATL: "images/ATL.png",
-};
-
 teamSelect.addEventListener("change", function () {
 	// if (teamLogo.id == "nba-logo-container") {
 	// 	teamLogo.id = "team-logo-container";
 	// }
-	const selectedTeam = "ATL";
 	// const selectedTeam = teamSelect.value;
 	const teamLogoImg = teamLogo.querySelector("img");
 	teamLogoImg.classList.add("fade-out");
 
 	// Wait for the fade-out to finish, then update the logo and fade back in
 	setTimeout(() => {
-		teamLogoImg.src = teamLogos[selectedTeam];
+		teamLogoImg.src = "team-logos/" + selectedTeam.value + ".svg";
 		teamLogoImg.alt = `${selectedTeam} Logo`;
 		teamLogoImg.classList.remove("fade-out"); // Remove fade-out to trigger fade-in
 	}, 300); // Match the CSS transition time
