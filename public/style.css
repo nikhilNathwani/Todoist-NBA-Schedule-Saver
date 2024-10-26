@@ -97,7 +97,8 @@ select {
 	/* background-color: white; */
 }
 
-select:focus {
+select:focus,
+input[type="radio"]:focus {
 	outline: none; /* Remove default blue outline */
 	box-shadow: 0 0 0 2px #e44232; /* Add light red outline */
 }
