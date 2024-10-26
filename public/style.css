@@ -108,7 +108,7 @@ input[type="radio"] {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
-	gap: 1rem;
+	gap: 1.25rem;
 }
 
 img {
@@ -124,8 +124,9 @@ img {
 #nba-logo-container {
 	width: 40px;
 	height: 40px;
+	border: 1px solid lightgray;
 	border-radius: 6px;
-	background-color: black;
+	background-color: white;
 	display: flex;
 	align-items: center;
 	justify-content: center;
