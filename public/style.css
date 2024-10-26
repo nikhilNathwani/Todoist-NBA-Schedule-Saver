@@ -88,15 +88,12 @@ legend {
 }
 
 select {
+	height: 2.25rem;
 	font-size: 1rem;
 	color: black;
 	width: 100%;
 	padding-block: 0.25rem;
 	padding-inline: 0.5ch;
-}
-
-#defaultOption {
-	font-style: italic;
 }
 
 .radio-button {
