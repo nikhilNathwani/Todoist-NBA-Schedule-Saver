@@ -21,5 +21,5 @@ teamSelect.addEventListener("change", function () {
 		teamLogoImg.src = "images/team-logos/" + selectedTeam + ".svg";
 		teamLogoImg.alt = `${selectedTeam} Logo`;
 		teamLogoImg.classList.remove("fade-out"); // Remove fade-out to trigger fade-in
-	}, 300); // Match the CSS transition time
+	}, 1000);
 });
