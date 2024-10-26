@@ -18,7 +18,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 1.5rem;
+	gap: 2rem;
 
 	/* background: radial-gradient(circle, #efefef 0%, #b9deed 100%); */
 	background-color: #fff9f3;
@@ -58,13 +58,13 @@ h1 {
 form {
 	display: flex;
 	flex-flow: column nowrap;
-	gap: 2rem;
+	gap: 2.5rem;
 }
 
 fieldset {
 	display: flex;
 	flex-flow: column nowrap;
-	gap: 1rem;
+	gap: 1.5rem;
 	padding-block: 2rem;
 	padding-inline: 1rem 2rem;
 }
@@ -76,9 +76,12 @@ legend {
 	align-items: center;
 	gap: 1ch;
 	padding-inline: 1ch;
+	color: #e44232;
 }
 
 .step {
+	/* hiding for now */
+	display: none;
 	padding: 0.5ch 1.125ch;
 	border-radius: 50%;
 	background-color: lightgray;
