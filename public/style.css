@@ -28,19 +28,19 @@ h1 {
 	color: #333;
 }
 
-.button {
+button {
 	padding: 15px 30px;
 	font-size: 16px;
 	color: white;
-	background-color: #0070f3;
+	background-color: #e44232;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	text-decoration: none;
 }
 
-.button:hover {
-	background-color: #005bb5;
+button:hover {
+	background-color: #c3392c;
 }
 
 /* CONFIGURATION PAGE */

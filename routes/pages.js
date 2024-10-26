@@ -87,7 +87,7 @@ router.get("/configure-import", async (req, res) => {
 						<legend><span class="step">2</span> Select Todoist project</legend>
 						${projectPickerHTML}
 					</fieldset>
-					<button type="submit">Submit</button>
+					<button type="submit">Import schedule</button>
 				</form>
 			</body>
 			</html>
