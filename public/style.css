@@ -95,6 +95,10 @@ select {
 	padding-inline: 0.5ch;
 }
 
+#defaultOption {
+	font-style: italic;
+}
+
 .radio-button {
 	display: flex;
 	flex-flow: row nowrap;
