@@ -19,6 +19,12 @@ teamSelect.addEventListener("change", function () {
 	const selectedTeam = "ATL";
 	// const selectedTeam = teamSelect.value;
 	const teamLogoImg = teamLogo.querySelector("img");
-	teamLogoImg.src = teamLogos[selectedTeam]; // Update logo
-	teamLogoImg.alt = `${selectedTeam} Logo`; // Update alt text for accessibility
+	teamLogoImg.classList.add("fade-out");
+
+	// Wait for the fade-out to finish, then update the logo and fade back in
+	setTimeout(() => {
+		teamLogoImg.src = teamLogos[selectedTeam];
+		teamLogoImg.alt = `${selectedTeam} Logo`;
+		teamLogoImg.classList.remove("fade-out"); // Remove fade-out to trigger fade-in
+	}, 300); // Match the CSS transition time
 });
