@@ -128,3 +128,7 @@ img {
 	align-items: center;
 	justify-content: center;
 }
+
+#nba-logo-container img {
+	transform: scale(95%);
+}
