@@ -92,6 +92,7 @@ router.get("/configure-import", async (req, res) => {
 					</fieldset>
 					<button class="button" type="submit">Import schedule</button>
 				</form>
+				<script src="/scripts/teamSelect.js"></script>
 			</body>
 			</html>
 		`;
