@@ -13,9 +13,9 @@ const teamLogos = {
 };
 
 teamSelect.addEventListener("change", function () {
-	if (teamLogo.id == "nba-logo-container") {
-		teamLogo.id = "team-logo-container";
-	}
+	// if (teamLogo.id == "nba-logo-container") {
+	// 	teamLogo.id = "team-logo-container";
+	// }
 	const selectedTeam = "ATL";
 	// const selectedTeam = teamSelect.value;
 	const teamLogoImg = teamLogo.querySelector("img");
