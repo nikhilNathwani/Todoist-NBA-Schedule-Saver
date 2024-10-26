@@ -72,7 +72,7 @@ router.get("/configure-import", async (req, res) => {
 			</head>
 			<body>
 				<div id="image-container">
-					<div id="nba-logo-container>	
+					<div id="nba-logo-container">	
 						<img src="images/nba-logo.png" alt="Todoist Brand Logo" />
 					</div>
 					<div id="arrow">→</div>
