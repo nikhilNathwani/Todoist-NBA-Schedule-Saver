@@ -14,12 +14,25 @@ teamSelect.addEventListener("change", function () {
 	// }
 	const selectedTeam = teamSelect.value;
 	const teamLogoImg = teamLogo.querySelector("img");
-	teamLogoImg.classList.add("fade-out");
+	teamLogoImg.classList.add("fade");
 
-	// Wait for the fade-out to finish, then update the logo and fade back in
-	setTimeout(() => {
+	// Wait for the fade to finish, then update the logo and fade back in
+	// setTimeout(() => {
+	// 	teamLogoImg.src = "images/team-logos/" + selectedTeam + ".svg";
+	// 	teamLogoImg.alt = `${selectedTeam} Logo`;
+	// 	teamLogoImg.classList.remove("fade"); // Remove fade-out to trigger fade-in
+	// }, 1000);
+
+	// Wait for the fade-out transition to end before changing the image
+	teamLogoImg.addEventListener("transitionend", function handleTransition() {
+		// Change the logo source
 		teamLogoImg.src = "images/team-logos/" + selectedTeam + ".svg";
 		teamLogoImg.alt = `${selectedTeam} Logo`;
-		teamLogoImg.classList.remove("fade-out"); // Remove fade-out to trigger fade-in
-	}, 1000);
+
+		// Remove fade class to fade in
+		teamLogoImg.classList.remove("fade");
+
+		// Remove the event listener to prevent it from firing multiple times
+		teamLogoImg.removeEventListener("transitionend", handleTransition);
+	});
 });
