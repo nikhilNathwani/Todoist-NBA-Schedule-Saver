@@ -29,18 +29,28 @@ h1 {
 }
 
 .button {
-	padding: 15px 30px;
 	font-size: 16px;
 	color: white;
-	background-color: #e44232;
+
+	width: fit-content;
+	padding: 15px 30px;
 	border: none;
 	border-radius: 8px;
+
 	cursor: pointer;
 	text-decoration: none;
+
+	background-color: #e44232;
+
+	transition: transform 0.1s ease;
 }
 
 .button:hover {
 	background-color: #c3392c;
+}
+
+.button:active {
+	transform: scale(0.95);
 }
 
 /* CONFIGURATION PAGE */
