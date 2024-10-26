@@ -122,6 +122,10 @@ img {
 	transition: opacity 0.3s ease;
 }
 
+.fade-out {
+	opacity: 0;
+}
+
 #arrow {
 	font-size: 1.5rem;
 }
