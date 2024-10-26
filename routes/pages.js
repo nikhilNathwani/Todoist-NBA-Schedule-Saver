@@ -82,7 +82,7 @@ router.get("/configure-import", async (req, res) => {
 					<fieldset>
 						<legend><span class="step">1</span> Select your NBA team</legend>
 						<select id="team-selector" name="team" aria-label="NBA Team">
-							<option value="" disabled selected hidden>Select your team</option> <!-- Ghost text -->
+							<option value="" disabled selected>Select your team</option> <!-- Ghost text -->
 							${teamOptions}
 						</select>
 					</fieldset>
