@@ -95,16 +95,16 @@ select {
 	padding-block: 0.25rem;
 	padding-inline: 0.5ch;
 	/* background-color: white; */
-	appearance: none; /* Removes default styling on most browsers */
-	-webkit-appearance: none; /* Removes default styling on Safari */
+	/* appearance: none; /* Removes default styling on most browsers */
+	/* -webkit-appearance: none; /* Removes default styling on Safari */ */
 }
 
-select:focus,
+/* select:focus,
 input[type="radio"]:focus {
-	outline: none; /* Remove default blue outline */
+	outline: none; 
 	border-color: #e44232;
-	box-shadow: 0 0 0 5px #e44232; /* Add light red outline */
-}
+	box-shadow: 0 0 0 2px #e44232; 
+} */
 
 .radio-button {
 	display: flex;
