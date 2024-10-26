@@ -18,7 +18,7 @@ teamSelect.addEventListener("change", function () {
 
 	// Wait for the fade-out to finish, then update the logo and fade back in
 	setTimeout(() => {
-		teamLogoImg.src = "images/team-logos/" + selectedTeam.value + ".svg";
+		teamLogoImg.src = "images/team-logos/" + selectedTeam + ".svg";
 		teamLogoImg.alt = `${selectedTeam} Logo`;
 		teamLogoImg.classList.remove("fade-out"); // Remove fade-out to trigger fade-in
 	}, 300); // Match the CSS transition time
