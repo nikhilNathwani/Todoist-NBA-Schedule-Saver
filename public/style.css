@@ -98,13 +98,14 @@ select {
 .radio-button {
 	display: flex;
 	flex-flow: row nowrap;
+	align-items: center;
 	gap: 1rem;
 }
 
 input[type="radio"] {
 	width: 1.5em; /* Increase width */
 	height: 1.5em; /* Increase height */
-	accent-color: #0066cc; /* Optional: Change color if supported */
+	accent-color: grey; /* Optional: Change color if supported */
 }
 
 #image-container {
