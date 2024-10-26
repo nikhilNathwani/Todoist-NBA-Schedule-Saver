@@ -9,7 +9,7 @@ const teamLogo = document.getElementById("nba-logo-container");
 // };
 
 const teamLogos = {
-	ATL: "../public/images/ATL.png",
+	ATL: "images/ATL.png",
 };
 
 teamSelect.addEventListener("change", function () {
