@@ -118,3 +118,13 @@ img {
 #arrow {
 	font-size: 1.5rem;
 }
+
+#nba-logo-container {
+	width: 40px;
+	height: 40px;
+	border-radius: 6px;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
