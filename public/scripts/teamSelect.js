@@ -35,11 +35,13 @@ const teamNames = {
 const newProjectSubtitle = document
 	.getElementById("newProject")
 	.querySelector("small");
+const submitButton = document.getElementById("submitButton");
 
 const urlParams = new URLSearchParams(window.location.search);
 const isInboxDefault = urlParams.get("isInboxDefault") !== "false";
 
 teamSelect.addEventListener("change", function () {
+	submitButton.disabled = false;
 	const selectedTeam = teamSelect.value;
 
 	const teamLogoImg = teamLogo.querySelector("img");

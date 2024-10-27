@@ -71,6 +71,10 @@ h1 {
 	transform: scale(0.95);
 }
 
+/* .button:disabled {
+
+} */
+
 /* CONFIGURATION PAGE */
 form {
 	width: 100%;
