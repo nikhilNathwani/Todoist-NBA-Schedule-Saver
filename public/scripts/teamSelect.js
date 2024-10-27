@@ -1,6 +1,6 @@
 const teamSelect = document.getElementById("team-selector");
 const teamLogo = document.getElementById("nba-logo-container");
-const newProjectName = document.getElementById("newProjectName");
+const newProjectIcon = document.getElementById("newProjectIcon");
 const teamColors = {
 	ATL: "#db4035",
 	BOS: "#299438",
@@ -91,9 +91,9 @@ teamSelect.addEventListener("change", function () {
 	// }
 	const selectedTeam = teamSelect.value;
 	newProjectName.innerHTML =
-		"called \"#<span id='newProjectTeamName'>" +
+		"called <span id='newProjectIcon'>#</span>" +
 		teamNames[teamSelect.value] +
-		' schedule</span>"';
+		" schedule";
 	newProjectName.style.color = teamColors[teamSelect.value];
 
 	const teamLogoImg = teamLogo.querySelector("img");
