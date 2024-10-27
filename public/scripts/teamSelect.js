@@ -8,6 +8,12 @@ const teamLogo = document.getElementById("nba-logo-container");
 // 	// Add more teams and their logo URLs here
 // };
 
+// Get the full URL of the current page
+const urlParams = new URLSearchParams(window.location.search);
+
+// Retrieve the value of 'isInboxDefault' parameter
+const isInboxDefault = urlParams.get("isInboxDefault");
+
 teamSelect.addEventListener("change", function () {
 	// if (teamLogo.id == "nba-logo-container") {
 	// 	teamLogo.id = "team-logo-container";

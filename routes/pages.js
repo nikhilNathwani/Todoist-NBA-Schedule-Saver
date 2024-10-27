@@ -39,7 +39,7 @@ router.get("/configure-import", async (req, res) => {
 
 		// Prepare project picker based on isInboxDefault
 		const projectPickerHTML = `
-			<label class="radio-button disabled">
+			<label class="radio-button ${isInboxDefault ? "disabled" : ""}">
 				<input type="radio" name="projectOption" value="newProject" id="newProject" ${
 					isInboxDefault ? "disabled" : "checked"
 				}>
