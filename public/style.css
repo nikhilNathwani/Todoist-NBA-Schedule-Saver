@@ -26,7 +26,6 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 2rem;
 
 	/* background: radial-gradient(circle, #efefef 0%, #b9deed 100%); */
 	background-color: var(--clr-bg);
@@ -34,6 +33,11 @@ body {
 
 #appFrame {
 	width: min(100%, 450px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
 }
 
 h1 {
@@ -74,6 +78,7 @@ form {
 }
 
 fieldset {
+	width: 100%;
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 1.5rem;
