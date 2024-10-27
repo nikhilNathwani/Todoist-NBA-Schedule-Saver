@@ -1,7 +1,7 @@
 :root {
-	--clr-dark: black;
+	--clr-dark: #1E1E1E;
 	--clr-light: white;
-	--clr-bg: beige;
+	--clr-bg: #FFF9F3;
 	--clr-accent: red;
 	--clr-accent-dark: maroon;
 	--clr-disabled: grey;
