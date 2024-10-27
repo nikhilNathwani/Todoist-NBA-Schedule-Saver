@@ -143,6 +143,10 @@ input[type="radio"]:focus {
 	gap: 1rem;
 }
 
+.radio-button span {
+	width: 240px;
+}
+
 input[type="radio"] {
 	width: 1.5em; /* Increase width */
 	height: 1.5em; /* Increase height */
