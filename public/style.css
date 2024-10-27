@@ -73,6 +73,7 @@ h1 {
 
 .button:disabled {
 	background-color: var(--clr-disabled);
+	cursor: not-allowed; 
 }
 
 /* CONFIGURATION PAGE */
