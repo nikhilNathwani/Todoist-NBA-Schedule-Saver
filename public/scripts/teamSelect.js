@@ -62,7 +62,7 @@ teamSelect.addEventListener("change", function () {
 	const selectedTeam = teamSelect.value;
 	newProjectSubtitle.textContent = `Import games into a project called "# ${
 		teamNames[teamSelect.value]
-	} schedule`;
+	} schedule"`;
 
 	const teamLogoImg = teamLogo.querySelector("img");
 	teamLogoImg.classList.add("fade");
