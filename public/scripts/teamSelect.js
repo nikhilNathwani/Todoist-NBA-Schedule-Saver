@@ -1,6 +1,6 @@
 const teamSelect = document.getElementById("team-selector");
 const teamLogo = document.getElementById("nba-logo-container");
-const newProjectName = document.getElementById("newProjectName");
+const newProject = document.getElementById("newProject");
 const teamColors = {
 	ATL: "#db4035",
 	BOS: "#299438",
@@ -90,11 +90,11 @@ teamSelect.addEventListener("change", function () {
 	// 	teamLogo.id = "team-logo-container";
 	// }
 	const selectedTeam = teamSelect.value;
-	newProjectName.innerHTML =
+	newProject.innerHTML =
 		"#<span id='newProjectName'>" +
 		teamNames[teamSelect.value] +
 		" schedule</span>";
-	newProjectName.style.color = teamColors[teamSelect.value];
+	newProject.style.color = teamColors[teamSelect.value];
 
 	const teamLogoImg = teamLogo.querySelector("img");
 	teamLogoImg.classList.add("fade");
