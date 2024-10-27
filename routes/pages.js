@@ -75,27 +75,29 @@ router.get("/configure-import", async (req, res) => {
 				<link rel="stylesheet" href="style.css" />
 			</head>
 			<body>
-				<div id="image-container">
-					<div id="nba-logo-container">	
-						<img src="images/nba-logo.png" alt="Todoist Brand Logo" />
+				<div id="appFrame">
+					<div id="image-container">
+						<div id="nba-logo-container">	
+							<img src="images/nba-logo.png" alt="Todoist Brand Logo" />
+						</div>
+						<div id="arrow">→</div>
+						<img src="images/todoist-color-logo.png" alt="Todoist Brand Logo" />
 					</div>
-					<div id="arrow">→</div>
-					<img src="images/todoist-color-logo.png" alt="Todoist Brand Logo" />
+					<form action="/api/add-task" method="POST">
+						<fieldset>
+							<legend><span class="step">1</span> Select your NBA team</legend>
+							<select id="team-selector" name="team" aria-label="NBA Team">
+								<option value="" disabled selected>Choose a team</option> <!-- Ghost text -->
+								${teamOptions}
+							</select>
+						</fieldset>
+						<fieldset>
+							<legend><span class="step">2</span> Select Todoist project</legend>
+							${projectPickerHTML}
+						</fieldset>
+						<button class="button" type="submit">Import schedule</button>
+					</form>
 				</div>
-				<form action="/api/add-task" method="POST">
-					<fieldset>
-						<legend><span class="step">1</span> Select your NBA team</legend>
-						<select id="team-selector" name="team" aria-label="NBA Team">
-							<option value="" disabled selected>Choose a team</option> <!-- Ghost text -->
-							${teamOptions}
-						</select>
-					</fieldset>
-					<fieldset>
-						<legend><span class="step">2</span> Select Todoist project</legend>
-						${projectPickerHTML}
-					</fieldset>
-					<button class="button" type="submit">Import schedule</button>
-				</form>
 				<script src="/scripts/teamSelect.js"></script>
 			</body>
 			</html>

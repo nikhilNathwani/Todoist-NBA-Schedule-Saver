@@ -19,7 +19,6 @@ body {
 	font-family: Arial, sans-serif;
 
 	width: 100vw;
-	height: 100svh;
 	margin: 0;
 	padding: 5vw;
 
@@ -31,6 +30,10 @@ body {
 
 	/* background: radial-gradient(circle, #efefef 0%, #b9deed 100%); */
 	background-color: var(--clr-bg);
+}
+
+#appFrame {
+	width: min(100%, 450px);
 }
 
 h1 {

@@ -60,10 +60,9 @@ teamSelect.addEventListener("change", function () {
 	// 	teamLogo.id = "team-logo-container";
 	// }
 	const selectedTeam = teamSelect.value;
-	newProjectSubtitle.textContent =
-		'Import games into a project called "# ' +
-		teamNames[teamSelect.value] +
-		' schedule"';
+	newProjectSubtitle.textContent = `Import games into a project called "# ${
+		teamNames[teamSelect.value]
+	} schedule`;
 
 	const teamLogoImg = teamLogo.querySelector("img");
 	teamLogoImg.classList.add("fade");
