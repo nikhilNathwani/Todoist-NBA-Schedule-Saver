@@ -61,7 +61,7 @@ teamSelect.addEventListener("change", function () {
 	// }
 	const selectedTeam = teamSelect.value;
 	newProjectSubtitle.textContent =
-		'Import games into a project called "#' +
+		'Import games into a project called "# ' +
 		teamNames[teamSelect.value] +
 		' schedule"';
 
