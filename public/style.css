@@ -1,3 +1,12 @@
+:root {
+	--clr-dark: black;
+	--clr-light: white;
+	--clr-bg: beige;
+	--clr-accent: red;
+	--clr-accent-dark: maroon;
+	--clr-disabled: grey;
+}
+
 *,
 *::before,
 *::after {
@@ -21,16 +30,16 @@ body {
 	gap: 2rem;
 
 	/* background: radial-gradient(circle, #efefef 0%, #b9deed 100%); */
-	background-color: #fff9f3;
+	background-color: var(--clr-bg);
 }
 
 h1 {
-	color: #333;
+	color: var(--clr-dark);
 }
 
 .button {
 	font-size: 16px;
-	color: white;
+	color: var(--clr-light);
 
 	width: fit-content;
 	padding: 15px 30px;
@@ -41,13 +50,13 @@ h1 {
 	cursor: pointer;
 	text-decoration: none;
 
-	background-color: #e44232;
+	background-color: var(--clr-accent);
 
 	transition: transform 0.1s ease;
 }
 
 .button:hover {
-	background-color: #c3392c;
+	background-color: var(--clr-accent-dark);
 }
 
 .button:active {
@@ -76,7 +85,7 @@ legend {
 	align-items: center;
 	gap: 1ch;
 	padding-inline: 1ch;
-	color: #e44232;
+	color: var(--clr-accent);
 }
 
 .step {
@@ -90,7 +99,7 @@ legend {
 select {
 	height: 2.25rem;
 	font-size: 1rem;
-	color: black;
+	color: var(--clr-dark);
 	width: 100%;
 	padding-block: 0.25rem;
 	padding-inline: 0.5ch;
