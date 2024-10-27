@@ -90,9 +90,9 @@ teamSelect.addEventListener("change", function () {
 	// }
 	const selectedTeam = teamSelect.value;
 	newProjectName.innerHTML =
-		"called <span id='newProjectIcon'>#</span>" +
+		"called \"<span id='newProjectIcon'>#</span>" +
 		teamNames[teamSelect.value] +
-		" schedule";
+		' schedule"';
 	const newProjectIcon = document.getElementById("newProjectIcon");
 	newProjectIcon.style.color = teamColors[teamSelect.value];
 
