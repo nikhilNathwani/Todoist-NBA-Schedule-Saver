@@ -36,24 +36,8 @@ const newProjectSubtitle = document
 	.getElementById("newProject")
 	.querySelector("small");
 
-// Example team logos
-// const teamLogos = {
-// 	lakers: "lakers-logo.png",
-// 	celtics: "celtics-logo.png",
-// 	// Add more teams and their logo URLs here
-// };
-
-// Read the NBA schedule JSON file
-// const data = await fs.readFile(
-// 	path.join(__dirname, "../public/data/nba_schedule.json")
-// );
-// const teams = JSON.parse(data);
-
-// Get the full URL of the current page
 const urlParams = new URLSearchParams(window.location.search);
-
-// Retrieve the value of 'isInboxDefault' parameter
-const isInboxDefault = req.query.isInboxDefault !== "false";
+const isInboxDefault = urlParams.get("isInboxDefault") !== "false";
 
 teamSelect.addEventListener("change", function () {
 	const selectedTeam = teamSelect.value;
