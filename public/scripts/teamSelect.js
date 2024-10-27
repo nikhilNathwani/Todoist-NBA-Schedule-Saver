@@ -33,6 +33,38 @@ const teamColors = {
 	UTA: "#884dff",
 	WAS: "#db4035",
 };
+const teamNames = {
+	ATL: "Hawks",
+	BOS: "Celtics",
+	BKN: "Nets",
+	CHA: "Hornets",
+	CHI: "Bulls",
+	CLE: "Cavaliers",
+	DAL: "Mavericks",
+	DEN: "Nuggets",
+	DET: "Pistons",
+	GS: "Warrios",
+	HOU: "Rockets",
+	IND: "Pacers",
+	LAC: "Clippers",
+	LAL: "Lakers",
+	MEM: "Grizzlies",
+	MIA: "Heat",
+	MIL: "Bucks",
+	MIN: "Timberwolves",
+	NO: "Pelicans",
+	NY: "Knicks",
+	OKC: "Thunder",
+	ORL: "Magic",
+	PHI: "Sixers",
+	PHO: "Suns",
+	POR: "Trailblazers",
+	SAC: "Kings",
+	SA: "Spurs",
+	TOR: "Raptors",
+	UTA: "Jazz",
+	WAS: "Wizards",
+};
 
 // Example team logos
 // const teamLogos = {
@@ -58,7 +90,10 @@ teamSelect.addEventListener("change", function () {
 	// 	teamLogo.id = "team-logo-container";
 	// }
 	const selectedTeam = teamSelect.value;
-	newProjectName.textContent = "#" + teamSelect.value + " schedule";
+	newProjectName.innerHTML =
+		"#<span id='newProjectName'>" +
+		teamNames[teamSelect.value] +
+		" schedule</span>";
 	newProjectName.style.color = teamColors[teamSelect.value];
 
 	const teamLogoImg = teamLogo.querySelector("img");

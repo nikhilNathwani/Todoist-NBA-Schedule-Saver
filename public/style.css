@@ -132,6 +132,10 @@ label.disabled {
 	color: var(--clr-disabled);
 }
 
+#newProjectName {
+	color: var(--clr-dark);
+}
+
 #image-container {
 	display: flex;
 	flex-flow: row nowrap;
