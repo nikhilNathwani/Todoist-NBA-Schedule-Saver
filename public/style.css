@@ -125,7 +125,7 @@ input[type="radio"]:focus {
 input[type="radio"] {
 	width: 1.5em; /* Increase width */
 	height: 1.5em; /* Increase height */
-	accent-color: grey; /* Optional: Change color if supported */
+	accent-color: var(--clr-accent); /* Optional: Change color if supported */
 }
 
 #image-container {
