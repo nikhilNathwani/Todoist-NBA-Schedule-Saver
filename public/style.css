@@ -4,7 +4,7 @@
 	--clr-bg: #FFF9F3;
 	--clr-accent: #E44232;
 	--clr-accent-dark: #C3392C;
-	--clr-disabled: grey;
+	--clr-disabled: rgb(118,118,118);
 }
 
 *,
@@ -126,6 +126,10 @@ input[type="radio"] {
 	width: 1.5em; /* Increase width */
 	height: 1.5em; /* Increase height */
 	accent-color: var(--clr-accent); /* Optional: Change color if supported */
+}
+
+label.disabled {
+	color: var(--clr-disabled);
 }
 
 #image-container {
