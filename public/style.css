@@ -32,7 +32,7 @@ body {
 }
 
 #appFrame {
-	width: min(100%, 450px);
+	width: min(100%, 400px);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -72,13 +72,13 @@ h1 {
 
 /* CONFIGURATION PAGE */
 form {
+	width: 100%;
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 2.5rem;
 }
 
 fieldset {
-	width: 100%;
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 1.5rem;
