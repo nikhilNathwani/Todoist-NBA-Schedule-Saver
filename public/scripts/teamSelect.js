@@ -1,5 +1,3 @@
-const { saveUserMetadata } = require("./todoist");
-
 const teamSelect = document.getElementById("team-selector");
 const teamLogo = document.getElementById("nba-logo-container");
 const newProjectName = document.getElementById("newProjectName");
