@@ -62,5 +62,5 @@ teamSelect.addEventListener("change", function () {
 	teamLogoImg.src = "images/team-logos/" + selectedTeam + ".svg";
 	teamLogoImg.alt = `${selectedTeam} Logo`;
 
-	newProjectSubtitle.textContent = `Import games into a new Todoist project "# ${teamNames[selectedTeam]} schedule"`;
+	newProjectSubtitle.textContent = `Import games into a new Todoist project called "# ${teamNames[selectedTeam]} schedule"`;
 });
