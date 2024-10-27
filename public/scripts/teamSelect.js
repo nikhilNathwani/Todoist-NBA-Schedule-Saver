@@ -64,8 +64,6 @@ teamSelect.addEventListener("change", function () {
 		"Import games into a Todoist project called #" +
 		teamNames[teamSelect.value] +
 		' schedule"';
-	const newProjectIcon = document.getElementById("newProjectIcon");
-	newProjectIcon.style.color = teamColors[teamSelect.value];
 
 	const teamLogoImg = teamLogo.querySelector("img");
 	teamLogoImg.classList.add("fade");
