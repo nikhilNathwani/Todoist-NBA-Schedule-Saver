@@ -19,7 +19,7 @@ router.get("/configure-import", async (req, res) => {
 			"PAGES.JS got",
 			req.query.isInboxDefault,
 			"and interpreted it as",
-			req.query.isInboxDefault === "true",
+			req.query.isInboxDefault !== "false",
 			"for isInboxDefault"
 		);
 
