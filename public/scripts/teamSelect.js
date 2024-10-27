@@ -53,7 +53,7 @@ const newProjectSubtitle = document
 const urlParams = new URLSearchParams(window.location.search);
 
 // Retrieve the value of 'isInboxDefault' parameter
-const isInboxDefault = urlParams.get("isInboxDefault");
+const isInboxDefault = req.query.isInboxDefault !== "false";
 
 teamSelect.addEventListener("change", function () {
 	const selectedTeam = teamSelect.value;
@@ -62,5 +62,7 @@ teamSelect.addEventListener("change", function () {
 	teamLogoImg.src = "images/team-logos/" + selectedTeam + ".svg";
 	teamLogoImg.alt = `${selectedTeam} Logo`;
 
-	newProjectSubtitle.textContent = `Import games into a new Todoist project called "# ${teamNames[selectedTeam]} schedule"`;
+	if (!isInboxDefault) {
+		newProjectSubtitle.textContent = `Import games into a new Todoist project called "# ${teamNames[selectedTeam]} schedule"`;
+	}
 });
