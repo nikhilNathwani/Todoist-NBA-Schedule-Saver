@@ -132,7 +132,7 @@ label.disabled {
 	color: var(--clr-disabled);
 }
 
-#newProjectName {
+#newProjectTeamName {
 	color: var(--clr-dark);
 }
 
