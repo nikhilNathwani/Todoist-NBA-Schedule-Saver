@@ -1,37 +1,5 @@
 const teamSelect = document.getElementById("team-selector");
 const teamLogo = document.getElementById("nba-logo-container");
-const teamColors = {
-	ATL: "#db4035",
-	BOS: "#299438",
-	BKN: "#b8b8b8",
-	CHA: "#6accbc",
-	CHI: "#db4035",
-	CLE: "#b8256f",
-	DAL: "#4073ff",
-	DEN: "#96c3eb",
-	DET: "#4073ff",
-	GS: "#fad000",
-	HOU: "#db4035",
-	IND: "#fad000",
-	LAC: "#db4035",
-	LAL: "#af38eb",
-	MEM: "#96c3eb",
-	MIA: "#b8256f",
-	MIL: "#ccac93",
-	MIN: "#7ecc49",
-	NO: "#ccac93",
-	NY: "#ff9933",
-	OKC: "#4073ff",
-	ORL: "#4073ff",
-	PHI: "#db4035",
-	PHO: "#ff9933",
-	POR: "#db4035",
-	SAC: "#884dff",
-	SA: "#b8b8b8",
-	TOR: "#db4035",
-	UTA: "#884dff",
-	WAS: "#db4035",
-};
 const teamNames = {
 	ATL: "Hawks",
 	BOS: "Celtics",
@@ -64,6 +32,9 @@ const teamNames = {
 	UTA: "Jazz",
 	WAS: "Wizards",
 };
+const newProjectSubtitle = document
+	.getElementById("newProject")
+	.querySelector("small");
 
 // Example team logos
 // const teamLogos = {
@@ -89,8 +60,8 @@ teamSelect.addEventListener("change", function () {
 	// 	teamLogo.id = "team-logo-container";
 	// }
 	const selectedTeam = teamSelect.value;
-	newProjectName.innerHTML =
-		"called \"<span id='newProjectIcon'>#</span>" +
+	newProjectSubtitle.textContent =
+		"Import games into a Todoist project called" +
 		teamNames[teamSelect.value] +
 		' schedule"';
 	const newProjectIcon = document.getElementById("newProjectIcon");

@@ -48,7 +48,7 @@ router.get("/configure-import", async (req, res) => {
 					<small>${
 						isInboxDefault
 							? "Project limit reached. Can't create more Todoist projects."
-							: "Import games into a new Todoist project <span id='newProjectName'></span>"
+							: "Import games into a new Todoist project"
 					}</small>
 				</span>
 			</label>
