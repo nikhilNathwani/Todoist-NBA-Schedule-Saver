@@ -44,10 +44,10 @@ const teamColors = {
 // };
 
 // Read the NBA schedule JSON file
-const data = await fs.readFile(
-	path.join(__dirname, "../public/data/nba_schedule.json")
-);
-const teams = JSON.parse(data);
+// const data = await fs.readFile(
+// 	path.join(__dirname, "../public/data/nba_schedule.json")
+// );
+// const teams = JSON.parse(data);
 
 // Get the full URL of the current page
 const urlParams = new URLSearchParams(window.location.search);
@@ -60,8 +60,7 @@ teamSelect.addEventListener("change", function () {
 	// 	teamLogo.id = "team-logo-container";
 	// }
 	const selectedTeam = teamSelect.value;
-	newProjectName.textContent =
-		"#" + teams[teamSelect.value].teamName + " schedule";
+	newProjectName.textContent = "#" + teamSelect.value + " schedule";
 	newProjectName.style.color = teamColors[teamSelect.value];
 
 	const teamLogoImg = teamLogo.querySelector("img");
