@@ -47,7 +47,7 @@ router.get("/configure-import", async (req, res) => {
 					<strong>Create New Project</strong><br>
 					<small>${
 						isInboxDefault
-							? "Project limit reached: You can't create any more projects in Todoist."
+							? "Project limit reached. Can't create any more Todoist projects."
 							: "Start a fresh project for your NBA schedule tasks"
 					}</small>
 				</span>
