@@ -39,8 +39,8 @@ router.get("/configure-import", async (req, res) => {
 
 		// Prepare project picker based on isInboxDefault
 		const projectPickerHTML = `
-			<label class="radio-button ${isInboxDefault ? "disabled" : ""}">
-				<input type="radio" name="projectOption" value="newProject" id="newProject" ${
+			<label id="newProject" class="radio-button ${isInboxDefault ? "disabled" : ""}">
+				<input type="radio" name="projectOption" value="newProject" ${
 					isInboxDefault ? "disabled" : "checked"
 				}>
 				<span>
@@ -48,12 +48,12 @@ router.get("/configure-import", async (req, res) => {
 					<small>${
 						isInboxDefault
 							? "Project limit reached. Can't create more Todoist projects."
-							: "Start a fresh project for your NBA schedule tasks"
+							: "Add NBA schedule tasks into a new project called <span id='newProjectName'></span>"
 					}</small>
 				</span>
 			</label>
-			<label class="radio-button">
-				<input type="radio" name="projectOption" value="inbox" id="inbox" ${
+			<label id="inbox" class="radio-button">
+				<input type="radio" name="projectOption" value="inbox" ${
 					isInboxDefault ? "checked" : ""
 				}>
 				<span>
