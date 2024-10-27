@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 router.get("/configure-import", async (req, res) => {
 	try {
 		// Retrieve isInboxDefault from the URL parameters
-		const isInboxDefault = req.query.isInboxDefault === "true";
+		const isInboxDefault = req.query.isInboxDefault !== "false";
 		console.log(
 			"PAGES.JS got",
 			req.query.isInboxDefault,
