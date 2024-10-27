@@ -32,7 +32,8 @@ body {
 }
 
 #appFrame {
-	width: min(100%, 350px);
+	/* width: min(100%, 350px); */
+	width: 350px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

@@ -10,7 +10,7 @@ const teamNames = {
 	DAL: "Mavericks",
 	DEN: "Nuggets",
 	DET: "Pistons",
-	GS: "Warrios",
+	GS: "Warriors",
 	HOU: "Rockets",
 	IND: "Pacers",
 	LAC: "Clippers",
