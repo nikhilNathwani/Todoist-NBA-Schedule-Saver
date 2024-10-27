@@ -151,11 +151,6 @@ img {
 	height: 40px;
 	width: auto;
 	opacity: 1;
-	transition: opacity 0.8s ease;
-}
-
-.fade {
-	opacity: 0;
 }
 
 #arrow {
