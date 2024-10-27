@@ -71,9 +71,9 @@ h1 {
 	transform: scale(0.95);
 }
 
-/* .button:disabled {
-
-} */
+.button:disabled {
+	background-color: var(--clr-disabled);
+}
 
 /* CONFIGURATION PAGE */
 form {
