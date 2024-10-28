@@ -1,8 +1,7 @@
 const express = require("express");
 const path = require("path");
 const pagesRoutes = require("./routes/pages");
-const oauthRoutes = require("./routes/oauth");
-const addTaskRoutes = require("./routes/addTask");
+const todoistRoutes = require("./routes/todoist");
 
 // Configurations
 const staticPathRoot = path.join(__dirname, "public");
@@ -15,9 +14,8 @@ app.use(express.static(staticPathRoot));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Use the oauth and pages routes
-app.use("/auth", oauthRoutes);
-app.use("/api", addTaskRoutes);
+// Use the todoist and pages routes
+app.use("/api", todoistRoutes);
 app.use("/", pagesRoutes);
 
 module.exports = app;
