@@ -38,7 +38,7 @@ router.get("/callback", async (req, res) => {
 });
 
 // Handle team selection
-router.get("/add-tasks", async (req, res) => {
+router.get("/import-games", async (req, res) => {
 	// Extract the team and project from the request body
 	const { team, project } = req.body;
 
