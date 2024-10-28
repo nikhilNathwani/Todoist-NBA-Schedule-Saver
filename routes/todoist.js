@@ -39,13 +39,15 @@ router.get("/callback", async (req, res) => {
 
 // Handle team selection
 router.get("/add-tasks", async (req, res) => {
-	// const selectedTeam = req.query.team; // Get the selected team from the request
-	// const projectID = await todoist.createTodoistProject(selectedTeam); // Create project
-	// const games = getGamesForTeam(selectedTeam); // Your logic to get the games for the selected team
+	// Extract the team and project from the request body
+	const { team, project } = req.body;
 
-	// await todoist.uploadScheduleToTodoist(games, projectID); // Add tasks to Todoist
-	console.log("hello");
-	// res.redirect('/confirmation'); // Redirect or send response
+	// Print the values to the console for testing
+	console.log("Selected Team:", team);
+	console.log("Selected Project:", project);
+
+	// Respond to the client (you can customize this)
+	res.json({ success: true, message: "Tasks received", team, project });
 });
 
 module.exports = router;

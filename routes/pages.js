@@ -39,7 +39,7 @@ router.get("/configure-import", async (req, res) => {
 		// Prepare project picker based on isInboxDefault
 		const projectPickerHTML = `
 			<label id="newProject" class="radio-button ${isInboxDefault ? "disabled" : ""}">
-				<input type="radio" name="projectOption" value="newProject" ${
+				<input type="radio" name="project" value="newProject" ${
 					isInboxDefault ? "disabled" : "checked"
 				}>
 				<span>
@@ -52,7 +52,7 @@ router.get("/configure-import", async (req, res) => {
 				</span>
 			</label>
 			<label id="inbox" class="radio-button">
-				<input type="radio" name="projectOption" value="inbox" ${
+				<input type="radio" name="project" value="inbox" ${
 					isInboxDefault ? "checked" : ""
 				}>
 				<span>
@@ -97,7 +97,7 @@ router.get("/configure-import", async (req, res) => {
 						<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
 					</form>
 				</div>
-				<script src="/scripts/teamSelect.js"></script>
+				<script src="/scripts/handleInput.js"></script>
 			</body>
 			</html>
 		`;
