@@ -82,7 +82,7 @@ router.get("/configure-import", async (req, res) => {
 						<div id="arrow">→</div>
 						<img src="images/todoist-color-logo.png" alt="Todoist Brand Logo" />
 					</div>
-					<form action="/api/add-task" method="POST">
+					<form action="/api/import-games" method="POST">
 						<fieldset>
 							<legend><span class="step">1</span> Select your NBA team</legend>
 							<select id="team-selector" name="team" aria-label="NBA Team">
