@@ -1,19 +1,17 @@
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
-const todoist = require('../public/scripts/todoist');
-
+const todoist = require("../public/scripts/todoist");
 
 // Handle team selection
-router.get('/add-tasks', async (req, res) => {
-	
-    // const selectedTeam = req.query.team; // Get the selected team from the request
-    // const projectID = await todoist.createTodoistProject(selectedTeam); // Create project
-    // const games = getGamesForTeam(selectedTeam); // Your logic to get the games for the selected team
+router.get("/add-tasks", async (req, res) => {
+	// const selectedTeam = req.query.team; // Get the selected team from the request
+	// const projectID = await todoist.createTodoistProject(selectedTeam); // Create project
+	// const games = getGamesForTeam(selectedTeam); // Your logic to get the games for the selected team
 
-    // await todoist.uploadScheduleToTodoist(games, projectID); // Add tasks to Todoist
-
-    res.redirect('/confirmation'); // Redirect or send response
+	// await todoist.uploadScheduleToTodoist(games, projectID); // Add tasks to Todoist
+	console.log("hello");
+	// res.redirect('/confirmation'); // Redirect or send response
 });
 
 // Helper function to handle OAuth token exchange errors
