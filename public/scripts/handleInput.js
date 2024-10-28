@@ -10,34 +10,15 @@ teamSelect.addEventListener("change", function () {
 });
 
 form.addEventListener("submit", function (event) {
-	event.preventDefault(); // Prevent the default form submission behavior
-
+	// No preventDefault() call here
 	const selectedTeam = teamSelect.value; // Get selected team option
 	const selectedProject = projectSelect.value; // Get selected project option
 
-	// Send selections to add-task API
-	fetch("/api/import-games", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			team: selectedTeam,
-			project: selectedProject,
-		}),
-	})
-		.then((response) => {
-			if (response.ok) {
-				return response.json(); // Process the response if needed
-			}
-			throw new Error("Network response was not ok.");
-		})
-		.then((data) => {
-			console.log("Success:", data); // Handle success
-		})
-		.catch((error) => {
-			console.error("Error:", error); // Handle error
-		});
+	// You can still log the selected values for testing
+	console.log("Selected Team:", selectedTeam);
+	console.log("Selected Project:", selectedProject);
+
+	// The form will be submitted to the action URL specified in the HTML
 });
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
