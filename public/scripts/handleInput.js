@@ -16,7 +16,7 @@ form.addEventListener("submit", function (event) {
 	const selectedProject = projectSelect.value; // Get selected project option
 
 	// Send selections to add-task API
-	fetch("/api/add-task", {
+	fetch("/api/add-tasks", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
