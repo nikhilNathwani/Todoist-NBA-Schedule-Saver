@@ -53,6 +53,14 @@ async function saveSessionState(req, res, code) {
 		const { access_token } = response.data;
 		const encryptedToken = encrypt(access_token);
 		req.session.accessTokenEncrypted = encryptedToken;
+		console.log(
+			"Received Access Token:",
+			access_token,
+			"Encrypted as:",
+			encryptedToken,
+			"Stored as:",
+			req.session.accessTokenEncrypted
+		);
 		// Decrypting when retrieving sensitive data
 		// const decryptedToken = decrypt(encryptedToken);
 	} catch (error) {
