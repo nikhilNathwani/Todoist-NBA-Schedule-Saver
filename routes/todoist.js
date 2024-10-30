@@ -73,7 +73,11 @@ async function saveSessionState(req, res, code) {
 }
 
 function getAccessToken(req) {
-	return decrypt(req.session.accessTokenEncrypted);
+	const encryptedToken = req.session.accessTokenEncrypted;
+	if (!encryptedToken) {
+		throw new Error("Access token is not set in the session.");
+	}
+	return decrypt(encryptedToken);
 }
 
 // Handle team selection
