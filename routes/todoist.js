@@ -60,7 +60,7 @@ async function saveSessionState(req, res, code) {
 			"OAuth error:",
 			error.response ? error.response.data : error
 		);
-		handleOAuthError(req, res, error);
+		handleOAuthError(error, res);
 	}
 }
 
@@ -133,10 +133,10 @@ async function createTodoistProject(teamCity) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // Initialize API with the user's token
-async function initializeAPI(accessToken) {
-	api = new TodoistApi(accessToken); //Todosit REST API
-	await isInboxDefault(accessToken);
-}
+// async function initializeAPI(accessToken) {
+// 	api = new TodoistApi(accessToken); //Todosit REST API
+// 	await isInboxDefault(accessToken);
+// }
 
 async function isInboxDefault(accessToken) {
 	try {
@@ -174,31 +174,8 @@ async function isInboxDefault(accessToken) {
 	}
 }
 
-// Get user access token
-async function getAccessToken(res, code) {
-	try {
-		const response = await axios.post(
-			"https://todoist.com/oauth/access_token",
-			{
-				client_id: CLIENT_ID,
-				client_secret: CLIENT_SECRET,
-				code: code,
-				redirect_uri: REDIRECT_URI,
-			}
-		);
-		const { access_token } = response.data;
-		return access_token;
-	} catch (error) {
-		console.error(
-			"OAuth error:",
-			error.response ? error.response.data : error
-		);
-		handleOAuthError(error, res);
-	}
-}
-
 // Handle OAuth token exchange errors
-const handleOAuthError = (req, res, error) => {
+const handleOAuthError = (error, res) => {
 	if (error.response) {
 		const { error: errorMessage } = error.response.data;
 		if (errorMessage === "bad_authorization_code") {
