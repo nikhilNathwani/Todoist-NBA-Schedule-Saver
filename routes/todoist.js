@@ -30,7 +30,7 @@ router.get("/callback", async (req, res) => {
 	}
 
 	// Initialize the API with the user's token
-	await saveSessionState(req, code);
+	await saveSessionState(req, res, code);
 
 	// Redirect to the team selection page
 	const accessToken = getAccessToken(req);
@@ -39,7 +39,7 @@ router.get("/callback", async (req, res) => {
 });
 
 //Saves to cookie-session the encrypted accessToken
-async function saveSessionState(req, code) {
+async function saveSessionState(req, res, code) {
 	try {
 		const response = await axios.post(
 			"https://todoist.com/oauth/access_token",
@@ -175,7 +175,7 @@ async function isInboxDefault(accessToken) {
 }
 
 // Get user access token
-async function getAccessToken(code) {
+async function getAccessToken(res, code) {
 	try {
 		const response = await axios.post(
 			"https://todoist.com/oauth/access_token",
