@@ -80,7 +80,7 @@ function getAccessToken(req) {
 router.post("/import-games", async (req, res) => {
 	// Extract the team and project from the request body
 	const { team, project } = req.body;
-	const accessToken = req.session.accessToken;
+	const accessToken = getAccessToken(req);
 	// Print the values to the console for testing
 	console.log("Selected Team:", team);
 	console.log("Selected Project:", project);
