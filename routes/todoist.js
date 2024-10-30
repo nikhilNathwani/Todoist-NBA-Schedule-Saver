@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const { encrypt, decrypt } = require("./utils/cryptoUtils");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
 const FREE_PROJECT_LIMIT = 5;
@@ -29,13 +30,43 @@ router.get("/callback", async (req, res) => {
 	}
 
 	// Initialize the API with the user's token
-	const access_token = await getAccessToken(code);
-	req.session.access_token = access_token;
+	await saveSessionState(req, code);
 
 	// Redirect to the team selection page
-	const redirectUrlParam = await isInboxDefault(access_token);
+	const accessToken = getAccessToken(req);
+	const redirectUrlParam = await isInboxDefault(accessToken);
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
 });
+
+//Saves to cookie-session the encrypted accessToken
+async function saveSessionState(req, code) {
+	try {
+		const response = await axios.post(
+			"https://todoist.com/oauth/access_token",
+			{
+				client_id: CLIENT_ID,
+				client_secret: CLIENT_SECRET,
+				code: code,
+				redirect_uri: REDIRECT_URI,
+			}
+		);
+		const { access_token } = response.data;
+		const encryptedToken = encrypt(access_token);
+		req.session.accessTokenEncrypted = encryptedToken;
+		// Decrypting when retrieving sensitive data
+		// const decryptedToken = decrypt(encryptedToken);
+	} catch (error) {
+		console.error(
+			"OAuth error:",
+			error.response ? error.response.data : error
+		);
+		handleOAuthError(error, res);
+	}
+}
+
+function getAccessToken(req) {
+	return decrypt(req.session.accessTokenEncrypted);
+}
 
 // Handle team selection
 router.post("/import-games", async (req, res) => {
@@ -45,6 +76,7 @@ router.post("/import-games", async (req, res) => {
 	// Print the values to the console for testing
 	console.log("Selected Team:", team);
 	console.log("Selected Project:", project);
+	console.log("Access Token:", req.session.accessToken); // Logging the access token for debugging
 
 	// Respond to the client (you can customize this)
 	res.json({ success: true, message: "Tasks received", team, project });
