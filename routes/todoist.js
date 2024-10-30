@@ -30,7 +30,7 @@ router.get("/callback", async (req, res) => {
 
 	// Initialize the API with the user's token
 	const access_token = await getAccessToken(code);
-	initializeAPI(access_token);
+	req.session.access_token = access_token;
 
 	// Redirect to the team selection page
 	const redirectUrlParam = await isInboxDefault(access_token);
@@ -99,8 +99,6 @@ async function createTodoistProject(teamCity) {
 //            OAUTH FUNCTIONS                //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-let api; // Declare a variable to hold the API instance
 
 // Initialize API with the user's token
 async function initializeAPI(accessToken) {
