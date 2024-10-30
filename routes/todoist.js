@@ -60,7 +60,7 @@ async function saveSessionState(req, res, code) {
 			"OAuth error:",
 			error.response ? error.response.data : error
 		);
-		handleOAuthError(error, res);
+		handleOAuthError(req, res, error);
 	}
 }
 
@@ -198,7 +198,7 @@ async function getAccessToken(res, code) {
 }
 
 // Handle OAuth token exchange errors
-const handleOAuthError = (error, res) => {
+const handleOAuthError = (req, res, error) => {
 	if (error.response) {
 		const { error: errorMessage } = error.response.data;
 		if (errorMessage === "bad_authorization_code") {
