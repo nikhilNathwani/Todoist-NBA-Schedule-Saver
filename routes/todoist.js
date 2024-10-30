@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
-const { encrypt, decrypt } = require("./utils/encryption");
+const { encrypt, decrypt } = require("../utils/encryption");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
 const FREE_PROJECT_LIMIT = 5;
