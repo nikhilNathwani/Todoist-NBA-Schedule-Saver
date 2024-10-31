@@ -36,6 +36,9 @@ router.get("/callback", async (req, res) => {
 	// Initialize the API with the user's token
 	await saveSessionState(req, res, code);
 
+	// Redirect to the team selection page
+	const accessToken = getAccessToken(req);
+	const redirectUrlParam = await isInboxDefault(accessToken);
 	console.log(
 		"back in callback",
 		"REQ.SESSION",
@@ -45,9 +48,6 @@ router.get("/callback", async (req, res) => {
 		"REQ.BODY:",
 		req.body
 	);
-	// Redirect to the team selection page
-	const accessToken = getAccessToken(req);
-	const redirectUrlParam = await isInboxDefault(accessToken);
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
 });
 
