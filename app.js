@@ -10,6 +10,7 @@ const app = express();
 
 // Cookie session configuration
 console.log("SECURE flag set to:", process.env.NODE_ENV === "production");
+console.log("COOKIE SECRET is:", process.env.COOKIE_SECRET);
 app.use(
 	cookieSession({
 		name: "session",
