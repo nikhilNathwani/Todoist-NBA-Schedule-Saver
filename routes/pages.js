@@ -14,14 +14,12 @@ router.get("/configure-import", async (req, res) => {
 	try {
 		console.log(
 			"In configure-import",
-			"REQ:",
-			req,
+			"REQ.SESSION",
+			req.session,
 			"REQ.QUERY:",
 			req.query,
 			"REQ.BODY:",
-			req.body,
-			"REQ.SESSION",
-			req.session
+			req.body
 		);
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault !== "false";

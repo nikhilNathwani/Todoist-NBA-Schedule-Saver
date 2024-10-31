@@ -38,14 +38,12 @@ router.get("/callback", async (req, res) => {
 
 	console.log(
 		"back in callback",
-		"REQ:",
-		req,
+		"REQ.SESSION",
+		req.session,
 		"REQ.QUERY:",
 		req.query,
 		"REQ.BODY:",
-		req.body,
-		"REQ.SESSION",
-		req.session
+		req.body
 	);
 	// Redirect to the team selection page
 	const accessToken = getAccessToken(req);
