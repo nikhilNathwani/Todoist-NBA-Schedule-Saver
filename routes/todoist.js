@@ -21,6 +21,16 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, STATE_SECRET } = process.env;
 // Serve the team selection page
 router.get("/configure-import", async (req, res) => {
 	try {
+		console.log(
+			"In configure-import",
+			"REQ:"
+			req,
+			"REQ.QUERY:",
+			req.query,
+			"REQ.BODY:", 
+			req.body,
+			"REQ.SESSION", req.session,
+		);
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault !== "false";
 		console.log(
@@ -157,7 +167,7 @@ async function saveSessionState(req, res, code) {
 		const { access_token } = response.data;
 		const encryptedToken = encrypt(access_token);
 		req.session.accessTokenEncrypted = encryptedToken;
-		req.session.save();
+		// req.session.save();
 		console.log(
 			"Received Access Token:",
 			access_token,
