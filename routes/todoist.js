@@ -157,6 +157,7 @@ async function saveSessionState(req, res, code) {
 		const { access_token } = response.data;
 		const encryptedToken = encrypt(access_token);
 		req.session.accessTokenEncrypted = encryptedToken;
+		req.session.save();
 		console.log(
 			"Received Access Token:",
 			access_token,
