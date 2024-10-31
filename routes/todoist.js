@@ -61,6 +61,8 @@ async function saveSessionState(req, res, code) {
 			"Stored as:",
 			req.session.accessTokenEncrypted
 		);
+		console.log("REQ is:", req);
+		console.log("REQ.SESSION is", req.session);
 		// Decrypting when retrieving sensitive data
 		// const decryptedToken = decrypt(encryptedToken);
 	} catch (error) {
@@ -83,6 +85,9 @@ function getAccessToken(req) {
 // Handle team selection
 router.post("/import-games", async (req, res) => {
 	// Extract the team and project from the request body
+	console.log("REQ is:", req);
+	console.log("REQ.BODY is:", req.body);
+	console.log("REQ.SESSION is", req.session);
 	const { team, project } = req.body;
 	const accessToken = getAccessToken(req);
 	// Print the values to the console for testing
