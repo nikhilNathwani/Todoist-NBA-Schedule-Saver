@@ -17,7 +17,7 @@ app.use(
 		secret: process.env.COOKIE_SECRET,
 		maxAge: 24 * 60 * 60 * 1000, // 24 hours
 		httpOnly: true, // Prevents client-side JS from accessing the cookie
-		secure: false, // for testing purposes
+		secure: true, // for testing purposes
 		// secure: process.env.NODE_ENV === "production", // Use secure cookies in production
 		// sameSite: "Lax", // Try Lax instead of Strict
 		// sameSite: "Strict", // Mitigates CSRF attacks
