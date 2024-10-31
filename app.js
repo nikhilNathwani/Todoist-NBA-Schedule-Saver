@@ -9,6 +9,7 @@ const staticPathRoot = path.join(__dirname, "public");
 const app = express();
 
 // Cookie session configuration
+console.log("SECURE flag set to:", process.env.NODE_ENV === "production");
 app.use(
 	cookieSession({
 		name: "session",
