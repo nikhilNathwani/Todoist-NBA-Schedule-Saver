@@ -1,9 +1,9 @@
 const express = require("express");
 const cookieSession = require("cookie-session");
 const path = require("path");
-const oauthRoutes = require("./routes/oauth");
 const importGamesRoutes = require("./routes/importGames");
 const pagesRoutes = require("./routes/pages");
+const { router: oauthRoutes } = require("./routes/oauth");
 
 // Configurations
 const staticPathRoot = path.join(__dirname, "public");
