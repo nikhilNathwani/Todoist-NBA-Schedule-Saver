@@ -9,6 +9,15 @@ url= "https://www.cbssports.com/nba/teams/"
 teamNamesCasual= {"ATL":"hawks","BOS":"celtics","BKN":"nets","CHA":"hornets","CHI":"bulls","CLE":"cavs","DAL":"mavs","DEN":"nuggets","DET":"pistons","GS":"warriors","HOU":"rockets","IND":"pacers","LAC":"clippers","LAL":"lakers","MEM":"grizzlies","MIA":"heat","MIL":"bucks","MIN":"t-wolves","NO":"pelicans","NY":"knicks","OKC":"thunder","ORL":"magic","PHI":"sixers","PHO":"suns","POR":"blazers","SAC":"kings","SA":"spurs","TOR":"raptors","UTA":"jazz","WAS":"wizards"}
 teamNames= {"ATL":"Hawks","BOS":"Celtics","BKN":"Nets","CHA":"Hornets","CHI":"Bulls","CLE":"Cavaliers","DAL":"Mavericks","DEN":"Nuggets","DET":"Pistons","GS":"Warriors","HOU":"Rockets","IND":"Pacers","LAC":"Clippers","LAL":"Lakers","MEM":"Grizzlies","MIA":"Heat","MIL":"Bucks","MIN":"Timberwolves","NO":"Pelicans","NY":"Knicks","OKC":"Thunder","ORL":"Magic","PHI":"Sixers","PHO":"Suns","POR":"Blazers","SAC":"Kings","SA":"Spurs","TOR":"Raptors","UTA":"Jazz","WAS":"Wizards"}
 teamCities= {"ATL":"Atlanta","BOS":"Boston","BKN":"Brooklyn","CHA":"Charlotte","CHI":"Chicago","CLE":"Cleveland","DAL":"Dallas","DEN":"Denver","DET":"Detroit","GS":"Golden State","HOU":"Houston","IND":"Indiana","LAC":"Los Angeles","LAL":"Los Angeles","MEM":"Memphis","MIA":"Miami","MIL":"Milwaukee","MIN":"Minnesota","NO":"New Orleans","NY":"New York","OKC":"Oklahoma City","ORL":"Orlando","PHI":"Philadelphia","PHO":"Phoenix","POR":"Portland","SAC":"Sacramento","SA":"San Antonio","TOR":"Toronto","UTA":"Utah","WAS":"Washington"}
+teamColors = {
+    "ATL": "red", "BOS": "green", "BKN": "grey", "CHA": "mint_green", "CHI": "red",
+    "CLE": "berry_red", "DAL": "blue", "DEN": "light_blue", "DET": "blue", "GS": "yellow",
+    "HOU": "red", "IND": "yellow", "LAC": "red", "LAL": "violet", "MEM": "light_blue",
+    "MIA": "berry_red", "MIL": "taupe", "MIN": "lime_green", "NO": "taupe", "NY": "orange",
+    "OKC": "blue", "ORL": "blue", "PHI": "red", "PHO": "orange", "POR": "red",
+    "SAC": "grape", "SA": "grey", "TOR": "red", "UTA": "grape", "WAS": "red"
+}
+
 cityToTeamNamesCasual= {
     "Atlanta": "hawks",
     "Boston": "celtics",
@@ -70,7 +79,8 @@ def scrapeAllTeamSchedules(links):
         schedules[teamID]= {
             "name": teamNames[teamID], 
             "nameCasual": teamNamesCasual[teamID], 
-            "city": teamCities[teamID], 
+            "city": teamCities[teamID],
+            "color": teamColors[teamID], 
             "schedule": scrapeTeamSchedule(link)}
     return schedules
 

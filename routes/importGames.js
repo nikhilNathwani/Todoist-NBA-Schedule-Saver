@@ -8,39 +8,6 @@ const { encrypt, decrypt } = require("../utils/encryption");
 const { initializeTodoistAPI } = require("./oauth.js");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
-const teamColors = {
-	Hawks: "red",
-	Celtics: "green",
-	Nets: "grey",
-	Hornets: "mint_green",
-	Bulls: "red",
-	Cavaliers: "berry_red",
-	Mavericks: "blue",
-	Nuggets: "light_blue",
-	Pistons: "blue",
-	Warriors: "yellow",
-	Rockets: "red",
-	Pacers: "yellow",
-	Clippers: "red",
-	Lakers: "violet",
-	Grizzlies: "light_blue",
-	Heat: "berry_red",
-	Bucks: "taupe",
-	Timberwolves: "lime_green",
-	Pelicans: "taupe",
-	Knicks: "orange",
-	Thunder: "blue",
-	Magic: "blue",
-	Sixers: "red",
-	Suns: "orange",
-	Trailblazers: "red",
-	Kings: "grape",
-	Spurs: "grey",
-	Raptors: "red",
-	Jazz: "grape",
-	Wizards: "red",
-};
-
 function getUpcomingGames(schedule) {
 	const upcomingGames = [];
 	for (const game of schedule) {
@@ -78,7 +45,7 @@ function isLaterThanNow(dateTime) {
 	return gameDateTime > now;
 }
 
-async function getProjectID(api, project, name) {
+async function getProjectID(api, project, name, color) {
 	try {
 		if (project === "inbox") {
 			// Query the Todoist API for the Inbox project ID
@@ -97,7 +64,10 @@ async function getProjectID(api, project, name) {
 			}
 
 			// Create a new Todoist project
-			const newProjectResponse = await api.addProject(name, color);
+			const newProjectResponse = await api.addProject({
+				name: name,
+				color: color,
+			});
 			return newProjectResponse.id; // Return the ID of the newly created project
 		} else {
 			throw new Error(
@@ -123,8 +93,8 @@ router.post("/import-games", async (req, res) => {
 
 	try {
 		const teamData = await getTeamData(team); // Await the promise
-		const { name, schedule } = teamData; // Destructure after awaiting
-		const projectID = await getProjectID(api, project, name);
+		const { name, color, schedule } = teamData; // Destructure after awaiting
+		const projectID = await getProjectID(api, project, name, color);
 
 		// Respond to the client (you can customize this)
 		res.json({
