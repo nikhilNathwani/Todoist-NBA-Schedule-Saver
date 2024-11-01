@@ -183,4 +183,4 @@ function printReqSession(req) {
 	);
 }
 
-module.exports = { router, initializeTodoistAPI };
+module.exports = { router, initializeTodoistAPI, printReqSession };
