@@ -31,6 +31,7 @@ router.post("/import-games", async (req, res) => {
 	// Print the values to the console for testing
 	console.log("Selected Team:", team);
 	console.log("Selected Project:", project);
+	console.log("REQ.SESSION from import-games:", req.session);
 
 	const api = await initializeTodoistAPI(req);
 
