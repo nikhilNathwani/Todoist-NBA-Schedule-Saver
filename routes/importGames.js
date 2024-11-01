@@ -8,20 +8,41 @@ const { encrypt, decrypt } = require("../utils/encryption");
 const { initializeTodoistAPI } = require("./oauth.js");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
+function getUpcomingGames(schedule) {
+	const upcomingGames = [];
+	for (const game of schedule) {
+		if (isLaterThanNow(game.dateTime)) {
+			upcomingGames.push(game);
+		}
+	}
+	return upcomingGames;
+}
+
 async function getTeamData(team) {
 	try {
 		const filePath = path.join(__dirname, "../data/nba_schedule.json");
 		const data = JSON.parse(await fs.promises.readFile(filePath, "utf8"));
 
-		const teamSchedule = data[team];
-		if (!teamSchedule) {
+		const teamData = data[team];
+		if (!teamData) {
 			throw new Error(`Schedule not found for team: ${team}`);
 		}
-		return teamSchedule;
+
+		// Filter schedule for games with dateTime later than now
+		const upcomingGames = getUpcomingGames(teamData.schedule);
+
+		// Return teamData with the filtered schedule
+		return { ...teamData, schedule: upcomingGames };
 	} catch (error) {
 		console.error("Error reading or parsing nba_schedule.json:", error);
 		throw error; // Re-throw to handle it further up if needed
 	}
+}
+
+function isLaterThanNow(dateTime) {
+	const gameDateTime = new Date(dateTime);
+	const now = new Date();
+	return gameDateTime > now;
 }
 
 // Handle team selection
