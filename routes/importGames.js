@@ -24,13 +24,6 @@ async function getTeamData(team) {
 	}
 }
 
-// Usage example
-// Assuming `team` is available in your route handler:
-const team = "Lakers"; // Replace with dynamic team input as needed
-getScheduleForTeam(team)
-	.then((schedule) => console.log("Team Schedule:", schedule))
-	.catch((error) => console.error("Failed to retrieve schedule:", error));
-
 // Handle team selection
 router.post("/import-games", async (req, res) => {
 	// Extract the team and project from the request body
@@ -41,19 +34,23 @@ router.post("/import-games", async (req, res) => {
 
 	const api = initializeTodoistAPI(req);
 
-	const { name, schedule } = getTeamData(team);
+	try {
+		const teamData = await getTeamData(team); // Await the promise
+		const { name, schedule } = teamData; // Destructure after awaiting
 
-	// Fetch team's upcoming games from json
-
-	// Respond to the client (you can customize this)
-	res.json({
-		success: true,
-		message: "Tasks received",
-		team,
-		name,
-		project,
-		schedule,
-	});
+		// Respond to the client (you can customize this)
+		res.json({
+			success: true,
+			message: "Tasks received",
+			team,
+			name,
+			project,
+			schedule,
+		});
+	} catch (error) {
+		console.error("Error fetching team data:", error);
+		res.status(500).json({ success: false, message: error.message });
+	}
 });
 
 module.exports = router;
