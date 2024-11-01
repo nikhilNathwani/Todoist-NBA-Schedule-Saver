@@ -152,4 +152,4 @@ if __name__ == "__main__":
     links= getScheduleLinks()
     schedules= scrapeAllTeamSchedules(links)
     print(schedules)
-    saveSchedulesToJSON(schedules, "public/data/nba_schedule.json")
+    saveSchedulesToJSON(schedules, "data/nba_schedule.json")

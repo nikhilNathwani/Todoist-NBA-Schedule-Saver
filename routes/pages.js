@@ -33,7 +33,7 @@ router.get("/configure-import", async (req, res) => {
 
 		// Read the NBA schedule JSON file
 		const data = await fs.readFile(
-			path.join(__dirname, "../public/data/nba_schedule.json")
+			path.join(__dirname, "../data/nba_schedule.json")
 		);
 		const teams = JSON.parse(data);
 

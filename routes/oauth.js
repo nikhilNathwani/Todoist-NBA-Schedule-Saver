@@ -1,9 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
-const fs = require("fs").promises;
-const path = require("path");
-
 const axios = require("axios");
 const { encrypt, decrypt } = require("../utils/encryption");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
@@ -33,84 +29,13 @@ router.get("/callback", async (req, res) => {
 		return res.status(403).send("State mismatch! Potential CSRF attack.");
 	}
 
-	// Initialize the API with the user's token
-	await saveSessionState(req, res, code);
+	// Store encrypted access token in session cookie for later api usage
+	await saveAccessToken(req, res, code);
 
 	// Redirect to the team selection page
 	const accessToken = getAccessToken(req);
-	const redirectUrlParam = await isInboxDefault(accessToken);
-	console.log(
-		"back in callback",
-		"REQ.SESSION",
-		req.session,
-		"REQ.QUERY:",
-		req.query,
-		"REQ.BODY:",
-		req.body
-	);
+	const redirectUrlParam = await userReachedProjectLimit(accessToken);
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
-});
-
-//Saves to cookie-session the encrypted accessToken
-async function saveSessionState(req, res, code) {
-	try {
-		const response = await axios.post(
-			"https://todoist.com/oauth/access_token",
-			{
-				client_id: CLIENT_ID,
-				client_secret: CLIENT_SECRET,
-				code: code,
-				redirect_uri: REDIRECT_URI,
-			}
-		);
-		const { access_token } = response.data;
-		const encryptedToken = encrypt(access_token);
-		req.session.accessTokenEncrypted = encryptedToken;
-		// req.session.save();
-		console.log(
-			"Received Access Token:",
-			access_token,
-			"Encrypted as:",
-			encryptedToken,
-			"Stored as:",
-			req.session.accessTokenEncrypted
-		);
-		console.log("REQ is:", req);
-		console.log("REQ.SESSION is", req.session);
-		// Decrypting when retrieving sensitive data
-		// const decryptedToken = decrypt(encryptedToken);
-	} catch (error) {
-		console.error(
-			"OAuth error:",
-			error.response ? error.response.data : error
-		);
-		handleOAuthError(error, res);
-	}
-}
-
-function getAccessToken(req) {
-	const encryptedToken = req.session.accessTokenEncrypted;
-	if (!encryptedToken) {
-		throw new Error("Access token is not set in the session.");
-	}
-	return decrypt(encryptedToken);
-}
-
-// Handle team selection
-router.post("/import-games", async (req, res) => {
-	// Extract the team and project from the request body
-	console.log("REQ is:", req);
-	console.log("REQ.BODY is:", req.body);
-	console.log("REQ.SESSION is", req.session);
-	const { team, project } = req.body;
-	const accessToken = getAccessToken(req);
-	// Print the values to the console for testing
-	console.log("Selected Team:", team);
-	console.log("Selected Project:", project);
-	console.log("Access Token:", accessToken); // Logging the access token for debugging
-
-	// Respond to the client (you can customize this)
-	res.json({ success: true, message: "Tasks received", team, project });
 });
 
 module.exports = router;
@@ -164,12 +89,51 @@ async function createTodoistProject(teamCity) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // Initialize API with the user's token
-// async function initializeAPI(accessToken) {
-// 	api = new TodoistApi(accessToken); //Todosit REST API
-// 	await isInboxDefault(accessToken);
-// }
+async function initializeTodoistAPI(req) {
+	// Check if accessToken exists in the session
+	if (!req.session.accessToken) {
+		throw new Error("Access token is not set in the session.");
+	}
+	// Initialize Todoist API with the access token
+	const api = new TodoistApi(req.session.accessToken);
+	return api;
+}
 
-async function isInboxDefault(accessToken) {
+//Saves encrypted accessToken to cookie-session
+async function saveAccessToken(req, res, code) {
+	try {
+		const response = await axios.post(
+			"https://todoist.com/oauth/access_token",
+			{
+				client_id: CLIENT_ID,
+				client_secret: CLIENT_SECRET,
+				code: code,
+				redirect_uri: REDIRECT_URI,
+			}
+		);
+		const { access_token } = response.data;
+		const encryptedToken = encrypt(access_token);
+		req.session.accessTokenEncrypted = encryptedToken;
+	} catch (error) {
+		console.error(
+			"OAuth error:",
+			error.response ? error.response.data : error
+		);
+		handleOAuthError(error, res);
+	}
+}
+
+//Decrypts accessToken from cookie-session
+function getAccessToken(req) {
+	const encryptedToken = req.session.accessTokenEncrypted;
+	if (!encryptedToken) {
+		throw new Error("Access token is not set in the session.");
+	}
+	return decrypt(encryptedToken);
+}
+
+//Returns bool. Determines if user has reached project limit
+async function userReachedProjectLimit(accessToken) {
 	try {
 		// Fetch user resources via the Sync API
 		const response = await axios.post(
@@ -189,13 +153,6 @@ async function isInboxDefault(accessToken) {
 		const isPremium = user.is_premium; // Check if the user is premium
 		const projectCount = projects.length;
 
-		console.log(
-			"TODOIST.JS returning",
-			isPremium
-				? projectCount >= PREMIUM_PROJECT_LIMIT
-				: projectCount >= FREE_PROJECT_LIMIT,
-			"for isInboxDefault"
-		);
 		return isPremium
 			? projectCount >= PREMIUM_PROJECT_LIMIT
 			: projectCount >= FREE_PROJECT_LIMIT;
