@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("fs").promises;
 const path = require("path");
 const router = express.Router();
+const { printReqSession } = require("./oauth.js");
 const staticPathRoot = path.join(__dirname, "../public");
 
 // Serve the landing page (login page)

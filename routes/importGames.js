@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const { encrypt, decrypt } = require("../utils/encryption");
-const { initializeTodoistAPI } = require("./oauth.js");
+const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
 function getUpcomingGames(schedule) {
