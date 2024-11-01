@@ -31,6 +31,7 @@ router.get("/callback", async (req, res) => {
 
 	// Store encrypted access token in session cookie for later api usage
 	await saveAccessToken(req, res, code);
+	printReqSession(req);
 
 	// Redirect to the team selection page
 	const accessToken = getAccessToken(req);
@@ -172,5 +173,14 @@ const handleOAuthError = (error, res) => {
 	}
 	return res.status(500).send("Internal server error during OAuth flow.");
 };
+
+function printReqSession(req) {
+	console.log(
+		"ACCESS TOKEN:",
+		req.session.accessTokenEncrypted,
+		"REQ.SESSION:",
+		req.session
+	);
+}
 
 module.exports = { router, initializeTodoistAPI };

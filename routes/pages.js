@@ -12,15 +12,7 @@ router.get("/", (req, res) => {
 // Serve the team selection page
 router.get("/configure-import", async (req, res) => {
 	try {
-		console.log(
-			"In configure-import",
-			"REQ.SESSION",
-			req.session,
-			"REQ.QUERY:",
-			req.query,
-			"REQ.BODY:",
-			req.body
-		);
+		printReqSession(req);
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault !== "false";
 		console.log(
@@ -110,7 +102,7 @@ router.get("/configure-import", async (req, res) => {
 			</body>
 			</html>
 		`;
-
+		printReqSession(req);
 		res.send(html); // Send the dynamically constructed HTML
 	} catch (error) {
 		console.error("Error reading NBA schedule:", error);
