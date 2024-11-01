@@ -32,7 +32,7 @@ router.post("/import-games", async (req, res) => {
 	console.log("Selected Team:", team);
 	console.log("Selected Project:", project);
 
-	const api = initializeTodoistAPI(req);
+	const api = await initializeTodoistAPI(req);
 
 	try {
 		const teamData = await getTeamData(team); // Await the promise

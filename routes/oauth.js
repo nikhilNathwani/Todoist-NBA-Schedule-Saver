@@ -38,8 +38,6 @@ router.get("/callback", async (req, res) => {
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
 });
 
-module.exports = router;
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
 //        TODOIST CRUD FUNCTIONS             //
@@ -174,3 +172,5 @@ const handleOAuthError = (error, res) => {
 	}
 	return res.status(500).send("Internal server error during OAuth flow.");
 };
+
+module.exports = { router, initializeTodoistAPI };
