@@ -19,7 +19,7 @@ app.use(
 		// secure: true, // Only HTTPS not HTTP
 		secure: true,
 		// sameSite: "Strict", // Mitigates CSRF attacks
-		sameSite: "Lax",
+		sameSite: "Strict",
 	})
 );
 
@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Use the todoist and pages routes
-app.use("/auth", oauthRoutes);
+app.use("/api/auth", oauthRoutes);
 app.use("/api", importGamesRoutes);
 app.use("/", pagesRoutes);
 
