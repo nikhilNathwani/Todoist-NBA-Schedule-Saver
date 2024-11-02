@@ -3,7 +3,12 @@ const axios = require("axios");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const { getAccessToken, printReqSession } = require("./oauth.js");
+const {
+	getAccessToken,
+	saveAccessToken,
+	printReqSession,
+} = require("../utils/cookieSession");
+
 const projectLimits = {
 	FREE: 5,
 	PREMIUM: 300,
