@@ -110,6 +110,7 @@ async function saveAccessToken(req, res, code) {
 			}
 		);
 		const { access_token } = response.data;
+		console.log("ORIGINAL ACCESS TOKEN:", access_token);
 		const encryptedToken = encrypt(access_token);
 		req.session.accessTokenEncrypted = encryptedToken;
 	} catch (error) {
@@ -127,7 +128,9 @@ function getAccessToken(req) {
 	if (!encryptedToken) {
 		throw new Error("Access token is not set in the session.");
 	}
-	return decrypt(encryptedToken);
+	const accessToken = decrypt(encryptedToken);
+	console.log("DECRYPTED ACCESS TOKEN:", accessToken);
+	return accessToken;
 }
 
 //Returns bool. Determines if user has reached project limit
