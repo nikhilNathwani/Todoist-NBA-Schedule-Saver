@@ -58,7 +58,6 @@ async function getProjectID(api, project, name, color) {
 			}
 		} else if (project === "newProject") {
 			// Check if a color exists for the given team name
-			const color = teamColors[name];
 			if (!color) {
 				throw new Error(`No color defined for team: ${name}`);
 			}
