@@ -1,11 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
 
-// Handle team selection
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+//                                           //
+//           ROUTES                          //
+//                                           //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+//Process user's team/project selections and import schedule
 router.post("/import-games", async (req, res) => {
 	const { teamID, project } = req.body; //from form submission
 	const api = await initializeTodoistAPI(req);
@@ -35,7 +40,7 @@ module.exports = router;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
-//          TODOIST API CALLS                //
+//       TODOIST CRUD FUNCTIONS              //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 async function getProjectID(api, project, name, color) {
@@ -74,7 +79,7 @@ async function getProjectID(api, project, name, color) {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
-//        JSON SCHEDULE PARSING              //
+//       JSON SCHEDULE PARSING               //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 async function getTeamData(team) {

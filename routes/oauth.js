@@ -31,7 +31,6 @@ router.get("/callback", async (req, res) => {
 
 	// Store encrypted access token in session cookie for later api usage
 	await saveAccessToken(req, res, code);
-	printReqSession(req);
 
 	// Redirect to the team selection page
 	const accessToken = getAccessToken(req);
@@ -68,19 +67,6 @@ async function uploadScheduleToTodoist(games, projectID) {
 	}
 }
 
-// Function to create a Todoist project and return the project ID
-async function createTodoistProject(teamCity) {
-	try {
-		const project = await api.addProject({
-			name: `${teamNames[teamCity]} new`,
-			color: teamColors[teamCity],
-		});
-		return project.id;
-	} catch (error) {
-		console.error("Error creating Todoist project:", error);
-	}
-}
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
 //            OAUTH FUNCTIONS                //
@@ -90,12 +76,8 @@ async function createTodoistProject(teamCity) {
 // Initialize API with the user's token
 async function initializeTodoistAPI(req) {
 	// Initialize Todoist API with the access token
-	console.log("Initializing api...");
-	printReqSession(req);
 	const accessToken = getAccessToken(req);
-	const api = new TodoistApi(accessToken);
-	console.log("API:", api);
-	return api;
+	return new TodoistApi(accessToken);
 }
 
 //Saves encrypted accessToken to cookie-session
@@ -111,12 +93,6 @@ async function saveAccessToken(req, res, code) {
 			}
 		);
 		const { access_token } = response.data;
-		console.log("ORIGINAL ACCESS TOKEN:", access_token);
-		console.log("getting projects from save token:");
-		const api = new TodoistApi(access_token);
-		api.getProjects()
-			.then((projects) => console.log(projects))
-			.catch((error) => console.log(error));
 		const encryptedToken = encrypt(access_token);
 		req.session.accessTokenEncrypted = encryptedToken;
 	} catch (error) {
@@ -134,9 +110,7 @@ function getAccessToken(req) {
 	if (!encryptedToken) {
 		throw new Error("Access token is not set in the session.");
 	}
-	const accessToken = decrypt(encryptedToken);
-	console.log("DECRYPTED ACCESS TOKEN:", accessToken);
-	return accessToken;
+	return decrypt(encryptedToken);
 }
 
 //Returns bool. Determines if user has reached project limit
@@ -155,7 +129,6 @@ async function userReachedProjectLimit(accessToken) {
 				},
 			}
 		);
-
 		const { user, projects } = response.data;
 		const isPremium = user.is_premium; // Check if the user is premium
 		const projectCount = projects.length;
