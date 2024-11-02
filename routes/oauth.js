@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const { encrypt, decrypt } = require("../utils/encryption");
-const { userReachedProjectLimit } = require("./routes/importGames");
+const { userReachedProjectLimit } = require("./importGames");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
 const FREE_PROJECT_LIMIT = 5;
