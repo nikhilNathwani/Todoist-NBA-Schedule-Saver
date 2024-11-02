@@ -93,6 +93,7 @@ router.post("/import-games", async (req, res) => {
 	try {
 		const teamData = await getTeamData(team); // Await the promise
 		const { name, color, schedule } = teamData; // Destructure after awaiting
+		console.log("NAME:", name, "COLOR:", color);
 		const projectID = await getProjectID(api, project, name, color);
 
 		// Respond to the client (you can customize this)
