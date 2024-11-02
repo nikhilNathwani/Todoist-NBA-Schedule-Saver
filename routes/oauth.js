@@ -95,6 +95,10 @@ async function initializeTodoistAPI(req) {
 	const accessToken = getAccessToken(req);
 	const api = new TodoistApi(accessToken);
 	console.log("API:", api);
+	console.log("getting projects:");
+	api.getProjects()
+		.then((projects) => console.log(projects))
+		.catch((error) => console.log(error));
 	return api;
 }
 

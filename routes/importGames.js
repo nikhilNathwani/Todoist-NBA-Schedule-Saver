@@ -3,10 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
-
-const { encrypt, decrypt } = require("../utils/encryption");
 const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
-const { TodoistApi } = require("@doist/todoist-api-typescript");
 
 function getUpcomingGames(schedule) {
 	const upcomingGames = [];
