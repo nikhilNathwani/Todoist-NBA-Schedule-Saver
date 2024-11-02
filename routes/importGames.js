@@ -3,7 +3,7 @@ const axios = require("axios");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
+const { getAccessToken, printReqSession } = require("./oauth.js");
 const projectLimits = {
 	FREE: 5,
 	PREMIUM: 300,
@@ -55,6 +55,13 @@ module.exports = { router, userReachedProjectLimit };
 //       TODOIST CRUD FUNCTIONS              //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+// Initialize API with the user's token
+async function initializeTodoistAPI(req) {
+	// Initialize Todoist API with the access token
+	const accessToken = getAccessToken(req);
+	return new TodoistApi(accessToken);
+}
 
 //Returns bool. Determines if user has reached project limit
 async function userReachedProjectLimit(accessToken) {

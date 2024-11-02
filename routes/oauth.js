@@ -37,20 +37,7 @@ router.get("/callback", async (req, res) => {
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
 });
 
-module.exports = { router, initializeTodoistAPI, printReqSession };
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-//                                           //
-//            OAUTH FUNCTIONS                //
-//                                           //
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-// Initialize API with the user's token
-async function initializeTodoistAPI(req) {
-	// Initialize Todoist API with the access token
-	const accessToken = getAccessToken(req);
-	return new TodoistApi(accessToken);
-}
+module.exports = { router, getAccessToken, printReqSession };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
