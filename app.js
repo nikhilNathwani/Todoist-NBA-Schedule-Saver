@@ -16,8 +16,10 @@ app.use(
 		secret: process.env.COOKIE_SECRET,
 		maxAge: 24 * 60 * 60 * 1000, // 24 hours
 		httpOnly: true, // Prevents client-side JS from accessing the cookie
-		secure: true, // Only HTTPS not HTTP
-		sameSite: "Strict", // Mitigates CSRF attacks
+		// secure: true, // Only HTTPS not HTTP
+		secure: false,
+		// sameSite: "Strict", // Mitigates CSRF attacks
+		sameSite: "Lax",
 	})
 );
 
