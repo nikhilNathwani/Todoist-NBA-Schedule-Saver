@@ -94,7 +94,7 @@ async function initializeTodoistAPI(req) {
 		throw new Error("Access token is not set in the session.");
 	}
 	// Initialize Todoist API with the access token
-	const api = new TodoistApi(req.session.accessToken);
+	const api = new TodoistApi(req.session.accessTokenEncrypted);
 	return api;
 }
 
