@@ -13,7 +13,6 @@ const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
 //Process user's team/project selections and import schedule
 router.post("/import-games", async (req, res) => {
 	const { teamID, project } = req.body; //from form submission
-	console.log("Selected team:", teamID, "Selected project:", project);
 	const api = await initializeTodoistAPI(req);
 
 	try {
@@ -84,7 +83,6 @@ async function getProjectID(api, project, name, color) {
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 async function getTeamData(team) {
-	console.log("teamID:", team);
 	try {
 		const filePath = path.join(__dirname, "../data/nba_schedule.json");
 		const data = JSON.parse(await fs.promises.readFile(filePath, "utf8"));

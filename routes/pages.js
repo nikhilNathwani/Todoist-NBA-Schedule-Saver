@@ -87,7 +87,7 @@ router.get("/configure-import", async (req, res) => {
 					<form action="/api/import-games" method="POST">
 						<fieldset>
 							<legend><span class="step">1</span> Select your NBA team</legend>
-							<select id="team-selector" name="team" aria-label="NBA Team">
+							<select id="team-selector" name="teamID" aria-label="NBA Team">
 								<option value="" disabled selected>Choose a team</option> <!-- Ghost text -->
 								${teamOptions}
 							</select>
