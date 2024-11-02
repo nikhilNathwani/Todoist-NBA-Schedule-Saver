@@ -89,12 +89,8 @@ async function createTodoistProject(teamCity) {
 
 // Initialize API with the user's token
 async function initializeTodoistAPI(req) {
-	// Check if accessToken exists in the session
-	if (!req.session.accessTokenEncrypted) {
-		throw new Error("Access token is not set in the session.");
-	}
 	// Initialize Todoist API with the access token
-	const api = new TodoistApi(req.session.accessTokenEncrypted);
+	const api = new TodoistApi(getAccessToken(req));
 	return api;
 }
 
