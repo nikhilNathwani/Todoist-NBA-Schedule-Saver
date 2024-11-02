@@ -91,7 +91,7 @@ async function createTodoistProject(teamCity) {
 async function initializeTodoistAPI(req) {
 	// Initialize Todoist API with the access token
 	console.log("Initializing api...");
-	printReqSession();
+	printReqSession(req);
 	const accessToken = getAccessToken(req);
 	const api = new TodoistApi(accessToken);
 	return api;
