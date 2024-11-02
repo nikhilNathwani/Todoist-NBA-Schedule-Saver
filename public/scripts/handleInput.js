@@ -1,5 +1,5 @@
 const form = document.querySelector("form");
-const teamSelect = form.elements["teamID"];
+const teamSelect = form.elements["team"];
 const projectSelect = form.elements["project"];
 
 teamSelect.addEventListener("change", function () {

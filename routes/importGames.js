@@ -12,11 +12,15 @@ const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
 
 //Process user's team/project selections and import schedule
 router.post("/import-games", async (req, res) => {
-	const { teamID, project } = req.body; //from form submission
+	const { team: teamID, project } = req.body; //from form submission
 	const api = await initializeTodoistAPI(req);
 
 	try {
-		const { teamName, teamColor, schedule } = await getTeamData(teamID); // Destructure after awaiting
+		const {
+			name: teamName,
+			color: teamColor,
+			schedule,
+		} = await getTeamData(teamID); // Destructure after awaiting
 		const projectID = await getProjectID(api, project, teamName, teamColor);
 
 		// Respond to the client
