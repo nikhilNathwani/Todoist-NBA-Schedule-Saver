@@ -95,10 +95,6 @@ async function initializeTodoistAPI(req) {
 	const accessToken = getAccessToken(req);
 	const api = new TodoistApi(accessToken);
 	console.log("API:", api);
-	console.log("getting projects:");
-	api.getProjects()
-		.then((projects) => console.log(projects))
-		.catch((error) => console.log(error));
 	return api;
 }
 
@@ -116,6 +112,11 @@ async function saveAccessToken(req, res, code) {
 		);
 		const { access_token } = response.data;
 		console.log("ORIGINAL ACCESS TOKEN:", access_token);
+		console.log("getting projects from save token:");
+		const api = new TodoistApi(access_token);
+		api.getProjects()
+			.then((projects) => console.log(projects))
+			.catch((error) => console.log(error));
 		const encryptedToken = encrypt(access_token);
 		req.session.accessTokenEncrypted = encryptedToken;
 	} catch (error) {
