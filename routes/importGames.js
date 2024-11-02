@@ -83,6 +83,7 @@ async function getProjectID(api, project, name, color) {
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 async function getTeamData(team) {
+	console.log("teamID:", team);
 	try {
 		const filePath = path.join(__dirname, "../data/nba_schedule.json");
 		const data = JSON.parse(await fs.promises.readFile(filePath, "utf8"));
