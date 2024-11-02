@@ -3,6 +3,10 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const { initializeTodoistAPI, printReqSession } = require("./oauth.js");
+const projectLimits = {
+	FREE: 5,
+	PREMIUM: 300,
+};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
@@ -72,8 +76,8 @@ async function userReachedProjectLimit(accessToken) {
 		const projectCount = projects.length;
 
 		return isPremium
-			? projectCount >= PREMIUM_PROJECT_LIMIT
-			: projectCount >= FREE_PROJECT_LIMIT;
+			? projectCount >= projectLimits.PREMIUM
+			: projectCount >= projectLimits.FREE;
 	} catch (error) {
 		console.error("Error fetching user data:", error);
 		throw new Error("Failed to fetch user metadata");

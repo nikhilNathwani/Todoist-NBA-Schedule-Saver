@@ -5,8 +5,6 @@ const { encrypt, decrypt } = require("../utils/encryption");
 const { userReachedProjectLimit } = require("./importGames");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
-const FREE_PROJECT_LIMIT = 5;
-const PREMIUM_PROJECT_LIMIT = 300;
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, STATE_SECRET } = process.env;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
