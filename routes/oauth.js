@@ -1,15 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { encrypt, decrypt } = require("../utils/encryption");
 const {
 	getAccessToken,
 	saveAccessToken,
 	printReqSession,
 } = require("../utils/cookieSession");
 const { userReachedProjectLimit } = require("./importGames");
-const { TodoistApi } = require("@doist/todoist-api-typescript");
 
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, STATE_SECRET } = process.env;
+const { CLIENT_ID, REDIRECT_URI, STATE_SECRET } = process.env;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //

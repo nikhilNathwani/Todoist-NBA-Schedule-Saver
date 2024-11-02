@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { encrypt, decrypt } = require("./encryption");
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } = process.env;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
