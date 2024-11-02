@@ -77,7 +77,7 @@ function updateTeamLogo(selectedTeam) {
 
 function updateNewProjectSubtitle(selectedTeam) {
 	if (!isInboxDefault()) {
-		newProjectSubtitle.textContent = `Import games into a new Todoist project called "# ${teamNames[selectedTeam]} schedule"`;
+		newProjectSubtitle.textContent = `Import games into a new Todoist project called "${teamNames[selectedTeam]} schedule"`;
 	}
 }
 function isInboxDefault() {
