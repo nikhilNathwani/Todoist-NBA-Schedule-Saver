@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const axios = require("axios");
 const { encrypt, decrypt } = require("../utils/encryption");
+const { userReachedProjectLimit } = require("./routes/importGames");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 
 const FREE_PROJECT_LIMIT = 5;
@@ -38,34 +39,7 @@ router.get("/callback", async (req, res) => {
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
 });
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-//                                           //
-//        TODOIST CRUD FUNCTIONS             //
-//                                           //
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-// Function to add a task to Todoist
-async function addTodoistTask(game, projectID) {
-	const taskContent = `Celtics ${game.opponent}`;
-	const taskDueDatetime = formatDate(game.date, game.time);
-
-	try {
-		await api.addTask({
-			content: taskContent,
-			due: { date: taskDueDatetime },
-			project_id: projectID,
-		});
-	} catch (error) {
-		console.error("Error adding task to Todoist:", error);
-	}
-}
-
-// Function to upload the schedule to Todoist
-async function uploadScheduleToTodoist(games, projectID) {
-	for (const game of games) {
-		await addTodoistTask(game, projectID);
-	}
-}
+module.exports = { router, initializeTodoistAPI, printReqSession };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
@@ -79,6 +53,12 @@ async function initializeTodoistAPI(req) {
 	const accessToken = getAccessToken(req);
 	return new TodoistApi(accessToken);
 }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+//                                           //
+//         COOKIE-SESSION I/O                //
+//                                           //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 //Saves encrypted accessToken to cookie-session
 async function saveAccessToken(req, res, code) {
@@ -113,34 +93,11 @@ function getAccessToken(req) {
 	return decrypt(encryptedToken);
 }
 
-//Returns bool. Determines if user has reached project limit
-async function userReachedProjectLimit(accessToken) {
-	try {
-		// Fetch user resources via the Sync API
-		const response = await axios.post(
-			"https://api.todoist.com/sync/v9/sync",
-			{
-				sync_token: "*",
-				resource_types: ["user", "projects"],
-			},
-			{
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-				},
-			}
-		);
-		const { user, projects } = response.data;
-		const isPremium = user.is_premium; // Check if the user is premium
-		const projectCount = projects.length;
-
-		return isPremium
-			? projectCount >= PREMIUM_PROJECT_LIMIT
-			: projectCount >= FREE_PROJECT_LIMIT;
-	} catch (error) {
-		console.error("Error fetching user data:", error);
-		throw new Error("Failed to fetch user metadata");
-	}
-}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+//                                           //
+//          HELPER FUNCTIONS                 //
+//                                           //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // Handle OAuth token exchange errors
 const handleOAuthError = (error, res) => {
@@ -163,5 +120,3 @@ function printReqSession(req) {
 		req.session
 	);
 }
-
-module.exports = { router, initializeTodoistAPI, printReqSession };

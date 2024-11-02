@@ -21,7 +21,10 @@ router.post("/import-games", async (req, res) => {
 			color: teamColor,
 			schedule,
 		} = await getTeamData(teamID); // Destructure after awaiting
+
 		const projectID = await getProjectID(api, project, teamName, teamColor);
+
+		await importSchedule(api, schedule, projectID, teamName);
 
 		// Respond to the client
 		res.json({
@@ -40,13 +43,43 @@ router.post("/import-games", async (req, res) => {
 	}
 });
 
-module.exports = router;
+module.exports = { router, userReachedProjectLimit };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
 //       TODOIST CRUD FUNCTIONS              //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+//Returns bool. Determines if user has reached project limit
+async function userReachedProjectLimit(accessToken) {
+	try {
+		// Fetch user resources via the Sync API
+		const response = await axios.post(
+			"https://api.todoist.com/sync/v9/sync",
+			{
+				sync_token: "*",
+				resource_types: ["user", "projects"],
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${accessToken}`,
+				},
+			}
+		);
+		const { user, projects } = response.data;
+		const isPremium = user.is_premium; // Check if the user is premium
+		const projectCount = projects.length;
+
+		return isPremium
+			? projectCount >= PREMIUM_PROJECT_LIMIT
+			: projectCount >= FREE_PROJECT_LIMIT;
+	} catch (error) {
+		console.error("Error fetching user data:", error);
+		throw new Error("Failed to fetch user metadata");
+	}
+}
+
 async function getProjectID(api, project, name, color) {
 	try {
 		if (project === "inbox") {
@@ -80,6 +113,28 @@ async function getProjectID(api, project, name, color) {
 	} catch (error) {
 		console.error("Error in getProjectID:", error);
 		throw error; // Re-throw to handle it further up if needed
+	}
+}
+
+async function importGame(api, game, projectID, teamName) {
+	const taskContent = `${teamName} ${game.isHomeGame ? "vs" : "at"} ${
+		game.opponent
+	}`;
+
+	try {
+		await api.addTask({
+			content: taskContent,
+			due: { date: game.dateTime },
+			project_id: projectID,
+		});
+	} catch (error) {
+		console.error("Error adding task to Todoist:", error);
+	}
+}
+
+async function importSchedule(api, schedule, projectID, teamName) {
+	for (const game of schedule) {
+		await importGame(api, game, projectID, teamName);
 	}
 }
 

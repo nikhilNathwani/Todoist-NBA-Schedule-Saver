@@ -1,8 +1,8 @@
 const express = require("express");
 const cookieSession = require("cookie-session");
 const path = require("path");
-const importGamesRoutes = require("./routes/importGames");
 const pagesRoutes = require("./routes/pages");
+const { router: importGamesRoutes } = require("./routes/importGames");
 const { router: oauthRoutes } = require("./routes/oauth");
 
 // Configurations
