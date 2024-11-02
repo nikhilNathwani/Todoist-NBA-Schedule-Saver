@@ -53,7 +53,7 @@ async function getProjectID(api, project, name, color) {
 			// Query the Todoist API for the Inbox project ID
 			const projects = await api.getProjects();
 			const inboxProject = projects.find(
-				(project) => project.isInboxProject || project.isTeamInbox
+				(project) => project.isInboxProject
 			);
 			if (inboxProject) {
 				return inboxProject.id; // Return the ID of the Inbox project
