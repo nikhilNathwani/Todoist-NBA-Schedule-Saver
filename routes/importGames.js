@@ -141,7 +141,7 @@ async function importGame(api, game, projectID, teamName) {
 	try {
 		await api.addTask({
 			content: taskContent,
-			due: { date: game.dateTime },
+			dueDatetime: { date: game.dateTime },
 			project_id: projectID,
 		});
 	} catch (error) {
