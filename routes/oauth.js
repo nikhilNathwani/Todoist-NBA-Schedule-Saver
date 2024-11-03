@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {
-	getAccessToken,
-	saveAccessToken,
-	printReqSession,
-} = require("../utils/cookieSession");
+const { saveAccessToken } = require("../utils/cookieSession");
 const { userReachedProjectLimit } = require("./importGames");
 
 const { CLIENT_ID, REDIRECT_URI, STATE_SECRET } = process.env;
@@ -31,21 +27,44 @@ router.get("/callback", async (req, res) => {
 	}
 
 	// Store encrypted access token in session cookie for later api usage
-	await saveAccessToken(req, res, code);
+	const accessToken = await retrieveAccessToken(req, res, code);
+	saveAccessToken(req, accessToken);
 
 	// Redirect to the team selection page
-	const accessToken = getAccessToken(req);
 	const redirectUrlParam = await userReachedProjectLimit(accessToken);
 	res.redirect(`/configure-import?isInboxDefault=${redirectUrlParam}`);
 });
 
-module.exports = { router, getAccessToken, printReqSession };
+module.exports = router;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
 //          HELPER FUNCTIONS                 //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+// Retrive access token from Todoist API
+async function retrieveAccessToken(req, res, code) {
+	try {
+		const response = await axios.post(
+			"https://todoist.com/oauth/access_token",
+			{
+				client_id: CLIENT_ID,
+				client_secret: CLIENT_SECRET,
+				code: code,
+				redirect_uri: REDIRECT_URI,
+			}
+		);
+		const { access_token } = response.data;
+		return access_token;
+	} catch (error) {
+		console.error(
+			"OAuth error:",
+			error.response ? error.response.data : error
+		);
+		handleOAuthError(error, res);
+	}
+}
 
 // Handle OAuth token exchange errors
 const handleOAuthError = (error, res) => {

@@ -3,7 +3,7 @@ const cookieSession = require("cookie-session");
 const path = require("path");
 const pagesRoutes = require("./routes/pages");
 const { router: importGamesRoutes } = require("./routes/importGames");
-const { router: oauthRoutes } = require("./routes/oauth");
+const oauthRoutes = require("./routes/oauth");
 
 // Configurations
 const staticPathRoot = path.join(__dirname, "public");

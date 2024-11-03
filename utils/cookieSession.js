@@ -9,27 +9,9 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } = process.env;
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 //Saves encrypted accessToken to cookie-session
-async function saveAccessToken(req, res, code) {
-	try {
-		const response = await axios.post(
-			"https://todoist.com/oauth/access_token",
-			{
-				client_id: CLIENT_ID,
-				client_secret: CLIENT_SECRET,
-				code: code,
-				redirect_uri: REDIRECT_URI,
-			}
-		);
-		const { access_token } = response.data;
-		const encryptedToken = encrypt(access_token);
-		req.session.accessTokenEncrypted = encryptedToken;
-	} catch (error) {
-		console.error(
-			"OAuth error:",
-			error.response ? error.response.data : error
-		);
-		handleOAuthError(error, res);
-	}
+function saveAccessToken(req, accessToken) {
+	const encryptedToken = encrypt(accessToken);
+	req.session.accessTokenEncrypted = encryptedToken;
 }
 
 //Decrypts accessToken from cookie-session

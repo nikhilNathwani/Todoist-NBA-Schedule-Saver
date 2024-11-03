@@ -3,11 +3,7 @@ const axios = require("axios");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const {
-	getAccessToken,
-	saveAccessToken,
-	printReqSession,
-} = require("../utils/cookieSession");
+const { getAccessToken } = require("../utils/cookieSession");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 const projectLimits = {
 	FREE: 5,
