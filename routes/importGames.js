@@ -3,7 +3,7 @@ const axios = require("axios");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const { getAccessToken } = require("../utils/cookieSession");
+const { getAccessToken, printReqSession } = require("../utils/cookieSession");
 const { TodoistApi } = require("@doist/todoist-api-typescript");
 const projectLimits = {
 	FREE: 5,
@@ -18,6 +18,7 @@ const projectLimits = {
 
 //Process user's team/project selections and import schedule
 router.post("/import-games", async (req, res) => {
+	printReqSession(req);
 	const { team: teamID, project } = req.body; //from form submission
 	const api = await initializeTodoistAPI(req);
 
