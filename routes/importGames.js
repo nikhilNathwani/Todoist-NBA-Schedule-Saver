@@ -138,8 +138,8 @@ async function importGame(api, game, projectID, teamName) {
 	try {
 		await api.addTask({
 			content: taskContent,
-			due: { datetime: game.dateTime },
-			project_id: projectID,
+			dueDatetime: game.dateTime,
+			projectId: projectID,
 		});
 	} catch (error) {
 		console.error("Error adding task to Todoist:", error);
