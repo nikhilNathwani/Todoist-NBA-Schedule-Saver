@@ -10,6 +10,7 @@ const { encrypt, decrypt } = require("./encryption");
 function saveAccessToken(req, accessToken) {
 	const encryptedToken = encrypt(accessToken);
 	req.session.accessTokenEncrypted = encryptedToken;
+	printReqSession(req);
 }
 
 //Decrypts accessToken from cookie-session
