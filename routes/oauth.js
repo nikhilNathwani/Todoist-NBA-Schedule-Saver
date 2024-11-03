@@ -4,7 +4,7 @@ const axios = require("axios");
 const { saveAccessToken } = require("../utils/cookieSession");
 const { userReachedProjectLimit } = require("./importGames");
 
-const { CLIENT_ID, REDIRECT_URI, STATE_SECRET } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, STATE_SECRET } = process.env;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
