@@ -16,13 +16,6 @@ router.get("/configure-import", async (req, res) => {
 		printReqSession(req);
 		// Retrieve isInboxDefault from the URL parameters
 		const isInboxDefault = req.query.isInboxDefault !== "false";
-		console.log(
-			"PAGES.JS got",
-			req.query.isInboxDefault,
-			"and interpreted it as",
-			req.query.isInboxDefault !== "false",
-			"for isInboxDefault"
-		);
 
 		// Read the NBA schedule JSON file
 		const data = await fs.readFile(
