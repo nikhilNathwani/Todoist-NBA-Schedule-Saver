@@ -22,14 +22,6 @@ form.addEventListener("submit", function (event) {
 	startImport(selectedTeam, selectedProject);
 });
 
-// Start import when form is submitted
-document
-	.getElementById("import-form")
-	.addEventListener("submit", function (event) {
-		event.preventDefault(); // Prevent the form from submitting in the traditional way
-		startImport(); // Call the JavaScript function to handle the import process
-	});
-
 function startImport(team, project) {
 	fetch("/import-games", {
 		method: "POST",
