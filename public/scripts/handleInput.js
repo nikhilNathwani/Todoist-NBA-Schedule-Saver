@@ -58,7 +58,7 @@ function startImport(team, project) {
 // Function to check import status every 5 seconds
 function pollStatus() {
 	const intervalId = setInterval(() => {
-		fetch("/import-status")
+		fetch("/api/import-status")
 			.then((response) => {
 				if (!response.ok)
 					throw new Error("Failed to fetch import status.");
