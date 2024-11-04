@@ -159,8 +159,6 @@ async function importSchedule(api, schedule, projectID, teamName) {
 	return Promise.all(tasks); // Return the promise, don't await
 }
 
-module.exports = importSchedule;
-
 function formatTask(game, projectID, teamName) {
 	return {
 		content: `${teamName} ${game.isHomeGame ? "vs" : "at"} ${
