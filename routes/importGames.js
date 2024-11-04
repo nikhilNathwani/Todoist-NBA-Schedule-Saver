@@ -131,16 +131,10 @@ async function getProjectID(api, project, name, color) {
 }
 
 async function importGame(api, game, projectID, teamName) {
-	const taskContent = `${teamName} ${game.isHomeGame ? "vs" : "at"} ${
-		game.opponent
-	}`;
+	const task = formatTask(game, projectID, teamName);
 
 	try {
-		await api.addTask({
-			content: taskContent,
-			dueDatetime: game.dateTime,
-			projectId: projectID,
-		});
+		await api.addTask(task);
 	} catch (error) {
 		console.error("Error adding task to Todoist:", error);
 	}
@@ -150,6 +144,16 @@ async function importSchedule(api, schedule, projectID, teamName) {
 	for (const game of schedule) {
 		await importGame(api, game, projectID, teamName);
 	}
+}
+
+function formatTask(game, projectID, teamName) {
+	return {
+		content: `${teamName} ${game.isHomeGame ? "vs" : "at"} ${
+			game.opponent
+		}`,
+		dueDatetime: game.dateTime,
+		projectId: projectID,
+	};
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
