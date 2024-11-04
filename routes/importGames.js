@@ -27,33 +27,32 @@ router.post("/import-games", async (req, res) => {
 	importInProgress = true; // Set import status to "in progress"
 
 	printReqSession(req);
-	const { team: teamID, project } = req.body; // from form submission
-	const api = await initializeTodoistAPI(req);
+	const { team: teamID, project } = req.body;
+	const api = initializeTodoistAPI(req);
 
 	try {
 		const {
 			name: teamName,
 			color: teamColor,
 			schedule,
-		} = await getTeamData(teamID); // Destructure after awaiting
-
+		} = await getTeamData(teamID);
 		const projectID = await getProjectID(api, project, teamName, teamColor);
 
 		// Start the import process in the background
 		importSchedule(api, schedule, projectID, teamName)
 			.then(() => {
 				console.log("Import completed");
-				importInProgress = false; // Set import status to "complete"
 			})
 			.catch((error) => {
 				console.error("Import failed:", error);
-				importInProgress = false; // Ensure to reset on failure
+			})
+			.finally(() => {
+				importInProgress = false; // Reset status regardless of success or failure
 			});
 
-		// Respond to the client
 		res.status(202).json({ message: "Import started" });
 	} catch (error) {
-		console.error("Error fetching team data:", error);
+		console.error("Error preparing import:", error);
 		importInProgress = false;
 		res.status(500).json({ success: false, message: error.message });
 	}
@@ -73,7 +72,7 @@ module.exports = { router, userReachedProjectLimit };
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // Initialize API with the user's token
-async function initializeTodoistAPI(req) {
+function initializeTodoistAPI(req) {
 	// Initialize Todoist API with the access token
 	const accessToken = getAccessToken(req);
 	return new TodoistApi(accessToken);
@@ -154,13 +153,13 @@ async function importGame(api, game, projectID, teamName) {
 }
 
 async function importSchedule(api, schedule, projectID, teamName) {
-	const taskPromises = schedule.map((game) => {
-		return importGame(api, game, projectID, teamName);
-	});
-
-	// Wait for all tasks to complete
-	return Promise.all(taskPromises);
+	const tasks = schedule.map((game) =>
+		importGame(api, projectID, game, teamName)
+	);
+	return Promise.all(tasks); // Return the promise, don't await
 }
+
+module.exports = importSchedule;
 
 function formatTask(game, projectID, teamName) {
 	return {
