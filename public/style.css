@@ -97,25 +97,26 @@ fieldset {
 	gap: 1.5rem;
 	padding-block: 2rem;
 	padding-inline: 1rem 2rem;
+	border: 1px solid var(--clr-accent);
 }
 
 legend {
-	font-size: 1.25rem;
+	font-size: 1.125rem;
+	font-weight: bold;
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
 	gap: 1ch;
-	padding-inline: 1ch;
+	padding-inline: 0.5ch;
 	color: var(--clr-accent);
 }
 
-.step {
-	/* hiding for now */
+/* .step {
 	display: none;
 	padding: 0.5ch 1.125ch;
 	border-radius: 50%;
 	background-color: lightgray;
-}
+} */
 
 select {
 	height: 2.25rem;

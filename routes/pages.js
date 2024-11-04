@@ -79,14 +79,14 @@ router.get("/configure-import", async (req, res) => {
 					</div>
 					<form>
 						<fieldset>
-							<legend><span class="step">1</span> Select your NBA team</legend>
+							<legend><span class="step">1:</span> Select your NBA team</legend>
 							<select id="team-selector" name="team" aria-label="NBA Team">
 								<option value="" disabled selected>Choose a team</option> <!-- Ghost text -->
 								${teamOptions}
 							</select>
 						</fieldset>
 						<fieldset>
-							<legend><span class="step">2</span> Select Todoist project</legend>
+							<legend><span class="step">2:</span> Select Todoist project</legend>
 							${projectPickerHTML}
 						</fieldset>
 						<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
