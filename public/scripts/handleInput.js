@@ -10,7 +10,8 @@ teamSelect.addEventListener("change", function () {
 });
 
 form.addEventListener("submit", function (event) {
-	// No preventDefault() call here
+	event.preventDefault(); // Prevent the form from submitting in the traditional way
+
 	const selectedTeam = teamSelect.value; // Get selected team option
 	const selectedProject = projectSelect.value; // Get selected project option
 
@@ -18,8 +19,55 @@ form.addEventListener("submit", function (event) {
 	console.log("Selected Team:", selectedTeam);
 	console.log("Selected Project:", selectedProject);
 
-	// The form will be submitted to the action URL specified in the HTML
+	startImport(selectedTeam, selectedProject);
 });
+
+// Start import when form is submitted
+document
+	.getElementById("import-form")
+	.addEventListener("submit", function (event) {
+		event.preventDefault(); // Prevent the form from submitting in the traditional way
+		startImport(); // Call the JavaScript function to handle the import process
+	});
+
+function startImport(team, project) {
+	fetch("/import-games", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ team, project }), // Send team and project values in the request body
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			document.getElementById("status-message").textContent =
+				"Status: Import started";
+			pollStatus(); // Start polling the status
+		})
+		.catch((error) => console.error("Error starting import:", error));
+}
+
+// Function to check import status every 5 seconds
+function pollStatus() {
+	const intervalId = setInterval(() => {
+		fetch("/import-status")
+			.then((response) => response.json())
+			.then((data) => {
+				if (data.inProgress) {
+					document.getElementById("status-message").textContent =
+						"Status: Import in progress...";
+				} else {
+					document.getElementById("status-message").textContent =
+						"Status: Import complete!";
+					clearInterval(intervalId); // Stop polling once import is complete
+				}
+			})
+			.catch((error) => {
+				console.error("Error checking status:", error);
+				clearInterval(intervalId); // Stop polling on error
+			});
+	}, 5000); // Poll every 5 seconds
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //

@@ -77,7 +77,7 @@ router.get("/configure-import", async (req, res) => {
 						<div id="arrow">→</div>
 						<img src="images/todoist-color-logo.png" alt="Todoist Brand Logo" />
 					</div>
-					<form action="/api/import-games" method="POST">
+					<form>
 						<fieldset>
 							<legend><span class="step">1</span> Select your NBA team</legend>
 							<select id="team-selector" name="team" aria-label="NBA Team">
@@ -91,6 +91,7 @@ router.get("/configure-import", async (req, res) => {
 						</fieldset>
 						<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
 					</form>
+					<div id="status-message"></div>
 				</div>
 				<script src="/scripts/handleInput.js"></script>
 			</body>

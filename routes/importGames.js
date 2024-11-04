@@ -10,6 +10,8 @@ const projectLimits = {
 	PREMIUM: 300,
 };
 
+let importInProgress = false; // Track the import status
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
 //           ROUTES                          //
@@ -18,6 +20,12 @@ const projectLimits = {
 
 //Process user's team/project selections and import schedule
 router.post("/import-games", async (req, res) => {
+	if (importInProgress) {
+		return res.status(429).json({ message: "Import already in progress" }); // Prevent concurrent imports
+	}
+
+	importInProgress = true; // Set import status to "in progress"
+
 	printReqSession(req);
 	const { team: teamID, project } = req.body; //from form submission
 	const api = await initializeTodoistAPI(req);
@@ -31,23 +39,28 @@ router.post("/import-games", async (req, res) => {
 
 		const projectID = await getProjectID(api, project, teamName, teamColor);
 
-		await importSchedule(api, schedule, projectID, teamName);
-
+		// Start the import process in the background
+		importSchedule(api, schedule, projectID, teamName)
+			.then(() => {
+				console.log("Import completed");
+			})
+			.catch((error) => {
+				console.error("Import failed:", error);
+			})
+			.finally(() => {
+				importInProgress = false; // Set import status to "complete"
+			});
 		// Respond to the client
-		res.json({
-			success: true,
-			message: "Tasks received",
-			teamID,
-			teamName,
-			teamColor,
-			project,
-			projectID,
-			schedule,
-		});
+		res.status(202).json({ message: "Import started" });
 	} catch (error) {
 		console.error("Error fetching team data:", error);
 		res.status(500).json({ success: false, message: error.message });
 	}
+});
+
+// Route to check the import status
+router.get("/import-status", (req, res) => {
+	res.json({ inProgress: importInProgress });
 });
 
 module.exports = { router, userReachedProjectLimit };
@@ -132,7 +145,6 @@ async function getProjectID(api, project, name, color) {
 
 async function importGame(api, game, projectID, teamName) {
 	const task = formatTask(game, projectID, teamName);
-
 	try {
 		await api.addTask(task);
 	} catch (error) {
