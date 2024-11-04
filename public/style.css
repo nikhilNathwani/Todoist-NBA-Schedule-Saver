@@ -97,7 +97,7 @@ fieldset {
 	gap: 1.5rem;
 	padding-block: 2rem;
 	padding-inline: 1rem 2rem;
-	border: 1px solid var(--clr-accent);
+	/* border: 1px solid var(--clr-accent); */
 }
 
 legend {
