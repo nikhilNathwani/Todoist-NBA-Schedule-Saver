@@ -23,7 +23,7 @@ form.addEventListener("submit", function (event) {
 });
 
 function startImport(team, project) {
-	fetch("/import-games", {
+	fetch("/api/import-games", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
