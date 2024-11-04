@@ -145,7 +145,6 @@ async function getProjectID(api, project, name, color) {
 
 async function importGame(api, game, projectID, teamName) {
 	const task = formatTask(game, projectID, teamName);
-	console.log("GAME:", game, "task:", task);
 	try {
 		await api.addTask(task);
 	} catch (error) {
@@ -155,7 +154,7 @@ async function importGame(api, game, projectID, teamName) {
 
 async function importSchedule(api, schedule, projectID, teamName) {
 	const tasks = schedule.map((game) =>
-		importGame(api, projectID, game, teamName)
+		importGame(api, game, projectID, teamName)
 	);
 	return Promise.all(tasks); // Return the promise, don't await
 }
