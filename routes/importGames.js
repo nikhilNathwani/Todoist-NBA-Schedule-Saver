@@ -154,9 +154,12 @@ async function importGame(api, game, projectID, teamName) {
 }
 
 async function importSchedule(api, schedule, projectID, teamName) {
-	for (const game of schedule) {
-		await importGame(api, game, projectID, teamName);
-	}
+	const taskPromises = schedule.map((game) => {
+		return importGame(api, game, projectID, teamName);
+	});
+
+	// Wait for all tasks to complete
+	return Promise.all(taskPromises);
 }
 
 function formatTask(game, projectID, teamName) {
