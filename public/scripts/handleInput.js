@@ -55,7 +55,7 @@ function startImport(team, project) {
 		});
 }
 
-// Function to check import status every 5 seconds
+// Function to check import status every 3 seconds
 function pollStatus() {
 	const intervalId = setInterval(() => {
 		fetch("/api/import-status")

@@ -18,7 +18,7 @@ let importInProgress = false; // Track the import status
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-//Process user's team/project selections and import schedule
+// Process user's team/project selections and import schedule
 router.post("/import-games", async (req, res) => {
 	if (importInProgress) {
 		return res.status(429).json({ message: "Import already in progress" }); // Prevent concurrent imports
@@ -27,7 +27,7 @@ router.post("/import-games", async (req, res) => {
 	importInProgress = true; // Set import status to "in progress"
 
 	printReqSession(req);
-	const { team: teamID, project } = req.body; //from form submission
+	const { team: teamID, project } = req.body; // from form submission
 	const api = await initializeTodoistAPI(req);
 
 	try {
@@ -43,13 +43,13 @@ router.post("/import-games", async (req, res) => {
 		importSchedule(api, schedule, projectID, teamName)
 			.then(() => {
 				console.log("Import completed");
+				importInProgress = false; // Set import status to "complete"
 			})
 			.catch((error) => {
 				console.error("Import failed:", error);
-			})
-			.finally(() => {
-				importInProgress = false; // Set import status to "complete"
+				importInProgress = false; // Ensure to reset on failure
 			});
+
 		// Respond to the client
 		res.status(202).json({ message: "Import started" });
 	} catch (error) {
