@@ -30,20 +30,40 @@ function startImport(team, project) {
 		},
 		body: JSON.stringify({ team, project }), // Send team and project values in the request body
 	})
-		.then((response) => response.json())
-		.then((data) => {
-			document.getElementById("status-message").textContent =
-				"Status: Import started";
-			pollStatus(); // Start polling the status
+		.then((response) => {
+			if (response.ok) {
+				console.log("Import started successfully.");
+				document.getElementById("status-message").textContent =
+					"Status: Import started";
+				// Start polling the server for the import status
+				pollStatus();
+			} else {
+				return response.json().then((data) => {
+					console.error("Error starting import:", data.message);
+					document.getElementById(
+						"status-message"
+					).textContent = `Failed to start import: ${data.message}`;
+					alert(`Failed to start import: ${data.message}`);
+				});
+			}
 		})
-		.catch((error) => console.error("Error starting import:", error));
+		.catch((error) => {
+			console.error("Error starting import:", error);
+			document.getElementById(
+				"status-message"
+			).textContent = `Failed to start import: ${error}`;
+		});
 }
 
 // Function to check import status every 5 seconds
 function pollStatus() {
 	const intervalId = setInterval(() => {
 		fetch("/import-status")
-			.then((response) => response.json())
+			.then((response) => {
+				if (!response.ok)
+					throw new Error("Failed to fetch import status.");
+				return response.json();
+			})
 			.then((data) => {
 				if (data.inProgress) {
 					document.getElementById("status-message").textContent =
@@ -58,7 +78,7 @@ function pollStatus() {
 				console.error("Error checking status:", error);
 				clearInterval(intervalId); // Stop polling on error
 			});
-	}, 5000); // Poll every 5 seconds
+	}, 3000); // Poll every 3 seconds
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //

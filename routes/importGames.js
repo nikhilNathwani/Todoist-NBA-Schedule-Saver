@@ -54,6 +54,7 @@ router.post("/import-games", async (req, res) => {
 		res.status(202).json({ message: "Import started" });
 	} catch (error) {
 		console.error("Error fetching team data:", error);
+		importInProgress = false;
 		res.status(500).json({ success: false, message: error.message });
 	}
 });
