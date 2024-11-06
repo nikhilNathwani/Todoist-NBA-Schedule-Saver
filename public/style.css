@@ -52,6 +52,12 @@ h1 {
 	color: var(--clr-dark);
 }
 
+h3 {
+	font-size: 1.125rem;
+    line-height: 1.25;
+    font-weight: normal;
+}
+
 .image-banner {
 	display: flex;
 	flex-flow: row nowrap;
@@ -102,7 +108,6 @@ img {
 
 	width: fit-content;
 	padding: 15px 30px;
-	margin: auto;
 	border: none;
 	border-radius: 8px;
 
