@@ -143,8 +143,8 @@ async function getProjectID(api, project, name, color) {
 	}
 }
 
-async function importGame(api, game, projectID, teamName) {
-	const task = formatTask(game, projectID, teamName);
+async function importGame(api, game, projectID, teamName, taskOrder) {
+	const task = formatTask(game, projectID, teamName, taskOrder);
 	try {
 		await api.addTask(task);
 	} catch (error) {
@@ -153,19 +153,20 @@ async function importGame(api, game, projectID, teamName) {
 }
 
 async function importSchedule(api, schedule, projectID, teamName) {
-	const tasks = schedule.map((game) =>
-		importGame(api, game, projectID, teamName)
+	const tasks = schedule.map(
+		(game, index) => importGame(api, game, projectID, teamName, index + 1) // Pass index + 1 because task order is non-zero
 	);
 	return Promise.all(tasks); // Return the promise, don't await
 }
 
-function formatTask(game, projectID, teamName) {
+function formatTask(game, projectID, teamName, taskOrder) {
 	return {
 		content: `${teamName} ${game.isHomeGame ? "vs" : "at"} ${
 			game.opponent
 		}`,
 		dueDatetime: game.dateTime,
 		projectId: projectID,
+		order: taskOrder,
 	};
 }
 
