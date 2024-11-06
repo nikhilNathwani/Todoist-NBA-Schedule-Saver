@@ -34,7 +34,7 @@ body {
 	/* width: min(100%, 350px); */
 	width: 350px;
 	height: 100svh;
-	margin-inline: 5vw;
+	margin-inline: 8vw;
 
 	display: flex;
 	flex-direction: column;
