@@ -1,10 +1,10 @@
 :root {
-	--clr-dark: #1E1E1E;
+	--clr-dark: #1e1e1e;
 	--clr-light: white;
-	--clr-bg: #FFF9F3;
-	--clr-accent: #E44232;
-	--clr-accent-dark: #C3392C;
-	--clr-disabled: rgb(118,118,118);
+	--clr-bg: #fff9f3;
+	--clr-accent: #e44232;
+	--clr-accent-dark: #c3392c;
+	--clr-disabled: rgb(118, 118, 118);
 }
 
 *,
@@ -42,7 +42,11 @@ body {
 	gap: 2rem;
 }
 
-#appFrame-landing {
+.landing-page-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	gap: 1rem;
 	text-align: center;
 }
@@ -54,8 +58,8 @@ h1 {
 
 h3 {
 	font-size: 1.125rem;
-    line-height: 1.25;
-    font-weight: normal;
+	line-height: 1.25;
+	font-weight: normal;
 }
 
 .image-banner {
@@ -70,10 +74,9 @@ h3 {
 	aspect-ratio: 1 / 1;
 }
 
-.image-banner-large .logo-container {
+.landing-page-header .logo-container {
 	width: 60px;
 }
-
 
 #nba-logo-container {
 	border: 1px solid lightgray;
@@ -97,10 +100,9 @@ img {
 	font-size: 1.5rem;
 }
 
-.image-banner-large #arrow {
+.landing-page-header #arrow {
 	font-size: 2rem;
 }
-
 
 .button {
 	font-size: 16px;
@@ -129,14 +131,16 @@ img {
 
 .button:disabled {
 	background-color: var(--clr-disabled);
-	cursor: not-allowed; 
+	cursor: not-allowed;
 }
 
 /* Prevent hover and active styles for disabled buttons */
 .button:disabled:hover,
 .button:disabled:active {
-    background-color: var(--clr-disabled); /* Keep the disabled background color */
-    transform: none; /* Ensure no scale effect is applied */
+	background-color: var(
+		--clr-disabled
+	); /* Keep the disabled background color */
+	transform: none; /* Ensure no scale effect is applied */
 }
 
 /* CONFIGURATION PAGE */
@@ -181,17 +185,7 @@ select {
 	width: 100%;
 	padding-block: 0.25rem;
 	padding-inline: 0.5ch;
-	/* background-color: white; */
-	/* appearance: none; /* Removes default styling on most browsers */
-	/* -webkit-appearance: none; /* Removes default styling on Safari */ */
 }
-
-/* select:focus,
-input[type="radio"]:focus {
-	outline: none; 
-	border-color: #e44232;
-	box-shadow: 0 0 0 2px #e44232; 
-} */
 
 .radio-button {
 	display: flex;
@@ -213,4 +207,3 @@ input[type="radio"] {
 label.disabled {
 	color: var(--clr-disabled);
 }
-
