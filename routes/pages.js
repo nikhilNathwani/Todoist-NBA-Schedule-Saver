@@ -70,12 +70,17 @@ router.get("/configure-import", async (req, res) => {
 			</head>
 			<body>
 				<div id="appFrame">
-					<div id="image-container">
-						<div id="nba-logo-container">	
-							<img src="images/nba-logo.png" alt="Todoist Brand Logo" />
+					<div class="image-banner">
+						<div class="logo-container" id="nba-logo-container">	
+							<img src="images/nba-logo.png" alt="NBA Logo" />
 						</div>
 						<div id="arrow">→</div>
-						<img src="images/todoist-color-logo.png" alt="Todoist Brand Logo" />
+						<div class="logo-container">
+							<img
+								src="images/todoist-color-logo.png"
+								alt="Todoist Brand Logo"
+							/>
+						</div>
 					</div>
 					<form>
 						<fieldset>

@@ -104,11 +104,15 @@ img {
 	font-size: 2rem;
 }
 
+.button-container {
+	width: 30ch;
+}
+
 .button {
 	font-size: 16px;
 	color: var(--clr-light);
 
-	width: fit-content;
+	width: 100%;
 	padding: 15px 30px;
 	border: none;
 	border-radius: 8px;
@@ -121,7 +125,13 @@ img {
 	transition: transform 0.1s ease;
 }
 
-.button:hover {
+.button-secondary {
+	background-color: var(--clr-light);
+	color: var(--clr-accent);
+	border: 1px solid var(--clr-accent);
+}
+
+.button-primary:hover {
 	background-color: var(--clr-accent-dark);
 }
 
