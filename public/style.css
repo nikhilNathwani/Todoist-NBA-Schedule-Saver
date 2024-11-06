@@ -43,6 +43,11 @@ body {
 	gap: 2rem;
 }
 
+#app-frame-landing {
+	justify-content: space-evenly;
+	gap: 0;
+}
+
 .landing-page-header {
 	display: flex;
 	flex-direction: column;
