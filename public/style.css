@@ -30,7 +30,7 @@ body {
 	background-color: var(--clr-bg);
 }
 
-.appFrame {
+.app-frame {
 	/* width: min(100%, 350px); */
 	width: 350px;
 	height: 100svh;
@@ -67,6 +67,7 @@ h3 {
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
+	justify-content: center;
 	gap: 1.25rem;
 }
 

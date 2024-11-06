@@ -69,7 +69,7 @@ router.get("/configure-import", async (req, res) => {
 				<link rel="stylesheet" href="style.css" />
 			</head>
 			<body>
-				<div id="appFrame">
+				<div class="app-frame">
 					<div class="image-banner">
 						<div class="logo-container" id="nba-logo-container">	
 							<img src="images/nba-logo.png" alt="NBA Logo" />
