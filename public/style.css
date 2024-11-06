@@ -31,9 +31,10 @@ body {
 	background-color: var(--clr-bg);
 }
 
-#appFrame {
+.appFrame {
 	/* width: min(100%, 350px); */
 	width: 350px;
+	height: 100svh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -41,9 +42,59 @@ body {
 	gap: 2rem;
 }
 
+#appFrame-landing {
+	gap: 1rem;
+	text-align: center;
+}
+
 h1 {
+	font-size: 1.875rem;
 	color: var(--clr-dark);
 }
+
+.image-banner {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	gap: 1.25rem;
+}
+
+.logo-container {
+	width: 40px;
+	aspect-ratio: 1 / 1;
+}
+
+.image-banner-large .logo-container {
+	width: 60px;
+}
+
+
+#nba-logo-container {
+	border: 1px solid lightgray;
+	border-radius: 6px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+img {
+	height: 100%;
+	width: auto;
+}
+
+#nba-logo-container img {
+	transform: scale(90%);
+}
+
+#arrow {
+	font-size: 1.5rem;
+}
+
+.image-banner-large #arrow {
+	font-size: 2rem;
+}
+
 
 .button {
 	font-size: 16px;
@@ -158,34 +209,3 @@ label.disabled {
 	color: var(--clr-disabled);
 }
 
-#image-container {
-	display: flex;
-	flex-flow: row nowrap;
-	align-items: center;
-	gap: 1.25rem;
-}
-
-img {
-	height: 40px;
-	width: auto;
-	opacity: 1;
-}
-
-#arrow {
-	font-size: 1.5rem;
-}
-
-#nba-logo-container {
-	width: 40px;
-	height: 40px;
-	border: 1px solid lightgray;
-	border-radius: 6px;
-	background-color: white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-#nba-logo-container img {
-	transform: scale(90%);
-}
