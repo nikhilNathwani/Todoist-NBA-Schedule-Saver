@@ -20,36 +20,22 @@ router.get("/configure-import", async (req, res) => {
 		const teamPickerHTML = makeTeamPickerHTML(teams);
 
 		// Make project picker HTML
-		// Get isInboxDefault for project picker (from the URL parameters)
-		const isInboxDefault = req.query.isInboxDefault !== "false";
+		const isInboxDefault = req.query.isInboxDefault !== "false"; // Get isInboxDefault for project picker (from the URL parameters)
 		const projectPickerHTML = makeProjectPickerHTML(isInboxDefault);
 
 		// Construct the complete HTML
-		const html =
-			htmlIntro +
-			`
-				<div class="app-frame">
-					<div class="image-banner">
-						<div class="logo-container" id="nba-logo-container">	
-							<img src="images/nba-logo.png" alt="NBA Logo" />
-						</div>
-						<div id="arrow">→</div>
-						<div class="logo-container">
-							<img
-								src="images/todoist-color-logo.png"
-								alt="Todoist Brand Logo"
-							/>
-						</div>
-					</div>
-					<form>
-						${teamPickerHTML}
-						${projectPickerHTML}
-						<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
-					</form>
-					<div id="status-message"></div>
-				</div>
-		` +
-			htmlOutro;
+		const html = `
+			${htmlIntro}
+			<div class="app-frame">
+				${logoBanner}
+				<form>
+					${teamPickerHTML}
+					${projectPickerHTML}
+					<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
+				</form>
+				<div id="status-message"></div>
+			</div> 
+			${htmlOutro}`;
 		printReqSession(req);
 		res.send(html); // Send the dynamically constructed HTML
 	} catch (error) {
@@ -71,7 +57,7 @@ module.exports = router;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //                                           //
-//        HTML FORM ELEMENTS                 //
+//         HTML ELEMENTS                     //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
@@ -90,6 +76,20 @@ const htmlOutro = `
 			<script src="/scripts/handleInput.js"></script>
 		</body>
 	</html>`;
+
+const logoBanner = `
+	<div class="image-banner">
+		<div class="logo-container" id="nba-logo-container">	
+			<img src="images/nba-logo.png" alt="NBA Logo" />
+		</div>
+		<div id="arrow">→</div>
+		<div class="logo-container">
+			<img
+				src="images/todoist-color-logo.png"
+				alt="Todoist Brand Logo"
+			/>
+		</div>
+	</div>`;
 
 // Get teams for team picker (from the NBA schedule JSON file)
 async function getTeams() {
