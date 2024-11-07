@@ -27,7 +27,7 @@ router.get("/configure-import", async (req, res) => {
 		const html = `
 			${htmlIntro}
 			<div class="app-frame">
-				${logoBanner}
+				${makeLogoBanner()}
 				<form>
 					${teamPickerHTML}
 					${projectPickerHTML}
@@ -79,20 +79,22 @@ const htmlOutro = `
 	</html>
 `;
 
-const logoBanner = `
-	<div class="image-banner">
-		<div class="logo-container" id="nba-logo-container">	
-			<img src="images/nba-logo.png" alt="NBA Logo" />
+function makeLogoBanner(teamID = null) {
+	return `
+		<div class="image-banner">
+			<div class="logo-container" id="nba-logo-container">	
+				<img src="images/${!teamID ? "nba-logo" : teamID}.png" alt="NBA Logo" />
+			</div>
+			<div id="arrow">→</div>
+			<div class="logo-container">
+				<img
+					src="images/todoist-color-logo.png"
+					alt="Todoist Brand Logo"
+				/>
+			</div>
 		</div>
-		<div id="arrow">→</div>
-		<div class="logo-container">
-			<img
-				src="images/todoist-color-logo.png"
-				alt="Todoist Brand Logo"
-			/>
-		</div>
-	</div>
-`;
+	`;
+}
 
 // Get teams for team picker (from the NBA schedule JSON file)
 async function getTeams() {
