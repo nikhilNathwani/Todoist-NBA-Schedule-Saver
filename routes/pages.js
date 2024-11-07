@@ -14,48 +14,15 @@ router.get("/", (req, res) => {
 router.get("/configure-import", async (req, res) => {
 	try {
 		printReqSession(req);
-		// Retrieve isInboxDefault from the URL parameters
+
+		// Make team picker HTML
+		const teams = await getTeams();
+		const teamPickerHTML = makeTeamPickerHTML(teams);
+
+		// Make project picker HTML
+		// Get isInboxDefault for project picker (from the URL parameters)
 		const isInboxDefault = req.query.isInboxDefault !== "false";
-
-		// Read the NBA schedule JSON file
-		const data = await fs.readFile(
-			path.join(__dirname, "../data/nba_schedule.json")
-		);
-		const teams = JSON.parse(data);
-
-		// Prepare options for the team picker
-		const teamOptions = Object.entries(teams)
-			.sort((a, b) => (a[1].city > b[1].city ? 1 : -1))
-			.map(([teamID, team]) => {
-				return `<option value="${teamID}">${team.city} ${team.name}</option>`;
-			})
-			.join("");
-
-		// Prepare project picker based on isInboxDefault
-		const projectPickerHTML = `
-			<label id="newProject" class="radio-button ${isInboxDefault ? "disabled" : ""}">
-				<input type="radio" name="project" value="newProject" ${
-					isInboxDefault ? "disabled" : "checked"
-				}>
-				<span>
-					<strong>Create New Project</strong><br>
-					<small>${
-						isInboxDefault
-							? "Project limit reached. Can't create more Todoist projects."
-							: "Import games into a new Todoist project"
-					}</small>
-				</span>
-			</label>
-			<label id="inbox" class="radio-button">
-				<input type="radio" name="project" value="inbox" ${
-					isInboxDefault ? "checked" : ""
-				}>
-				<span>
-					<strong>Inbox</strong><br>
-					<small>Import games into your Todoist "Inbox"</small>
-				</span>
-			</label>
-		`;
+		const projectPickerHTML = makeProjectPickerHTML(isInboxDefault);
 
 		// Construct the complete HTML
 		const html = `
@@ -83,17 +50,8 @@ router.get("/configure-import", async (req, res) => {
 						</div>
 					</div>
 					<form>
-						<fieldset>
-							<legend><span class="step">1:</span> Select your NBA team</legend>
-							<select id="team-selector" name="team" aria-label="NBA Team">
-								<option value="" disabled selected>Choose a team</option> <!-- Ghost text -->
-								${teamOptions}
-							</select>
-						</fieldset>
-						<fieldset>
-							<legend><span class="step">2:</span> Select Todoist project</legend>
-							${projectPickerHTML}
-						</fieldset>
+						${teamPickerHTML}
+						${projectPickerHTML}
 						<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
 					</form>
 					<div id="status-message"></div>
@@ -120,3 +78,76 @@ router.get("*", (req, res) => {
 });
 
 module.exports = router;
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+//                                           //
+//        HTML FORM ELEMENTS                 //
+//                                           //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+// Get teams for team picker (from the NBA schedule JSON file)
+async function getTeams() {
+	const data = await fs.readFile(
+		path.join(__dirname, "../data/nba_schedule.json")
+	);
+	return JSON.parse(data);
+}
+
+function makeTeamPickerHTML(teams) {
+	const intro = `
+		<fieldset>
+			<legend>
+				<span class="step">1:</span> Select your NBA team
+			</legend>
+			<select id="team-selector" name="team" aria-label="NBA Team">
+				<option value="" disabled selected>Choose a team</option> <!-- Ghost text -->`;
+	const outro = `
+			</select>
+		</fieldset>`;
+
+	const teamOptions = Object.entries(teams)
+		.sort((a, b) => (a[1].city > b[1].city ? 1 : -1))
+		.map(([teamID, team]) => {
+			return `<option value="${teamID}">${team.city} ${team.name}</option>`;
+		})
+		.join("");
+
+	return intro + teamOptions + outro;
+}
+
+function makeProjectPickerHTML(isInboxDefault) {
+	const intro = `
+		<fieldset>
+			<legend>
+				<span class="step">2:</span> Select Todoist project
+			</legend>`;
+	const outro = `</fieldset>`;
+
+	const newProjectOption = `
+		<label id="newProject" class="radio-button ${isInboxDefault ? "disabled" : ""}">
+			<input type="radio" name="project" value="newProject" ${
+				isInboxDefault ? "disabled" : "checked"
+			}>
+			<span>
+				<strong>Create New Project</strong><br>
+				<small>${
+					isInboxDefault
+						? "Project limit reached. Can't create more Todoist projects."
+						: "Import games into a new Todoist project"
+				}</small>
+			</span>
+		</label>`;
+
+	const inboxOption = `
+		<label id="inbox" class="radio-button">
+			<input type="radio" name="project" value="inbox" ${
+				isInboxDefault ? "checked" : ""
+			}>
+			<span>
+				<strong>Inbox</strong><br>
+				<small>Import games into your Todoist "Inbox"</small>
+			</span>
+		</label>`;
+
+	return intro + newProjectOption + inboxOption + outro;
+}
