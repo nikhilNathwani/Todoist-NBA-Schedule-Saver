@@ -184,6 +184,10 @@ fieldset {
 	/* border: 1px solid var(--clr-accent); */
 }
 
+fieldset#projectPicker {
+	padding-top: 1.5rem;
+}
+
 legend {
 	font-size: 1.125rem;
 	font-weight: bold;
@@ -209,6 +213,10 @@ select {
 	width: 100%;
 	padding-block: 0.25rem;
 	padding-inline: 0.5ch;
+}
+
+#newProject {
+	height: 3.5rem;
 }
 
 .radio-button {

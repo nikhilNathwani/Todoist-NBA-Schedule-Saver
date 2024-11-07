@@ -104,7 +104,7 @@ async function getTeams() {
 
 function makeTeamPickerHTML(teams) {
 	const intro = `
-		<fieldset>
+		<fieldset id="teamPicker">
 			<legend>
 				<span class="step">1:</span> Select your NBA team
 			</legend>
@@ -126,7 +126,7 @@ function makeTeamPickerHTML(teams) {
 
 function makeProjectPickerHTML(isInboxDefault) {
 	const intro = `
-		<fieldset>
+		<fieldset id="projectPicker">
 			<legend>
 				<span class="step">2:</span> Select Todoist project
 			</legend>`;
