@@ -83,9 +83,10 @@ const htmlOutro = `
 
 function makeLogoBanner(teamID = null) {
 	return `
-		<div class="image-banner">
+		<div class="logo-banner">
 			<div class="logo-container" id="nba-logo-container">	
-				<img src="images/${!teamID ? "nba-logo" : teamID}.png" alt="NBA Logo" />
+				<img src="images/${!teamID ? "nba-logo" : teamID}.png" 
+				alt="${!teamID ? "NBA" : teamID} Logo" />
 			</div>
 			<div id="arrow">→</div>
 			<div class="logo-container">
