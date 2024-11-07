@@ -86,7 +86,7 @@ function makeLogoBanner(teamID = null) {
 		<div class="logo-banner">
 			<div class="logo-container" id="nba-logo-container">	
 				<img src="images/${!teamID ? "nba-logo" : teamID}.png" 
-				alt="${!teamID ? "NBA" : teamID} Logo" />
+				alt="${!teamID ? "NBA" : "Selected Team"} Logo" />
 			</div>
 			<div id="arrow">→</div>
 			<div class="logo-container">
