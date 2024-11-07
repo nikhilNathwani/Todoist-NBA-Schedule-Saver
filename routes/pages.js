@@ -71,11 +71,13 @@ const htmlIntro = `
 			<title>Select Team and Project Settings</title>
 			<link rel="stylesheet" href="style.css" />
 		</head>
-		<body>`;
+		<body>
+`;
 const htmlOutro = `				
 			<script src="/scripts/handleInput.js"></script>
 		</body>
-	</html>`;
+	</html>
+`;
 
 const logoBanner = `
 	<div class="image-banner">
@@ -89,7 +91,8 @@ const logoBanner = `
 				alt="Todoist Brand Logo"
 			/>
 		</div>
-	</div>`;
+	</div>
+`;
 
 // Get teams for team picker (from the NBA schedule JSON file)
 async function getTeams() {
