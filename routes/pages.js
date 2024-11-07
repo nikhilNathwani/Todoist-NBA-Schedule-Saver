@@ -25,7 +25,7 @@ router.get("/configure-import", async (req, res) => {
 
 		// Construct the complete HTML
 		const html = `
-			${htmlIntro}
+			${makeHTMLIntro("Select Team and Project Settings")}
 			<div class="app-frame">
 				${makeLogoBanner()}
 				<form>
@@ -34,7 +34,8 @@ router.get("/configure-import", async (req, res) => {
 					<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
 				</form>
 				<div id="status-message"></div>
-			</div> 
+			</div>
+			<script src="/scripts/handleInput.js"></script>
 			${htmlOutro}`;
 		printReqSession(req);
 		res.send(html); // Send the dynamically constructed HTML
@@ -61,20 +62,21 @@ module.exports = router;
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-const htmlIntro = `
-	<!DOCTYPE html>
-		<html lang="en">
-		<head>
-			<meta charset="UTF-8" />
-			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<title>Select Team and Project Settings</title>
-			<link rel="stylesheet" href="style.css" />
-		</head>
-		<body>
-`;
+function makeHTMLIntro(pageTitle) {
+	return `
+		<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<title>${pageTitle}</title>
+				<link rel="stylesheet" href="style.css" />
+			</head>
+			<body>
+	`;
+}
 const htmlOutro = `				
-			<script src="/scripts/handleInput.js"></script>
 		</body>
 	</html>
 `;
