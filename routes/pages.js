@@ -25,17 +25,9 @@ router.get("/configure-import", async (req, res) => {
 		const projectPickerHTML = makeProjectPickerHTML(isInboxDefault);
 
 		// Construct the complete HTML
-		const html = `
-			<!DOCTYPE html>
-			<html lang="en">
-			<head>
-				<meta charset="UTF-8" />
-				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<title>Select Team and Project Settings</title>
-				<link rel="stylesheet" href="style.css" />
-			</head>
-			<body>
+		const html =
+			htmlIntro +
+			`
 				<div class="app-frame">
 					<div class="image-banner">
 						<div class="logo-container" id="nba-logo-container">	
@@ -56,10 +48,8 @@ router.get("/configure-import", async (req, res) => {
 					</form>
 					<div id="status-message"></div>
 				</div>
-				<script src="/scripts/handleInput.js"></script>
-			</body>
-			</html>
-		`;
+		` +
+			htmlOutro;
 		printReqSession(req);
 		res.send(html); // Send the dynamically constructed HTML
 	} catch (error) {
@@ -84,6 +74,22 @@ module.exports = router;
 //        HTML FORM ELEMENTS                 //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+const htmlIntro = `
+	<!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<title>Select Team and Project Settings</title>
+			<link rel="stylesheet" href="style.css" />
+		</head>
+		<body>`;
+const htmlOutro = `				
+			<script src="/scripts/handleInput.js"></script>
+		</body>
+	</html>`;
 
 // Get teams for team picker (from the NBA schedule JSON file)
 async function getTeams() {
