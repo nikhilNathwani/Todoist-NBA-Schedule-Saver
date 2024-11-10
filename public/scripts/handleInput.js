@@ -88,7 +88,7 @@ function pollStatus() {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 const submitButton = document.getElementById("submitButton");
 const teamLogo = document
-	.getElementById("nba-logo-container")
+	.getElementById("nbaLogoContainer")
 	.querySelector("img");
 const teamNames = {
 	ATL: "Hawks",

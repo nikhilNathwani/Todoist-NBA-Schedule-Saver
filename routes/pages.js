@@ -27,7 +27,9 @@ router.get("/configure-import", async (req, res) => {
 		const html = `
 			${makeHTMLIntro("Select Team and Project Settings")}
 			<div class="app-frame">
-				${makeLogoBanner()}
+				<div class="app-header">
+					${makeLogoBanner()}
+				</div>
 				<form>
 					${teamPickerHTML}
 					${projectPickerHTML}
@@ -84,7 +86,7 @@ const htmlOutro = `
 function makeLogoBanner(teamID = null) {
 	return `
 		<div class="logo-banner">
-			<div class="logo-container" id="nba-logo-container">	
+			<div class="logo-container" id="nbaLogoContainer">	
 				<img src="images/${!teamID ? "nba-logo" : teamID}.png" 
 				alt="${!teamID ? "NBA" : "Selected Team (" + teamID + ")"} Logo" />
 			</div>

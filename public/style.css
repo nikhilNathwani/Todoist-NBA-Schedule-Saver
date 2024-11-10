@@ -7,6 +7,12 @@
 	--clr-disabled: rgb(118, 118, 118);
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      APP FRAME                          */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 *,
 *::before,
 *::after {
@@ -18,20 +24,15 @@
 body {
 	font-family: Arial, sans-serif;
 
-	/* width: 100vw; */
-	/* margin: 0; */
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
-	/* background: radial-gradient(circle, #efefef 0%, #b9deed 100%); */
 	background-color: var(--clr-bg);
 }
 
 .app-frame {
-	/* width: min(100%, 350px); */
 	width: 350px;
 	height: 100svh;
 	margin-inline: 8vw;
@@ -43,18 +44,18 @@ body {
 	gap: 2rem;
 }
 
-#app-frame-landing {
-	justify-content: space-evenly;
-	gap: 0;
-}
-
-.landing-page-header {
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      APP HEADER                         */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.app-header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
 	text-align: center;
+	gap: 1rem;
 }
 
 h1 {
@@ -69,6 +70,8 @@ h3 {
 }
 
 .logo-banner {
+	font-size: 1.5rem;
+
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
@@ -81,12 +84,16 @@ h3 {
 	height: 40px;
 }
 
-.landing-page-header .logo-container {
+.logo-banner-large {
+	font-size: 2rem;
+}
+
+.logo-banner-large .logo-container {
 	width: 60px;
 	height: 60px;
 }
 
-#nba-logo-container {
+#nbaLogoContainer {
 	border: 1px solid lightgray;
 	border-radius: 6px;
 	background-color: white;
@@ -100,30 +107,20 @@ img {
 	width: auto;
 }
 
-#nba-logo-container img {
+#nbaLogoContainer img {
 	transform: scale(90%);
 }
 
-#arrow {
-	font-size: 1.5rem;
-}
-
-.landing-page-header #arrow {
-	font-size: 2rem;
-}
-
-.button-container {
-	width: 25ch;
-	display: flex;
-	flex-flow: column nowrap;
-	align-items: center;
-	justify-content: center;
-	gap: 1rem;
-}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      BUTTONS                            */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .button {
 	font-size: 16px;
 	text-align: center;
+	text-decoration: none;
 	color: var(--clr-light);
 
 	width: 100%;
@@ -131,10 +128,9 @@ img {
 	border: none;
 	border-radius: 8px;
 
-	cursor: pointer;
-	text-decoration: none;
-
 	background-color: var(--clr-accent);
+
+	cursor: pointer;
 
 	transition: transform 0.1s ease;
 }
@@ -161,13 +157,30 @@ img {
 /* Prevent hover and active styles for disabled buttons */
 .button:disabled:hover,
 .button:disabled:active {
-	background-color: var(
-		--clr-disabled
-	); /* Keep the disabled background color */
-	transform: none; /* Ensure no scale effect is applied */
+	background-color: var(--clr-disabled);
+	transform: none;
 }
 
-/* CONFIGURATION PAGE */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      LANDING PAGE                       */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.button-container {
+	width: 25ch;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      FORM PAGE                          */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 form {
 	width: 100%;
 	display: flex;
@@ -239,3 +252,9 @@ input[type="radio"] {
 label.disabled {
 	color: var(--clr-disabled);
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      CONFIRMATION PAGE                  */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
