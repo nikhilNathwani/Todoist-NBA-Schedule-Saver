@@ -24,7 +24,7 @@ router.post("/import-games", async (req, res) => {
 		return res.status(429).json({ message: "Import already in progress" }); // Prevent concurrent imports
 	}
 
-	importInProgress = true; // Set import status to "in progress"
+	importInProgress = true; // Set import status to "In Progress"
 
 	printReqSession(req);
 	const { team: teamID, project } = req.body;
