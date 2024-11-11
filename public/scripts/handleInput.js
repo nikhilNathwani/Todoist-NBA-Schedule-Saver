@@ -39,7 +39,11 @@ function startImport(team, project) {
 				document
 					.querySelector(".logo-banner")
 					.classList.add("logo-banner-large");
-				document.querySelector("form").classList.add("fade-out");
+				const form = document.querySelector("form");
+				form.classList.add("fade-out");
+				form.addEventListener("transitionend", () => {
+					form.remove(); // Remove the form from the DOM
+				});
 				pollStatus();
 			} else {
 				return response.json().then((data) => {
