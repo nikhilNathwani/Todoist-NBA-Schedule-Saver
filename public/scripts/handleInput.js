@@ -36,6 +36,9 @@ function startImport(team, project) {
 				document.getElementById("status-message").textContent =
 					"Status: Import started";
 				// Start polling the server for the import status
+				document
+					.querySelector(".logo-banner")
+					.classList.add("logo-banner-large");
 				pollStatus();
 			} else {
 				return response.json().then((data) => {

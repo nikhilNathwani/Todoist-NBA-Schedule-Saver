@@ -77,11 +77,14 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	gap: 1.25rem;
+
+	transition: font-size 0.3s ease;
 }
 
 .logo-container {
 	width: 40px;
 	height: 40px;
+	transition: width 0.3s ease, height 0.3 ease;
 }
 
 .logo-banner-large {

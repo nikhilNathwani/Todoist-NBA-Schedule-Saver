@@ -49,7 +49,6 @@ router.post("/import-games", async (req, res) => {
 			.finally(() => {
 				importInProgress = false; // Reset status regardless of success or failure
 			});
-
 		res.status(202).json({ message: "Import started" });
 	} catch (error) {
 		console.error("Error preparing import:", error);
