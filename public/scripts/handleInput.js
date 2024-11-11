@@ -40,14 +40,8 @@ function startImport(team, project) {
 				const form = document.querySelector("form");
 				form.classList.add("fade-out");
 				logoBanner.addEventListener("transitionend", () => {
-					form.classList.add("collapse");
-					form.addEventListener("transitionend", (event) => {
-						if (event.propertyName == "height") {
-							document.getElementById(
-								"status-message"
-							).textContent = "Status: Import started";
-						}
-					});
+					document.getElementById("status-message").textContent =
+						"Status: Import started";
 				});
 				pollStatus();
 			} else {

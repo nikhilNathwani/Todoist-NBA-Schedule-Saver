@@ -193,16 +193,12 @@ form {
 
 	height: fit-content;
 	opacity: 1;
-	transition: opacity 1s ease, transform 1s ease, height 1s ease;
+	transition: opacity 1s ease, transform 1s ease;
 }
 
 form.fade-out {
 	opacity: 0;
 	transform: translateX(-50px); /* Move it to the left */
-}
-
-form.collapse {
-	height: 0;
 }
 
 fieldset {
