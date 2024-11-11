@@ -40,9 +40,11 @@ function startImport(team, project) {
 				const form = document.querySelector("form");
 				form.classList.add("fade-out");
 				logoBanner.addEventListener("transitionend", () => {
-					form.remove();
-					document.getElementById("status-message").textContent =
-						"Status: Import started";
+					form.classList.add("collapse");
+					form.addEventListener("transitionend", () => {
+						document.getElementById("status-message").textContent =
+							"Status: Import started";
+					});
 				});
 				pollStatus();
 			} else {
