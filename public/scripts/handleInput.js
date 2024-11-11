@@ -41,9 +41,12 @@ function startImport(team, project) {
 				form.classList.add("fade-out");
 				logoBanner.addEventListener("transitionend", () => {
 					form.classList.add("collapse");
-					form.addEventListener("transitionend", () => {
-						document.getElementById("status-message").textContent =
-							"Status: Import started";
+					form.addEventListener("transitionend", (event) => {
+						if (event.propertyName == "height") {
+							document.getElementById(
+								"status-message"
+							).textContent = "Status: Import started";
+						}
 					});
 				});
 				pollStatus();
