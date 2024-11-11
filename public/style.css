@@ -193,7 +193,7 @@ form {
 
 	height: auto;
 	opacity: 1;
-	transition: opacity 1s ease, transform 1s ease, height 1s ease 1s;
+	transition: opacity 1s ease, transform 1s ease, height 1s ease 4s;
 }
 
 form.fade-out {
