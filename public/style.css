@@ -108,7 +108,7 @@ h3 {
 img {
 	height: 100%;
 	width: auto;
-	transition: width 1s ease, height 1s ease;
+	transition: width 1s ease 1s, height 1s ease 1s;
 }
 
 #nbaLogoContainer img {
