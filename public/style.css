@@ -78,13 +78,13 @@ h3 {
 	justify-content: center;
 	gap: 1.25rem;
 
-	transition: font-size 1s ease;
+	transition: font-size 1s ease 1s;
 }
 
 .logo-container {
 	width: 40px;
 	height: 40px;
-	transition: width 1s ease, height 1s ease;
+	transition: width 1s ease 1s, height 1s ease 1s;
 }
 
 .logo-banner-large {
