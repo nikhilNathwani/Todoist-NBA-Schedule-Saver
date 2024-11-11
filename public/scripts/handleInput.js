@@ -41,8 +41,10 @@ function startImport(team, project) {
 					.classList.add("logo-banner-large");
 				const form = document.querySelector("form");
 				form.classList.add("fade-out");
-				form.addEventListener("transitionend", () => {
-					form.remove(); // Remove the form from the DOM
+				form.addEventListener("transitionend", (event) => {
+					if (event.propertyName == "height") {
+						form.remove(); // Remove the form from the DOM
+					}
 				});
 				pollStatus();
 			} else {
