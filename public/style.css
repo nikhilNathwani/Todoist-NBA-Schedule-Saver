@@ -190,6 +190,14 @@ form {
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 2.5rem;
+
+	opacity: 1;
+	transition: opacity 1s ease, transform 1s ease;
+}
+
+form.fade-out {
+	opacity: 0;
+	transform: translateX(-50px); /* Move it to the left */
 }
 
 fieldset {

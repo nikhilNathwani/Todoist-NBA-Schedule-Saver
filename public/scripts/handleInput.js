@@ -39,6 +39,7 @@ function startImport(team, project) {
 				document
 					.querySelector(".logo-banner")
 					.classList.add("logo-banner-large");
+				document.querySelector("form").classList.add("fade-out");
 				pollStatus();
 			} else {
 				return response.json().then((data) => {
