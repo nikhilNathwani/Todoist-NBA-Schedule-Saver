@@ -193,13 +193,14 @@ form {
 
 	height: auto;
 	opacity: 1;
-	transition: opacity 1s ease, transform 1s ease, height 1s ease;
+	transition: opacity 1s ease, transform 1s ease, height 1s ease 1s;
 }
 
 form.fade-out {
 	opacity: 0;
 	height: 0;
 	overflow: hidden;
+
 	transform: translateX(-50px); /* Move it to the left */
 }
 
