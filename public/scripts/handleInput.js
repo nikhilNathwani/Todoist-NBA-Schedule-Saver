@@ -33,19 +33,16 @@ function startImport(team, project) {
 		.then((response) => {
 			if (response.ok) {
 				console.log("Import started successfully.");
-				document.getElementById("status-message").textContent =
-					"Status: Import started";
 				// Start polling the server for the import status
-				document
-					.querySelector(".logo-banner")
-					.classList.add("logo-banner-large");
+				const logoBanner = document.querySelector(".logo-banner");
+
+				logoBanner.classList.add("logo-banner-large");
 				const form = document.querySelector("form");
 				form.classList.add("fade-out");
-				// form.addEventListener("transitionend", (event) => {
-				// if (event.propertyName == "height") {
-				// form.remove(); // Remove the form from the DOM
-				// }
-				// });
+				logoBanner.addEventListener("transitionend", () => {
+					document.getElementById("status-message").textContent =
+						"Status: Import started";
+				});
 				pollStatus();
 			} else {
 				return response.json().then((data) => {
