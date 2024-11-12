@@ -39,16 +39,21 @@ body {
 	margin: 2rem 8vw;
 
 	display: grid;
-	grid-template-rows: min-content min-content;
+	grid-template-rows: auto auto;
 
-	transition: grid-template-rows 1s ease 1s;
+	/* transition: grid-template-rows 1s ease 1s; */
 }
 
 .app-content {
+	max-height: 100%;
+
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
 	justify-content: center;
+
+	overflow: hidden; /* Hide content overflow for smooth collapse */
+	transition: max-height 1 ease; /* Transition effect */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -281,8 +286,12 @@ label.disabled {
 /*      ANIMATION                          */
 /*                                         */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.app-frame.loading {
+/* .app-frame.loading {
 	grid-template-rows: min-content 0;
+} */
+
+.app-frame.loading .app-content {
+	max-height: 0;
 }
 
 /* .app-frame.loading form {
