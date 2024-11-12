@@ -126,7 +126,7 @@ img {
 
 .app-status {
 	opacity: 0;
-	transition: opacity 1s ease 1s;
+	transition: opacity 1s ease 3s;
 }
 
 .app-status.fade-in {
