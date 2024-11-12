@@ -166,7 +166,5 @@ function showImportStatusUI(isImporting, errorMessage = null) {
 	appFrame.addEventListener("transitionend", () => {
 		growLogoBanner();
 		showLoadingStatus(isImporting, errorMessage);
-		document.getElementById("status-message").textContent =
-			"Status: Import started";
 	});
 }
