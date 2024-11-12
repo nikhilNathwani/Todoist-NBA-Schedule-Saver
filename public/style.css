@@ -53,7 +53,7 @@ body {
 	justify-content: center;
 
 	overflow: hidden; /* Hide content overflow for smooth collapse */
-	transition: max-height 1 ease; /* Transition effect */
+	transition: max-height 1s ease; /* Transition effect */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -205,7 +205,6 @@ form {
 	flex-flow: column nowrap;
 	gap: 2.5rem;
 
-	overflow: hidden;
 	opacity: 1;
 	transition: opacity 1s ease, transform 1s ease;
 }
