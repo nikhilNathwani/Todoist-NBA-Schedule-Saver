@@ -303,12 +303,11 @@ label.disabled {
 	grid-template-rows: min-content 0;
 } */
 
-/* .app-frame.loading .app-content {
-	max-height: 0;
-} */
+.app-frame.loading .app-content {
+	overflow: hidden;
+}
 
 .app-frame.loading form {
-	overflow: hidden;
 	opacity: 0;
 	transform: translateX(-50px);
 }
