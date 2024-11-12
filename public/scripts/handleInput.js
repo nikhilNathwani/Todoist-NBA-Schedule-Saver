@@ -34,9 +34,9 @@ function startImport(team, project) {
 			if (response.ok) {
 				console.log("Import started successfully.");
 				// Start polling the server for the import status
-				const logoBanner = document.querySelector(".logo-banner");
+				// const logoBanner = document.querySelector(".logo-banner");
 
-				logoBanner.classList.add("logo-banner-large");
+				// logoBanner.classList.add("logo-banner-large");
 				const appFrame = document.querySelector(".app-frame");
 				appFrame.classList.add("loading");
 				// appFrame.addEventListener("transitionend", () => {
