@@ -69,17 +69,6 @@ body {
 	text-align: center;
 }
 
-h1 {
-	font-size: 1.875rem;
-	color: var(--clr-dark);
-}
-
-h3 {
-	font-size: 1.125rem;
-	line-height: 1.25;
-	font-weight: normal;
-}
-
 .logo-banner {
 	font-size: 1.5rem;
 
@@ -138,6 +127,22 @@ img {
 	opacity: 1;
 	max-height: 8rem;
 }
+
+.app-status * {
+	margin-top: 1rem;
+}
+
+h1 {
+	font-size: 1.875rem;
+	color: var(--clr-dark);
+}
+
+h3 {
+	font-size: 1.125rem;
+	line-height: 1.25;
+	font-weight: normal;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*                                         */
 /*      BUTTONS                            */
