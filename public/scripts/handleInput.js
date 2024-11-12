@@ -39,10 +39,10 @@ function startImport(team, project) {
 				logoBanner.classList.add("logo-banner-large");
 				const appFrame = document.querySelector(".app-frame");
 				appFrame.classList.add("loading");
-				appFrame.addEventListener("transitionend", () => {
-					document.getElementById("status-message").textContent =
-						"Status: Import started";
-				});
+				// appFrame.addEventListener("transitionend", () => {
+				// 	document.getElementById("status-message").textContent =
+				// 		"Status: Import started";
+				// });
 				pollStatus();
 			} else {
 				return response.json().then((data) => {
