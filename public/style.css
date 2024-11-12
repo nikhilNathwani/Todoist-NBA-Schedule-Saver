@@ -200,7 +200,6 @@ form {
 	flex-flow: column nowrap;
 	gap: 2.5rem;
 
-	height: fit-content;
 	opacity: 1;
 	transition: opacity 1s ease, transform 1s ease;
 }
