@@ -34,9 +34,9 @@ function startImport(team, project) {
 			if (response.ok) {
 				console.log("Import started successfully.");
 				// Start polling the server for the import status
-				// const logoBanner = document.querySelector(".logo-banner");
+				const logoBanner = document.querySelector(".logo-banner");
 
-				// logoBanner.classList.add("logo-banner-large");
+				logoBanner.classList.add("logo-banner-large");
 				const appFrame = document.querySelector(".app-frame");
 				appFrame.classList.add("loading");
 				// appFrame.addEventListener("transitionend", () => {
@@ -47,18 +47,18 @@ function startImport(team, project) {
 			} else {
 				return response.json().then((data) => {
 					console.error("Error starting import:", data.message);
-					document.getElementById(
-						"status-message"
-					).textContent = `Failed to start import: ${data.message}`;
+					// document.getElementById(
+					// 	"status-message"
+					// ).textContent = `Failed to start import: ${data.message}`;
 					alert(`Failed to start import: ${data.message}`);
 				});
 			}
 		})
 		.catch((error) => {
 			console.error("Error starting import:", error);
-			document.getElementById(
-				"status-message"
-			).textContent = `Failed to start import: ${error}`;
+			// document.getElementById(
+			// 	"status-message"
+			// ).textContent = `Failed to start import: ${error}`;
 		});
 }
 
@@ -73,11 +73,11 @@ function pollStatus() {
 			})
 			.then((data) => {
 				if (data.inProgress) {
-					document.getElementById("status-message").textContent =
-						"Status: Import in progress...";
+					// document.getElementById("status-message").textContent =
+					// 	"Status: Import in progress...";
 				} else {
-					document.getElementById("status-message").textContent =
-						"Status: Import complete!";
+					// document.getElementById("status-message").textContent =
+					// 	"Status: Import complete!";
 					clearInterval(intervalId); // Stop polling once import is complete
 				}
 			})

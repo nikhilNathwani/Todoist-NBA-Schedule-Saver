@@ -45,7 +45,7 @@ body {
 }
 
 .app-content {
-	max-height: 500px;
+	max-height: 1000px;
 
 	display: flex;
 	flex-flow: column nowrap;
@@ -53,7 +53,7 @@ body {
 	justify-content: center;
 
 	overflow: hidden; /* Hide content overflow for smooth collapse */
-	transition: max-height 1s ease; /* Transition effect */
+	transition: max-height 1s ease 1s; /* Transition effect */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -293,7 +293,7 @@ label.disabled {
 	max-height: 0;
 }
 
-/* .app-frame.loading form {
+.app-frame.loading form {
 	opacity: 0;
-	transform: translateX(-50px); 
-} */
+	transform: translateX(-50px);
+}
