@@ -128,12 +128,13 @@ img {
 
 .app-status {
 	opacity: 0;
-	height: auto;
-	transition: height 1s ease 3s, opacity 1s ease 3s;
+	max-height: 0;
+	transition: max-height 1s ease 3s, opacity 1s ease 3s;
 }
 
 .app-status.fade-in {
 	opacity: 1;
+	max-height: 8rem;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*                                         */
