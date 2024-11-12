@@ -30,7 +30,7 @@ router.get("/configure-import", async (req, res) => {
 				<div class="app-header">
 					${makeLogoBanner()}
 				</div>
-				<div class"app-content">
+				<div class="app-content">
 					<form>
 						${teamPickerHTML}
 						${projectPickerHTML}
