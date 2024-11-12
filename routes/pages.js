@@ -41,7 +41,6 @@ router.get("/configure-import", async (req, res) => {
 						<button id="submitButton" class="button" type="submit" disabled>Import schedule</button>
 					</form>
 				</div>
-				<div id="status-message"></div>
 			</div>
 			<script src="/scripts/handleInput.js"></script>
 			${htmlOutro}`;
