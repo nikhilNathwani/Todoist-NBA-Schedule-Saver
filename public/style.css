@@ -81,29 +81,31 @@ h3 {
 .logo-banner {
 	font-size: 1.5rem;
 
+	height: 40px;
+
 	display: flex;
 	flex-flow: row nowrap;
 	align-items: center;
 	justify-content: center;
 	gap: 1.25rem;
 
-	transition: font-size 1s ease;
+	transition: height 1s ease, font-size 1s ease;
 }
 
 .logo-container {
-	width: 40px;
-	height: 40px;
-	transition: width 1s ease, height 1s ease;
+	height: 100%;
+	aspect-ratio: 1/1;
+	/* transition: width 1s ease, height 1s ease; */
 }
 
 .logo-banner-large {
+	height: 60px;
 	font-size: 2rem;
 }
 
-.logo-banner-large .logo-container {
+/* .logo-banner-large .logo-container {
 	width: 60px;
-	height: 60px;
-}
+} */
 
 #nbaLogoContainer {
 	border: 1px solid lightgray;
@@ -117,7 +119,7 @@ h3 {
 img {
 	height: 100%;
 	width: auto;
-	transition: width 1s ease, height 1s ease;
+	/* transition: width 1s ease, height 1s ease; */
 }
 
 #nbaLogoContainer img {
