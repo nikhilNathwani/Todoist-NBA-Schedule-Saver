@@ -40,6 +40,8 @@ body {
 
 	display: grid;
 	grid-template-rows: min-content min-content;
+
+	transition: grid-template-rows 1s ease 1s;
 }
 
 .app-content {
@@ -203,11 +205,6 @@ form {
 	transition: opacity 1s ease, transform 1s ease;
 }
 
-form.fade-out {
-	opacity: 0;
-	transform: translateX(-50px); /* Move it to the left */
-}
-
 fieldset {
 	display: flex;
 	flex-flow: column nowrap;
@@ -278,3 +275,17 @@ label.disabled {
 /*      CONFIRMATION PAGE                  */
 /*                                         */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*                                         */
+/*      ANIMATION                          */
+/*                                         */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.app-frame.loading {
+	grid-template-rows: min-content 0;
+}
+
+.app-frame.loading form {
+	opacity: 0;
+	transform: translateX(-50px); /* Move it to the left */
+}

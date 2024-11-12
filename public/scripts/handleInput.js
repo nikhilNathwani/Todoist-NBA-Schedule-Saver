@@ -37,9 +37,9 @@ function startImport(team, project) {
 				const logoBanner = document.querySelector(".logo-banner");
 
 				logoBanner.classList.add("logo-banner-large");
-				const form = document.querySelector("form");
-				form.classList.add("fade-out");
-				logoBanner.addEventListener("transitionend", () => {
+				const appFrame = document.querySelector(".app-frame");
+				appFrame.classList.add("loading");
+				appFrame.addEventListener("transitionend", () => {
 					document.getElementById("status-message").textContent =
 						"Status: Import started";
 				});
