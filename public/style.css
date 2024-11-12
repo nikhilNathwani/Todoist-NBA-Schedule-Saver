@@ -41,7 +41,7 @@ body {
 	display: grid;
 	grid-template-rows: auto auto;
 
-	/* transition: grid-template-rows 1s ease 1s; */
+	/* transition: grid-template-rows 1s ease; */
 }
 
 .app-content {
@@ -87,13 +87,13 @@ h3 {
 	justify-content: center;
 	gap: 1.25rem;
 
-	transition: font-size 1s ease 1s;
+	transition: font-size 1s ease;
 }
 
 .logo-container {
 	width: 40px;
 	height: 40px;
-	transition: width 1s ease 1s, height 1s ease 1s;
+	transition: width 1s ease, height 1s ease;
 }
 
 .logo-banner-large {
@@ -117,13 +117,21 @@ h3 {
 img {
 	height: 100%;
 	width: auto;
-	transition: width 1s ease 1s, height 1s ease 1s;
+	transition: width 1s ease, height 1s ease;
 }
 
 #nbaLogoContainer img {
 	transform: scale(90%);
 }
 
+.app-status {
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+
+.app-status.fade-in {
+	opacity: 1;
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*                                         */
 /*      BUTTONS                            */

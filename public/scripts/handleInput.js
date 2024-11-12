@@ -34,31 +34,21 @@ function startImport(team, project) {
 			if (response.ok) {
 				console.log("Import started successfully.");
 				// Start polling the server for the import status
-				const logoBanner = document.querySelector(".logo-banner");
-
-				logoBanner.classList.add("logo-banner-large");
-				const appFrame = document.querySelector(".app-frame");
-				appFrame.classList.add("loading");
-				// appFrame.addEventListener("transitionend", () => {
-				// 	document.getElementById("status-message").textContent =
-				// 		"Status: Import started";
-				// });
+				showImportStatusUI();
 				pollStatus();
 			} else {
 				return response.json().then((data) => {
 					console.error("Error starting import:", data.message);
-					// document.getElementById(
-					// 	"status-message"
-					// ).textContent = `Failed to start import: ${data.message}`;
-					alert(`Failed to start import: ${data.message}`);
+					showImportStatusUI(
+						`Failed to start import: ${data.message}`
+					);
+					// alert(`Failed to start import: ${data.message}`);
 				});
 			}
 		})
 		.catch((error) => {
 			console.error("Error starting import:", error);
-			// document.getElementById(
-			// 	"status-message"
-			// ).textContent = `Failed to start import: ${error}`;
+			showImportStatusUI(`Failed to start import: ${error}`);
 		});
 }
 
@@ -150,4 +140,33 @@ function updateNewProjectSubtitle(selectedTeam) {
 function isInboxDefault() {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get("isInboxDefault") !== "false";
+}
+
+function growLogoBanner() {
+	const logoBanner = document.querySelector(".logo-banner");
+	logoBanner.classList.add("logo-banner-large");
+}
+
+function showLoadingStatus(isImporting, errorMessage) {
+	const status = document.querySelector("h1");
+	status.textContent = isImporting ? "Importing..." : "An error occurred";
+
+	const subtitle = document.querySelector("h3");
+	subtitle.textContent = isImporting
+		? "Please keep this window open"
+		: errorMessage;
+
+	const statusContainer = document.querySelector(".app-status");
+	statusContainer.classList.add("fade-in");
+}
+
+function showImportStatusUI(isImporting, errorMessage = null) {
+	const appFrame = document.querySelector(".app-frame");
+	appFrame.classList.add("loading");
+	appFrame.addEventListener("transitionend", () => {
+		growLogoBanner();
+		showLoadingStatus(isImporting, errorMessage);
+		document.getElementById("status-message").textContent =
+			"Status: Import started";
+	});
 }

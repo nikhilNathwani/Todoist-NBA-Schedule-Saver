@@ -29,6 +29,10 @@ router.get("/configure-import", async (req, res) => {
 			<div class="app-frame">
 				<div class="app-header">
 					${makeLogoBanner()}
+					<div class="app-status">
+						<h1></h1>
+						<h3></h3>
+					</div>
 				</div>
 				<div class="app-content">
 					<form>
