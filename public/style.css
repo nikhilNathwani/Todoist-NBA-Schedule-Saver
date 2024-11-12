@@ -45,15 +45,10 @@ body {
 }
 
 .app-content {
-	max-height: 1000px;
-
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
 	justify-content: center;
-
-	overflow: hidden; /* Hide content overflow for smooth collapse */
-	transition: max-height 1s ease 1s; /* Transition effect */
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -289,9 +284,9 @@ label.disabled {
 	grid-template-rows: min-content 0;
 } */
 
-.app-frame.loading .app-content {
+/* .app-frame.loading .app-content {
 	max-height: 0;
-}
+} */
 
 .app-frame.loading form {
 	opacity: 0;
