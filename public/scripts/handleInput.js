@@ -1,4 +1,4 @@
-import { enableSubmitButton, updateTeamSpecificUI } from ("./formView.js");
+const { enableSubmitButton, updateTeamSpecificUI } = require("./formView.js");
 const form = document.querySelector("form");
 const teamSelect = form.elements["team"];
 const projectSelect = form.elements["project"];
@@ -28,7 +28,10 @@ function startImport(team, project) {
 				pollStatus();
 			} else {
 				return response.json().then((data) => {
-					console.error("Error starting import in THEN-ELSE:", data.message);
+					console.error(
+						"Error starting import in THEN-ELSE:",
+						data.message
+					);
 					showImportStatusUI(importStatus.ERROR, data.message);
 					// alert(`Failed to start import: ${data.message}`);
 				});
@@ -73,27 +76,35 @@ function pollStatus() {
 //           HELPER FUNCTIONS                //
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-const importStatus= {
+const importStatus = {
 	LOADING: 0,
 	SUCCESS: 1,
-	ERROR: 2
-}
+	ERROR: 2,
+};
 function getStatusMessage(status) {
 	switch (status) {
-		case importStatus.LOADING: return "Importing schedule...";
-		case importStatus.SUCCESS: return "Import complete!";
-		case importStatus.ERROR: return "An error occurred";
-		default: return "An error occurred";
-  }
+		case importStatus.LOADING:
+			return "Importing schedule...";
+		case importStatus.SUCCESS:
+			return "Import complete!";
+		case importStatus.ERROR:
+			return "An error occurred";
+		default:
+			return "An error occurred";
+	}
 }
 
-function getStatusSubtitle(status, errorMessage=null) {
+function getStatusSubtitle(status, errorMessage = null) {
 	switch (status) {
-		case importStatus.LOADING: return "Please keep this window open";
-		case importStatus.SUCCESS: return "Schedule added to Todoist";
-		case importStatus.ERROR: return `${errorMessage}`;
-		default: return "Unknown error";
-  }
+		case importStatus.LOADING:
+			return "Please keep this window open";
+		case importStatus.SUCCESS:
+			return "Schedule added to Todoist";
+		case importStatus.ERROR:
+			return `${errorMessage}`;
+		default:
+			return "Unknown error";
+	}
 }
 
 function growLogoBanner() {
@@ -120,4 +131,3 @@ function showImportStatusUI(status, errorMessage = null) {
 		showLoadingStatus(status, errorMessage);
 	});
 }
-
