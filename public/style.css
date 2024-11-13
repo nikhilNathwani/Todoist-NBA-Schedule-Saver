@@ -199,9 +199,12 @@ h3 {
 	grid-template-rows: 1fr 1fr;
 }
 
-#appFrameLanding h1,
-#appFrameLanding h3 {
+#appFrameLanding h1 {
 	margin-top: 2rem;
+}
+
+#appFrameLanding h3 {
+	margin-top: 1rem;
 }
 
 .button-container {
