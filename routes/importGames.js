@@ -36,7 +36,12 @@ router.post("/import-games", async (req, res) => {
 			color: teamColor,
 			schedule,
 		} = await getTeamData(teamID);
-		const projectID = await getProjectID(api, project, teamName, teamColor);
+		const projectID = await getProjectID(
+			api,
+			project,
+			`${teamName} schedule`,
+			teamColor
+		);
 
 		// Start the import process in the background
 		importSchedule(api, schedule, projectID, teamName)
