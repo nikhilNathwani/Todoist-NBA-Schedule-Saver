@@ -327,7 +327,7 @@ form {
 	-Arrow fades out and turns into loading spinner
 */
 .app-status {
-	transition: max-height 1s ease 3s, opacity 1s ease 3s;
+	transition: max-height 1s ease 1s, opacity 1s ease 1s;
 }
 
 .app-status.fade-in {
