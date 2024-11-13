@@ -53,11 +53,13 @@ function pollStatus() {
 			})
 			.then((data) => {
 				if (data.inProgress) {
+					console.log("Import in progress...");
 					// document.getElementById("status-message").textContent =
 					// 	"Status: Import in progress...";
 				} else {
 					// document.getElementById("status-message").textContent =
 					// 	"Status: Import complete!";
+					console.log("Import complete!");
 					showImportStatusUI(importStatus.SUCCESS);
 					clearInterval(intervalId); // Stop polling once import is complete
 				}
