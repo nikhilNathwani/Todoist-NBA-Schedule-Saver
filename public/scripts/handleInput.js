@@ -3,8 +3,8 @@ const teamSelect = form.elements["team"];
 const projectSelect = form.elements["project"];
 
 teamSelect.addEventListener("change", function () {
-	formView.enableSubmitButton();
-	formView.updateTeamSpecificUI(teamSelect.value);
+	enableSubmitButton();
+	updateTeamSpecificUI(teamSelect.value);
 });
 
 form.addEventListener("submit", function (event) {
