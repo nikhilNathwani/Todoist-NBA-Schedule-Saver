@@ -112,7 +112,7 @@ function getStatusSubtitle(status, errorMessage = null) {
 function getStatusArrow(status) {
 	switch (status) {
 		case importStatus.LOADING:
-			return `<i class="fa-solid fa-arrow-rotate-right"></i>`;
+			return `<i class="fa-solid fa-arrow-rotate-right spinner"></i>`;
 		case importStatus.SUCCESS:
 			return `<i class="fa-solid fa-check"></i>`;
 		case importStatus.ERROR:
