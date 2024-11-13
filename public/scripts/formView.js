@@ -38,11 +38,11 @@ const newProjectSubtitle = document
 	.getElementById("newProject")
 	.querySelector("small");
 
-function enableSubmitButton() {
+export function enableSubmitButton() {
 	submitButton.disabled = false;
 }
 
-function updateTeamSpecificUI(selectedTeam) {
+export function updateTeamSpecificUI(selectedTeam) {
 	updateTeamLogo(selectedTeam);
 	updateNewProjectSubtitle(selectedTeam);
 }
@@ -62,8 +62,3 @@ function isInboxDefault() {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get("isInboxDefault") !== "false";
 }
-
-module.exports = {
-	enableSubmitButton,
-	updateTeamSpecificUI,
-};
