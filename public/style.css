@@ -70,7 +70,7 @@ body {
 }
 
 .logo-banner {
-	font-size: 1.5rem;
+	font-size: 1.125rem;
 
 	height: 40px;
 
@@ -91,7 +91,8 @@ body {
 
 .logo-banner-large {
 	height: 60px;
-	font-size: 2rem;
+	font-size: 1.5rem;
+	gap: 1.625rem;
 }
 
 /* .logo-banner-large .logo-container {

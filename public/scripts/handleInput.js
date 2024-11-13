@@ -114,7 +114,7 @@ function getStatusArrow(status) {
 		case importStatus.LOADING:
 			return `<i class="fa-solid fa-arrow-rotate-right"></i>`;
 		case importStatus.SUCCESS:
-			return `<i class="fa-regular fa-circle-check"></i>`;
+			return `<i class="fa-solid fa-check"></i>`;
 		case importStatus.ERROR:
 			return `<i class="fa-solid fa-triangle-exclamation"></i>`;
 		default:
