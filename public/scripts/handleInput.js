@@ -113,8 +113,8 @@ function growLogoBanner() {
 }
 
 function showLoadingStatus(status, errorMessage) {
-	const status = document.querySelector("h1");
-	status.textContent = getStatusMessage(status);
+	const statusTitle = document.querySelector("h1");
+	statusTitle.textContent = getStatusMessage(status);
 
 	const subtitle = document.querySelector("h3");
 	subtitle.textContent = getStatusSubtitle(status, errorMessage);
