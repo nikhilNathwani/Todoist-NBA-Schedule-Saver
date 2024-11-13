@@ -80,6 +80,10 @@ function makeHTMLIntro(pageTitle) {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>${pageTitle}</title>
 				<link rel="stylesheet" href="style.css" />
+				<script
+					src="https://kit.fontawesome.com/caba6ce64c.js"
+					crossorigin="anonymous"
+				></script>
 			</head>
 			<body>
 	`;
@@ -96,7 +100,9 @@ function makeLogoBanner(teamID = null) {
 				<img src="images/${!teamID ? "nba-logo" : teamID}.png" 
 				alt="${!teamID ? "NBA" : "Selected Team (" + teamID + ")"} Logo" />
 			</div>
-			<div id="arrow">→</div>
+			<div id="arrow">
+				<i class="fa-solid fa-arrow-right"></i>
+			</div>
 			<div class="logo-container">
 				<img
 					src="images/todoist-color-logo.png"
