@@ -42,8 +42,6 @@ body {
 	display: grid;
 	grid-template-rows: min-content 1fr;
 	gap: 2rem;
-
-	/* transition: grid-template-rows 1s ease; */
 }
 
 .app-content {
@@ -53,7 +51,6 @@ body {
 	justify-content: center;
 
 	max-height: 1000px;
-	transition: max-height 2s ease;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -79,14 +76,11 @@ body {
 	align-items: center;
 	justify-content: center;
 	gap: 1.25rem;
-
-	transition: height 1s ease, font-size 1s ease;
 }
 
 .logo-container {
 	height: 100%;
 	aspect-ratio: 1/1;
-	/* transition: width 1s ease, height 1s ease; */
 }
 
 .logo-banner-large {
@@ -94,10 +88,6 @@ body {
 	font-size: 1.5rem;
 	gap: 1.625rem;
 }
-
-/* .logo-banner-large .logo-container {
-	width: 60px;
-} */
 
 #nbaLogoContainer {
 	border: 1px solid lightgray;
@@ -111,7 +101,6 @@ body {
 img {
 	height: 100%;
 	width: auto;
-	/* transition: width 1s ease, height 1s ease; */
 }
 
 #nbaLogoContainer img {
@@ -121,7 +110,6 @@ img {
 .app-status {
 	opacity: 0;
 	max-height: 0;
-	transition: max-height 1s ease 3s, opacity 1s ease 3s;
 }
 
 .app-status.fade-in {
@@ -226,7 +214,6 @@ form {
 	gap: 2.5rem;
 
 	opacity: 1;
-	transition: opacity 1s ease, transform 1s ease;
 }
 
 fieldset {
@@ -305,15 +292,45 @@ label.disabled {
 /*      ANIMATION                          */
 /*                                         */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* .app-frame.loading {
-	grid-template-rows: min-content 0;
-} */
 
-.app-frame.loading .app-content {
-	overflow: hidden;
+/* Transition 1: 
+	-Immediately upon hitting Submit button
+	-Form fades out to the left for 1s
+*/
+form {
+	transition: opacity 1s ease, transform 1s ease;
 }
 
 .app-frame.loading form {
 	opacity: 0;
 	transform: translateX(-50px);
+}
+
+/* Transition 2: 
+	-After form fades out (1s delay)
+	-Logo banner increases in size
+	-B/c app-frame is fixed height, this leaves less room
+	    for app-content (form), so make it's overflow hidden 
+		so that a vertical scrollbar doesnt appear
+*/
+.logo-banner {
+	transition: height 1s ease 1s, font-size 1s ease 1s;
+}
+
+.app-frame.loading .app-content {
+	overflow: hidden;
+}
+
+/* Transition 3: 
+	-Also after form fades out (1s delay)
+	-App-status fades in
+	-Arrow fades out and turns into loading spinner
+*/
+.app-status {
+	transition: max-height 1s ease 3s, opacity 1s ease 3s;
+}
+
+.app-status.fade-in {
+	opacity: 1;
+	max-height: 8rem;
 }
