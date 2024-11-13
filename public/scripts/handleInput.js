@@ -125,6 +125,7 @@ function showLoadingStatus(status, errorMessage) {
 }
 
 function showImportStatusUI(status, errorMessage = null) {
+	console.log("in showStatus:", status);
 	const appFrame = document.querySelector(".app-frame");
 	appFrame.classList.add("loading");
 	appFrame.addEventListener("transitionend", () => {
