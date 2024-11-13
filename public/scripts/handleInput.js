@@ -86,7 +86,7 @@ const importStatus = {
 function getStatusMessage(status) {
 	switch (status) {
 		case importStatus.LOADING:
-			return "Importing schedule...";
+			return "Importing schedule";
 		case importStatus.SUCCESS:
 			return "Import complete!";
 		case importStatus.ERROR:
