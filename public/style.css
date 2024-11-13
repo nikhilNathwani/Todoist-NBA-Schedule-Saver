@@ -336,7 +336,7 @@ form {
 }
 
 .spinner {
-	animation: spin 2s linear infinite 1s;
+	animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
