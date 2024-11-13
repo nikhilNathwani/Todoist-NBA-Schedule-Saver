@@ -62,3 +62,16 @@ function isInboxDefault() {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get("isInboxDefault") !== "false";
 }
+
+function growLogoBanner() {
+	const logoBanner = document.querySelector(".logo-banner");
+	logoBanner.classList.add("logo-banner-large");
+}
+
+function fadeOutForm() {
+	const appFrame = document.querySelector(".app-frame");
+	appFrame.classList.add("loading");
+	appFrame.addEventListener("transitionend", () => {
+		growLogoBanner();
+	});
+}

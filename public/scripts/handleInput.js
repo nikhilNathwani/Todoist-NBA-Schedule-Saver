@@ -9,6 +9,7 @@ teamSelect.addEventListener("change", function () {
 
 form.addEventListener("submit", function (event) {
 	event.preventDefault(); // Prevent the form from submitting in the traditional way
+	fadeOutForm();
 	startImport(teamSelect.value, projectSelect.value);
 });
 
@@ -108,12 +109,8 @@ function getStatusSubtitle(status, errorMessage = null) {
 	}
 }
 
-function growLogoBanner() {
-	const logoBanner = document.querySelector(".logo-banner");
-	logoBanner.classList.add("logo-banner-large");
-}
-
-function showLoadingStatus(status, errorMessage) {
+function showImportStatusUI(status, errorMessage = null) {
+	console.log("in showStatus:", status);
 	const statusTitle = document.querySelector("h1");
 	console.log("setting app-status title to:", getStatusMessage(status));
 	statusTitle.textContent = getStatusMessage(status);
@@ -127,14 +124,4 @@ function showLoadingStatus(status, errorMessage) {
 
 	const statusContainer = document.querySelector(".app-status");
 	statusContainer.classList.add("fade-in");
-}
-
-function showImportStatusUI(status, errorMessage = null) {
-	console.log("in showStatus:", status);
-	const appFrame = document.querySelector(".app-frame");
-	appFrame.classList.add("loading");
-	appFrame.addEventListener("transitionend", () => {
-		growLogoBanner();
-		showLoadingStatus(status, errorMessage);
-	});
 }
