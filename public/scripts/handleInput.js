@@ -109,7 +109,23 @@ function getStatusSubtitle(status, errorMessage = null) {
 	}
 }
 
+function getStatusArrow(status) {
+	switch (status) {
+		case importStatus.LOADING:
+			return `<i class="fa-solid fa-arrow-rotate-right"></i>`;
+		case importStatus.SUCCESS:
+			return `<i class="fa-regular fa-circle-check"></i>`;
+		case importStatus.ERROR:
+			return `<i class="fa-solid fa-triangle-exclamation"></i>`;
+		default:
+			return `<i class="fa-solid fa-arrow-right"></i>`;
+	}
+}
+
 function showImportStatusUI(status, errorMessage = null) {
+	const arrow = document.getElementById("arrow");
+	arrow.innerHTML = getStatusArrow(status);
+
 	console.log("in showStatus:", status);
 	const statusTitle = document.querySelector("h1");
 	console.log("setting app-status title to:", getStatusMessage(status));
