@@ -314,7 +314,7 @@ form {
 		so that a vertical scrollbar doesnt appear
 */
 .logo-banner {
-	transition: height 1s ease 1s, font-size 1s ease 1s;
+	transition: height 1s ease 1s, font-size 1s ease 1s, gap 1s ease 1s;
 }
 
 .app-frame.loading .app-content {
