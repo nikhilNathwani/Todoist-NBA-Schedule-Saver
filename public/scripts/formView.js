@@ -38,11 +38,11 @@ const newProjectSubtitle = document
 	.getElementById("newProject")
 	.querySelector("small");
 
-export function enableSubmitButton() {
+function enableSubmitButton() {
 	submitButton.disabled = false;
 }
 
-export function updateTeamSpecificUI(selectedTeam) {
+function updateTeamSpecificUI(selectedTeam) {
 	updateTeamLogo(selectedTeam);
 	updateNewProjectSubtitle(selectedTeam);
 }

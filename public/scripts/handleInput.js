@@ -1,11 +1,10 @@
-import { enableSubmitButton, updateTeamSpecificUI } from "./formView.js";
 const form = document.querySelector("form");
 const teamSelect = form.elements["team"];
 const projectSelect = form.elements["project"];
 
 teamSelect.addEventListener("change", function () {
-	enableSubmitButton();
-	updateTeamSpecificUI(teamSelect.value);
+	formView.enableSubmitButton();
+	formView.updateTeamSpecificUI(teamSelect.value);
 });
 
 form.addEventListener("submit", function (event) {

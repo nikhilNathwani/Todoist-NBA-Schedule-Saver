@@ -42,6 +42,7 @@ router.get("/configure-import", async (req, res) => {
 					</form>
 				</div>
 			</div>
+			<script src="/scripts/formView.js"></script>
 			<script src="/scripts/handleInput.js"></script>
 			${htmlOutro}`;
 		printReqSession(req);
