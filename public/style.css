@@ -164,6 +164,7 @@ h3 {
 }
 
 .button-secondary {
+	display: none; /* Hidden until I make demo*/
 	background-color: var(--clr-light);
 	color: var(--clr-accent);
 	border: 1px solid var(--clr-accent);
