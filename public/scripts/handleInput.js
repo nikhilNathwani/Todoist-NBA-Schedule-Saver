@@ -146,13 +146,14 @@ function showImportStatusUI(status, errorMessage = null) {
 		const nextSteps = makeNextStepsList(status);
 		const appContent = document.querySelector(".app-content");
 		appContent.appendChild(nextSteps);
+		nextSteps.classList.add("fade-in");
 	}
 }
 
 function makeNextStepsList(status) {
 	const list = document.createElement("ul");
 	list.classList.add("next-steps-list");
-	list.classList.add("fade-in");
+	// list.classList.add("fade-in");
 
 	if (status == importStatus.SUCCESS) {
 		const listItems = [
