@@ -154,12 +154,59 @@ function makeNextStepsList(status) {
 	list.classList.add("next-steps-list");
 
 	if (status == importStatus.SUCCESS) {
-		list.textContent = "Success list";
+		const listItems = [
+			{
+				linkName: "Open Todoist",
+				desc: "to view the imported schedule",
+				link: "www.google.com",
+			},
+			{
+				linkName: "Import another",
+				desc: "NBA team's schedule",
+				link: "www.google.com",
+			},
+			{
+				linkName: "Email me",
+				desc: "for any issues or feedback",
+				link: "www.google.com",
+			},
+		];
+		for (const listItem of listItems) {
+			list.appendChild(
+				makeListItem(listItem.linkName, listItem.desc, listItem.link)
+			);
+		}
 		return list;
 	}
 
 	if (status == importStatus.ERROR) {
-		list.textContent = "Error list";
+		const listItems = [
+			{
+				linkName: "Try again",
+				desc: "from team selection page",
+				link: "www.google.com",
+			},
+			{
+				linkName: "Email me",
+				desc: "to report an issue",
+				link: "www.google.com",
+			},
+		];
+		for (const listItem of listItems) {
+			list.appendChild(
+				makeListItem(listItem.linkName, listItem.desc, listItem.link)
+			);
+		}
 		return list;
 	}
+}
+function makeListItem(linkName, desc, link) {
+	const listItem = document.createElement("li");
+	listItem.innerHTML = `
+		<a
+			class="project project-game"
+			href="${link}"
+			target="_blank"
+		>${linkName}</a> ${desc}`;
+	return listItem;
 }
