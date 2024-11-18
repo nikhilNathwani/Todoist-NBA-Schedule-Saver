@@ -158,19 +158,19 @@ function makeNextStepsList(status) {
 			{
 				icon: `<i class="fa-solid fa-up-right-from-square"></i>`,
 				linkName: "Open Todoist",
-				desc: "to view the imported schedule",
+				desc: "to view schedule",
 				link: "www.google.com",
 			},
 			{
 				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Import another",
-				desc: "NBA team's schedule",
+				desc: "schedule",
 				link: "www.google.com",
 			},
 			{
 				icon: `<i class="fa-solid fa-envelope"></i>`,
-				linkName: "Email me",
-				desc: "for any issues or feedback",
+				linkName: "Contact me",
+				desc: "",
 				link: "www.google.com",
 			},
 		];
@@ -192,13 +192,13 @@ function makeNextStepsList(status) {
 			{
 				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Try again",
-				desc: "from team selection page",
+				desc: "",
 				link: "www.google.com",
 			},
 			{
 				icon: `<i class="fa-solid fa-envelope"></i>`,
-				linkName: "Email me",
-				desc: "to report an issue",
+				linkName: "Report an issue",
+				desc: "",
 				link: "www.google.com",
 			},
 		];
