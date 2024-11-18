@@ -316,7 +316,7 @@ form {
 	transition: opacity 1s ease, transform 1s ease;
 }
 
-.app-frame.loading form {
+form.fade-out {
 	opacity: 0;
 	transform: translateX(-50px);
 }
@@ -332,9 +332,9 @@ form {
 	transition: height 1s ease 1s, font-size 1s ease 1s, gap 1s ease 1s;
 }
 
-.app-frame.loading .app-content {
+/* .app-frame.loading .app-content {
 	overflow: hidden;
-}
+} */
 
 /* Transition 3: 
 	-Also after form fades out (1s delay)

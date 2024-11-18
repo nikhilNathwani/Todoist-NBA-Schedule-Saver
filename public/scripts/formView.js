@@ -69,9 +69,10 @@ function growLogoBanner() {
 }
 
 function fadeOutForm() {
-	const appFrame = document.querySelector(".app-frame");
-	appFrame.classList.add("loading");
-	appFrame.addEventListener("transitionend", () => {
+	const form = document.querySelector("form");
+	form.classList.add("fade-out");
+	form.addEventListener("transitionend", () => {
 		growLogoBanner();
+		form.remove();
 	});
 }
