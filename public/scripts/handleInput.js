@@ -159,19 +159,19 @@ function makeNextStepsList(status) {
 				icon: `<i class="fa-solid fa-up-right-from-square"></i>`,
 				linkName: "Open Todoist",
 				desc: "to view schedule",
-				link: "www.google.com",
+				link: "todoist://",
 			},
 			{
 				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Import another",
 				desc: "schedule",
-				link: "www.google.com",
+				link: "https://nba-todoist-import.vercel.app/",
 			},
 			{
-				icon: `<i class="fa-solid fa-envelope"></i>`,
+				icon: `<i class="fa-regular fa-envelope"></i>`,
 				linkName: "Contact me",
 				desc: "",
-				link: "www.google.com",
+				link: "mailto://nnathwani35@gmail.com",
 			},
 		];
 		for (const listItem of listItems) {
@@ -193,13 +193,13 @@ function makeNextStepsList(status) {
 				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Try again",
 				desc: "",
-				link: "www.google.com",
+				link: "https://nba-todoist-import.vercel.app/",
 			},
 			{
 				icon: `<i class="fa-regular fa-envelope"></i>`,
 				linkName: "Report an issue",
 				desc: "",
-				link: "www.google.com",
+				link: "mailto://nnathwani35@gmail.com",
 			},
 		];
 		for (const listItem of listItems) {
