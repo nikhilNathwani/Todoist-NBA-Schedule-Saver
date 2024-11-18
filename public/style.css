@@ -301,6 +301,23 @@ label.disabled {
 /*      CONFIRMATION PAGE                  */
 /*                                         */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ul {
+	list-style-type: none;
+}
+
+ul a {
+	color: var(--clr-accent);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+ul li {
+	margin-bottom: 1.5rem;
+}
+
+ul li:last-child {
+	margin-bottom: 0;
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /*                                         */

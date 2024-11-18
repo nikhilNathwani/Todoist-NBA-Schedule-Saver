@@ -156,16 +156,19 @@ function makeNextStepsList(status) {
 	if (status == importStatus.SUCCESS) {
 		const listItems = [
 			{
+				icon: `<i class="fa-solid fa-up-right-from-square"></i>`,
 				linkName: "Open Todoist",
 				desc: "to view the imported schedule",
 				link: "www.google.com",
 			},
 			{
+				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Import another",
 				desc: "NBA team's schedule",
 				link: "www.google.com",
 			},
 			{
+				icon: `<i class="fa-solid fa-envelope"></i>`,
 				linkName: "Email me",
 				desc: "for any issues or feedback",
 				link: "www.google.com",
@@ -173,7 +176,12 @@ function makeNextStepsList(status) {
 		];
 		for (const listItem of listItems) {
 			list.appendChild(
-				makeListItem(listItem.linkName, listItem.desc, listItem.link)
+				makeListItem(
+					listItem.icon,
+					listItem.linkName,
+					listItem.desc,
+					listItem.link
+				)
 			);
 		}
 		return list;
@@ -182,11 +190,13 @@ function makeNextStepsList(status) {
 	if (status == importStatus.ERROR) {
 		const listItems = [
 			{
+				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Try again",
 				desc: "from team selection page",
 				link: "www.google.com",
 			},
 			{
+				icon: `<i class="fa-solid fa-envelope"></i>`,
 				linkName: "Email me",
 				desc: "to report an issue",
 				link: "www.google.com",
@@ -200,13 +210,13 @@ function makeNextStepsList(status) {
 		return list;
 	}
 }
-function makeListItem(linkName, desc, link) {
+function makeListItem(icon, linkName, desc, link) {
 	const listItem = document.createElement("li");
 	listItem.innerHTML = `
 		<a
 			class="project project-game"
 			href="${link}"
 			target="_blank"
-		>${linkName}</a> ${desc}`;
+		>${icon} ${linkName}</a> ${desc}`;
 	return listItem;
 }
