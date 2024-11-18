@@ -196,7 +196,7 @@ function makeNextStepsList(status) {
 				link: "www.google.com",
 			},
 			{
-				icon: `<i class="fa-solid fa-envelope"></i>`,
+				icon: `<i class="fa-regular fa-envelope"></i>`,
 				linkName: "Report an issue",
 				desc: "",
 				link: "www.google.com",
