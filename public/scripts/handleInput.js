@@ -216,7 +216,7 @@ function makeListItem(icon, linkName, desc, link) {
 		<a
 			class="project project-game"
 			href="${link}"
-			target="_blank"
+			${icon == `<i class="fa-solid fa-arrow-left"></i>` ? `` : `target="_blank"`}
 		>${icon} ${linkName}</a> ${desc}`;
 	return listItem;
 }
