@@ -83,6 +83,7 @@ const importStatus = {
 	SUCCESS: 1,
 	ERROR: 2,
 };
+
 function getStatusMessage(status) {
 	switch (status) {
 		case importStatus.LOADING:
@@ -140,4 +141,25 @@ function showImportStatusUI(status, errorMessage = null) {
 
 	const statusContainer = document.querySelector(".app-status");
 	statusContainer.classList.add("fade-in");
+
+	if (status == importStatus.SUCCESS || status == importStatus.ERROR) {
+		const nextSteps = makeNextStepsList(status);
+		const appContent = document.querySelector(".app-content");
+		appContent.appendChild(nextSteps);
+	}
+}
+
+function makeNextStepsList(status) {
+	const list = document.createElement("ul");
+	list.classList.add("next-steps-list");
+
+	if (status == importStatus.SUCCESS) {
+		list.textContent = "Success list";
+		return list;
+	}
+
+	if (status == importStatus.ERROR) {
+		list.textContent = "Error list";
+		return list;
+	}
 }
