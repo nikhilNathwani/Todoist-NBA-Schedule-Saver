@@ -71,8 +71,10 @@ function growLogoBanner() {
 function fadeOutForm() {
 	const form = document.querySelector("form");
 	form.classList.add("fade-out");
-	form.addEventListener("transitionend", () => {
-		growLogoBanner();
-		form.remove();
+	form.addEventListener("transitionend", (event) => {
+		if (event.propertyName === "opacity") {
+			growLogoBanner();
+			form.remove();
+		}
 	});
 }
