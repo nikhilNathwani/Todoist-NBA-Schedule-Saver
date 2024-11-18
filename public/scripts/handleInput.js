@@ -148,7 +148,7 @@ function showImportStatusUI(status, errorMessage = null) {
 		appContent.appendChild(nextSteps);
 		setTimeout(() => {
 			nextSteps.classList.add("fade-in");
-		}, 2000);
+		}, 1500);
 	}
 }
 
