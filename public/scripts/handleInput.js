@@ -152,6 +152,7 @@ function showImportStatusUI(status, errorMessage = null) {
 function makeNextStepsList(status) {
 	const list = document.createElement("ul");
 	list.classList.add("next-steps-list");
+	list.classList.add("fade-in");
 
 	if (status == importStatus.SUCCESS) {
 		const listItems = [

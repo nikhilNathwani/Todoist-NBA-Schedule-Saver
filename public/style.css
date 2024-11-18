@@ -304,6 +304,12 @@ label.disabled {
 ul {
 	margin-top: 2rem;
 	list-style-type: none;
+	opacity: 0;
+	transition: opacity 1s ease;
+}
+
+ul.fade-in {
+	opacity: 1;
 }
 
 ul a {
