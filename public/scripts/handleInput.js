@@ -171,7 +171,7 @@ function makeNextStepsList(status) {
 				icon: `<i class="fa-regular fa-envelope"></i>`,
 				linkName: "Contact me",
 				desc: "",
-				link: "mailto:nnathwani35@gmail.com?subject=Regarding%20NBA%20Todoist%20Import",
+				link: "mailto:nnathwani36@gmail.com?subject=Regarding%20NBA%20Todoist%20Import",
 			},
 		];
 		for (const listItem of listItems) {
@@ -199,7 +199,7 @@ function makeNextStepsList(status) {
 				icon: `<i class="fa-regular fa-envelope"></i>`,
 				linkName: "Report an issue",
 				desc: "",
-				link: "mailto:nnathwani35@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import",
+				link: "mailto:nnathwani36@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import",
 			},
 		];
 		for (const listItem of listItems) {
