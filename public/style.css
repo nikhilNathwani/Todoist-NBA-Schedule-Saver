@@ -48,7 +48,7 @@ body {
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
-	justify-content: center;
+	/* justify-content: center; */
 
 	max-height: 1000px;
 }
@@ -302,6 +302,7 @@ label.disabled {
 /*                                         */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 ul {
+	margin-top: 2rem;
 	list-style-type: none;
 }
 
