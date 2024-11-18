@@ -146,7 +146,9 @@ function showImportStatusUI(status, errorMessage = null) {
 		const nextSteps = makeNextStepsList(status);
 		const appContent = document.querySelector(".app-content");
 		appContent.appendChild(nextSteps);
-		nextSteps.classList.add("fade-in");
+		setTimeout(() => {
+			nextSteps.classList.add("fade-in");
+		}, 1000);
 	}
 }
 
