@@ -51,6 +51,7 @@ body {
 
 .app-frame {
 	width: fit-content;
+	max-width: 350px;
 	height: 32.375rem;
 	margin: 2rem 8vw;
 
