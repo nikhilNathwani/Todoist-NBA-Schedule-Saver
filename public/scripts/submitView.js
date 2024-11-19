@@ -68,13 +68,13 @@ function getStatusSubtitle(status, errorMessage = null) {
 function getStatusArrow(status) {
 	switch (status) {
 		case importStatus.LOADING:
-			return `<i class="fa-solid fa-arrow-rotate-right spinner"></i>`;
+			return `<i class="fa-solid fa-arrow-rotate-right spinner" aria-hidden="true"></i>`;
 		case importStatus.SUCCESS:
-			return `<i class="fa-solid fa-check"></i>`;
+			return `<i class="fa-solid fa-check" aria-hidden="true"></i>`;
 		case importStatus.ERROR:
-			return `<i class="fa-solid fa-triangle-exclamation"></i>`;
+			return `<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>`;
 		default:
-			return `<i class="fa-solid fa-arrow-right"></i>`;
+			return `<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>`;
 	}
 }
 
