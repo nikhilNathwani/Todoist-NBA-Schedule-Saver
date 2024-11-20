@@ -121,7 +121,8 @@ function makeNextStepsList(status, errorMessage = null) {
 				linkName: "Send error report",
 				desc: "",
 				link: `mailto:nnathwani36@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import&body=${encodeURIComponent(
-					errorMessage
+					"I encountered the following error when trying to import an NBA schedule into Todoist:\n\n" +
+						errorMessage
 				)}`,
 			},
 			{
