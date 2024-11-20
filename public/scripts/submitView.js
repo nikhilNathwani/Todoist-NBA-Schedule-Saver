@@ -89,8 +89,10 @@ function makeNextStepsList(status) {
 	list.classList.add("next-steps-list");
 	// list.classList.add("fade-in");
 
+	const listItems = [];
+
 	if (status == importStatus.SUCCESS) {
-		const listItems = [
+		listItems = [
 			{
 				icon: `<i class="fa-solid fa-up-right-from-square"></i>`,
 				linkName: "Open Todoist",
@@ -110,21 +112,10 @@ function makeNextStepsList(status) {
 				link: "mailto:nnathwani36@gmail.com?subject=Regarding%20NBA%20Todoist%20Import",
 			},
 		];
-		for (const listItem of listItems) {
-			list.appendChild(
-				makeListItem(
-					listItem.icon,
-					listItem.linkName,
-					listItem.desc,
-					listItem.link
-				)
-			);
-		}
-		return list;
 	}
 
 	if (status == importStatus.ERROR) {
-		const listItems = [
+		listItems = [
 			{
 				icon: `<i class="fa-solid fa-arrow-left"></i>`,
 				linkName: "Try again",
@@ -138,13 +129,18 @@ function makeNextStepsList(status) {
 				link: "mailto:nnathwani36@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import",
 			},
 		];
-		for (const listItem of listItems) {
-			list.appendChild(
-				makeListItem(listItem.linkName, listItem.desc, listItem.link)
-			);
-		}
-		return list;
 	}
+	for (const listItem of listItems) {
+		list.appendChild(
+			makeListItem(
+				listItem.icon,
+				listItem.linkName,
+				listItem.desc,
+				listItem.link
+			)
+		);
+	}
+	return list;
 }
 function makeListItem(icon, linkName, desc, link) {
 	const listItem = document.createElement("li");
