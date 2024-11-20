@@ -24,11 +24,14 @@ function showImportStatusUI(status, errorMessage = null) {
 	statusContainer.classList.add("fade-in");
 
 	statusContainer.addEventListener("transitionend", (event) => {
+		console.log("in statusContainer event listener");
 		if (event.propertyName === "opacity") {
+			console.log("in statusContainer opacity");
 			if (
 				status == importStatus.SUCCESS ||
 				status == importStatus.ERROR
 			) {
+				console.log("about to show next steps list");
 				showNextStepsList(status, errorMessage);
 			}
 		}
