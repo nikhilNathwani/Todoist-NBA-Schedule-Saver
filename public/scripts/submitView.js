@@ -89,7 +89,7 @@ function makeNextStepsList(status, errorMessage = null) {
 	list.classList.add("next-steps-list");
 	// list.classList.add("fade-in");
 
-	const listItems = [];
+	var listItems = [];
 
 	if (status == importStatus.SUCCESS) {
 		listItems = [
