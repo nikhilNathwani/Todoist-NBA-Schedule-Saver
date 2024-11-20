@@ -23,14 +23,16 @@ function showImportStatusUI(status, errorMessage = null) {
 	const statusContainer = document.querySelector(".app-status");
 	statusContainer.classList.add("fade-in");
 
-	if (status == importStatus.SUCCESS || status == importStatus.ERROR) {
-		const nextSteps = makeNextStepsList(status, errorMessage);
-		const appContent = document.querySelector(".app-content");
-		appContent.appendChild(nextSteps);
-		setTimeout(() => {
-			nextSteps.classList.add("fade-in");
-		}, 1200);
-	}
+	statusContainer.addEventListener("transitionend", (event) => {
+		if (status == importStatus.SUCCESS || status == importStatus.ERROR) {
+			const nextSteps = makeNextStepsList(status, errorMessage);
+			const appContent = document.querySelector(".app-content");
+			appContent.appendChild(nextSteps);
+			setTimeout(() => {
+				nextSteps.classList.add("fade-in");
+			}, 1200);
+		}
+	});
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
