@@ -18,7 +18,7 @@ function showImportStatusUI(status, errorMessage = null) {
 	statusTitle.textContent = getStatusMessage(status);
 
 	const subtitle = document.querySelector("h3");
-	subtitle.textContent = getStatusSubtitle(status, errorMessage);
+	subtitle.textContent = getStatusSubtitle(status);
 
 	const statusContainer = document.querySelector(".app-status");
 	statusContainer.classList.add("fade-in");
@@ -52,14 +52,14 @@ function getStatusMessage(status) {
 	}
 }
 
-function getStatusSubtitle(status, errorMessage = null) {
+function getStatusSubtitle(status) {
 	switch (status) {
 		case importStatus.LOADING:
 			return "Please keep this window open";
 		case importStatus.SUCCESS:
 			return "Schedule added to Todoist";
 		case importStatus.ERROR:
-			return `${errorMessage}`;
+			return "";
 		default:
 			return "Unknown error";
 	}
@@ -117,18 +117,18 @@ function makeNextStepsList(status, errorMessage = null) {
 	if (status == importStatus.ERROR) {
 		listItems = [
 			{
-				icon: `<i class="fa-solid fa-arrow-left"></i>`,
-				linkName: "Try again",
-				desc: "",
-				link: "https://nba-todoist-import.vercel.app/",
-			},
-			{
 				icon: `<i class="fa-regular fa-envelope"></i>`,
-				linkName: "Report an issue",
+				linkName: "Send error report",
 				desc: "",
 				link: `mailto:nnathwani36@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import&body=${encodeURIComponent(
 					errorMessage
 				)}`,
+			},
+			{
+				icon: `<i class="fa-solid fa-arrow-left"></i>`,
+				linkName: "Try again",
+				desc: "",
+				link: "https://nba-todoist-import.vercel.app/",
 			},
 		];
 	}
