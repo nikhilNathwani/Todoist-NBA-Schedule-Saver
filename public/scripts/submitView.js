@@ -24,7 +24,7 @@ function showImportStatusUI(status, errorMessage = null) {
 	statusContainer.classList.add("fade-in");
 
 	if (status == importStatus.SUCCESS || status == importStatus.ERROR) {
-		const nextSteps = makeNextStepsList(status);
+		const nextSteps = makeNextStepsList(status, errorMessage);
 		const appContent = document.querySelector(".app-content");
 		appContent.appendChild(nextSteps);
 		setTimeout(() => {
@@ -84,7 +84,7 @@ function getStatusArrow(status) {
 //                                           //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-function makeNextStepsList(status) {
+function makeNextStepsList(status, errorMessage = null) {
 	const list = document.createElement("ul");
 	list.classList.add("next-steps-list");
 	// list.classList.add("fade-in");
@@ -126,7 +126,9 @@ function makeNextStepsList(status) {
 				icon: `<i class="fa-regular fa-envelope"></i>`,
 				linkName: "Report an issue",
 				desc: "",
-				link: "mailto:nnathwani36@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import",
+				link: `mailto:nnathwani36@gmail.com?subject=Issue%20with%20NBA%20Todoist%20Import&body=${encodeURIComponent(
+					errorMessage
+				)}`,
 			},
 		];
 	}
